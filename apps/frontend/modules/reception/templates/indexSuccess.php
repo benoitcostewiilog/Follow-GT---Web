@@ -136,7 +136,6 @@ slot('page_title', sprintf('Réception'));
             responsive: true,
             colReorder: true,
             stateSave: true,
-             pageLength: 100,
             buttons: [
                 <?php if ($sf_user->hasCredential('reception-ecriture')) { ?>
                 'copy',

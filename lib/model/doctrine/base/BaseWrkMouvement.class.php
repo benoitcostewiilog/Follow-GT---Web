@@ -17,49 +17,40 @@ Doctrine_Manager::getInstance()->bindComponent('WrkMouvement', 'doctrine');
  * @property string $type
  * @property string $groupe
  * @property string $commentaire
- * @property integer $quantite
- * @property string $signature
- * @property string $photos
- * @property string $anomalie
+ * @property string $quantite
  * @property timestamp $created_at
  * @property timestamp $updated_at
  * @property RefEmplacement $RefEmplacement
  * @property WrkArrivageProduit $WrkArrivageProduit
  * 
- * @method integer            getId_mouvement()       Returns the current record's "id_mouvement" value
- * @method integer            getId_utIlIsateur()     Returns the current record's "id_utilisateur" value
- * @method timestamp          getHeure_prise()        Returns the current record's "heure_prise" value
- * @method string             getRef_pRoduit()        Returns the current record's "ref_produit" value
- * @method string             getBr_sap()             Returns the current record's "br_sap" value
- * @method string             getCode_emplaCement()   Returns the current record's "code_emplacement" value
- * @method integer            getRetRy()              Returns the current record's "retry" value
+ * @method integer            getIdMouvement()        Returns the current record's "id_mouvement" value
+ * @method integer            getIdUtilisateur()      Returns the current record's "id_utilisateur" value
+ * @method timestamp          getHeurePrise()         Returns the current record's "heure_prise" value
+ * @method string             getRefProduit()         Returns the current record's "ref_produit" value
+ * @method string             getBrSap()              Returns the current record's "br_sap" value
+ * @method string             getCodeEmplacement()    Returns the current record's "code_emplacement" value
+ * @method integer            getRetry()              Returns the current record's "retry" value
  * @method string             getType()               Returns the current record's "type" value
  * @method string             getGroupe()             Returns the current record's "groupe" value
  * @method string             getCommentaire()        Returns the current record's "commentaire" value
- * @method integer            getQuantite()           Returns the current record's "quantite" value
- * @method string             getSignature()          Returns the current record's "signature" value
- * @method string             getPhotos()             Returns the current record's "photos" value
- * @method string             getAnomAlie()           Returns the current record's "anomalie" value
- * @method timestamp          getCreated_at()         Returns the current record's "created_at" value
- * @method timestamp          getUpdated_at()         Returns the current record's "updated_at" value
+ * @method string             getQuantite()           Returns the current record's "quantite" value
+ * @method timestamp          getCreatedAt()          Returns the current record's "created_at" value
+ * @method timestamp          getUpdatedAt()          Returns the current record's "updated_at" value
  * @method RefEmplacement     getRefEmplacement()     Returns the current record's "RefEmplacement" value
  * @method WrkArrivageProduit getWrkArrivageProduit() Returns the current record's "WrkArrivageProduit" value
- * @method WrkMouvement       setId_mouvement()       Sets the current record's "id_mouvement" value
- * @method WrkMouvement       setId_utIlIsateur()     Sets the current record's "id_utilisateur" value
- * @method WrkMouvement       setHeure_prise()        Sets the current record's "heure_prise" value
- * @method WrkMouvement       setRef_pRoduit()        Sets the current record's "ref_produit" value
- * @method WrkMouvement       setBr_sap()             Sets the current record's "br_sap" value
- * @method WrkMouvement       setCode_emplaCement()   Sets the current record's "code_emplacement" value
- * @method WrkMouvement       setRetRy()              Sets the current record's "retry" value
+ * @method WrkMouvement       setIdMouvement()        Sets the current record's "id_mouvement" value
+ * @method WrkMouvement       setIdUtilisateur()      Sets the current record's "id_utilisateur" value
+ * @method WrkMouvement       setHeurePrise()         Sets the current record's "heure_prise" value
+ * @method WrkMouvement       setRefProduit()         Sets the current record's "ref_produit" value
+ * @method WrkMouvement       setBrSap()              Sets the current record's "br_sap" value
+ * @method WrkMouvement       setCodeEmplacement()    Sets the current record's "code_emplacement" value
+ * @method WrkMouvement       setRetry()              Sets the current record's "retry" value
  * @method WrkMouvement       setType()               Sets the current record's "type" value
  * @method WrkMouvement       setGroupe()             Sets the current record's "groupe" value
  * @method WrkMouvement       setCommentaire()        Sets the current record's "commentaire" value
  * @method WrkMouvement       setQuantite()           Sets the current record's "quantite" value
- * @method WrkMouvement       setSignature()          Sets the current record's "signature" value
- * @method WrkMouvement       setPhotos()             Sets the current record's "photos" value
- * @method WrkMouvement       setAnomAlie()           Sets the current record's "anomalie" value
- * @method WrkMouvement       setCreated_at()         Sets the current record's "created_at" value
- * @method WrkMouvement       setUpdated_at()         Sets the current record's "updated_at" value
+ * @method WrkMouvement       setCreatedAt()          Sets the current record's "created_at" value
+ * @method WrkMouvement       setUpdatedAt()          Sets the current record's "updated_at" value
  * @method WrkMouvement       setRefEmplacement()     Sets the current record's "RefEmplacement" value
  * @method WrkMouvement       setWrkArrivageProduit() Sets the current record's "WrkArrivageProduit" value
  * 
@@ -86,6 +77,7 @@ abstract class BaseWrkMouvement extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 4,
@@ -95,6 +87,7 @@ abstract class BaseWrkMouvement extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -166,38 +159,12 @@ abstract class BaseWrkMouvement extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 255,
              ));
-        $this->hasColumn('quantite', 'integer', 4, array(
-             'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
-             'length' => 4,
-             ));
-        $this->hasColumn('signature', 'string', 255, array(
+        $this->hasColumn('quantite', 'string', 255, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
-             'length' => 255,
-             ));
-        $this->hasColumn('photos', 'string', 255, array(
-             'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
-             'length' => 255,
-             ));
-        $this->hasColumn('anomalie', 'string', 255, array(
-             'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
+             'default' => '',
              'notnull' => false,
              'autoincrement' => false,
              'length' => 255,
@@ -207,6 +174,7 @@ abstract class BaseWrkMouvement extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -216,6 +184,7 @@ abstract class BaseWrkMouvement extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,

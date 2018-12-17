@@ -64,7 +64,6 @@ slot('page_title', sprintf('Gestion des demandes d\'acheminements'));
         $.fn.dataTable.moment('DD/MM/YYYY HH:mm:ss');
         table = $('#Tacheminement').DataTable({
         colReorder: true,
-        pageLength: 100,
         stateSave: true,
         dom: '<<"#buttons"><"col-md-6"f>t<"col-md-4"l><"col-md-4"i><"col-md-4"p>>',
         "language": {

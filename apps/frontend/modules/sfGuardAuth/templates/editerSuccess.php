@@ -1,10 +1,3 @@
-<style>
-    
-    .erreur {
-        color:red;
-        margin-top: 5px;
-    }
-</style>
 <div class="wrapper wrapper-content animated fadeInRight">
     <div id="tpltEdtHrchy" class="hidden">
         <ol class="breadcrumb">
@@ -33,27 +26,27 @@
                         ?>
 
                         <div class="form-group"><label class="col-sm-2 control-label">Nom d'utilisateur</label>
-                            <div class="col-sm-10"><?php echo $form['username']->render(array('class' => 'form-control')); ?><div style="display: none;" class="erreur"></div></div>
+                            <div class="col-sm-10"><?php echo $form['username']->render(array('class' => 'form-control')); ?></div>
                         </div>
                         <div class="hr-line-dashed"></div>
 
                         <div class="form-group"><label class="col-sm-2 control-label">Mot de passe</label>
-                            <div class="col-sm-10"><?php echo $form['password']->render(array('class' => 'form-control')); ?><div style="display: none;" class="erreur"></div></div>
+                            <div class="col-sm-10"><?php echo $form['password']->render(array('class' => 'form-control')); ?></div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group"><label class="col-sm-2 control-label">Confirmation</label>
-                            <div class="col-sm-10"><?php echo $form['password_again']->render(array('class' => 'form-control')); ?><div style="display: none;" class="erreur"></div></div>
+                            <div class="col-sm-10"><?php echo $form['password_again']->render(array('class' => 'form-control')); ?></div>
                         </div>
                         <div class="hr-line-dashed"></div>
 
                         <div class="form-group"><label class="col-sm-2 control-label">Mot de passe nomade</label>
-                            <div class="col-sm-10"><?php echo $form['password_nomade']->render(array('class' => 'form-control')); ?><div style="display: none;" class="erreur"></div></div>
+                            <div class="col-sm-10"><?php echo $form['password_nomade']->render(array('class' => 'form-control')); ?></div>
                         </div>
                         <div class="hr-line-dashed"></div>
 
 
                         <div class="form-group"><label class="col-sm-2 control-label">Groupe</label>
-                            <div class="col-sm-10"><?php echo $form['groups_list']->render(array('class' => 'form-control')); ?><div style="display: none;" class="erreur"></div></div>
+                            <div class="col-sm-10"><?php echo $form['groups_list']->render(array('class' => 'form-control')); ?></div>
                         </div>
                         <div class="hr-line-dashed"></div>
 
@@ -103,7 +96,6 @@
 
 
         $("#sf_guard_user_username").focusout(function () {
-              $('#sf_guard_user_username').parent().find(".erreur").hide();
             if ($("#sf_guard_user_username").val() != "") {
                 if (controlNomUser($('#sf_guard_user_username').val(), $('#sf_guard_user_id').val())) {
                     erreurUser = false;
@@ -114,31 +106,19 @@
             }
         });
 
-           $("#sf_guard_user_password").focusout(function () {
-        
-          setHasSuccess("#sf_guard_user_password");
-            erreurMdp = false;
-             $('#sf_guard_user_password').parent().find(".erreur").hide();
-             
-  var regexpMajuscule = /(?=.*[A-Z])/;
-   var regexpMinusule = /(?=.*[A-Z])/;
-  var regexpSpecialChar = /[^A-Za-z0-9]/;
-
-       if ($("#sf_guard_user_password").val().length < 10){
-            controleLongMdp();
-             setHasError("#sf_guard_user_password");
+        $("#sf_guard_user_password").focusout(function () {
+            if ($("#sf_guard_user_password").val() != "" && $("#sf_guard_user_password").val().length >= 6) {
+                setHasSuccess("#sf_guard_user_password");
+                erreurMdp = false;
+            } else {
+                setHasError("#sf_guard_user_password");
                 erreurMdp = true;
+                if ($("#sf_guard_user_password").val().length < 6 && $("#sf_guard_user_password").val() != "")
+                    controleLongMdp();
             }
-        else if (!regexpMajuscule.test($("#sf_guard_user_password").val()) || !regexpMinusule.test($("#sf_guard_user_password").val()) || !regexpSpecialChar.test($("#sf_guard_user_password").val())){
-            controleMdpValide();
-             setHasError("#sf_guard_user_password");
-                erreurMdp = true;
-        }
-    
         });
 
         $("#sf_guard_user_password_again").focusout(function () {
-               $('#sf_guard_user_password_again').parent().find(".erreur").hide();
             if ($("#sf_guard_user_password").val() != $("#sf_guard_user_password_again").val() || ($("#sf_guard_user_password_again").val() == "" && $("#sf_guard_user_password").val() != "")) {
                 setHasError("#sf_guard_user_password_again");
                 erreurConf = true;
@@ -165,30 +145,67 @@
         $('#sf_guard_user_groups_list').chosen(config);
     });
 
-  function controleLongMdp() {
-        
-          $('#sf_guard_user_password').parent().find(".erreur").show();
-          $('#sf_guard_user_password').parent().find(".erreur").html('Le mot de passe doit contenir au moins 10 caractères');
-     
-    }
-    function controleMdpValide(){
-          $('#sf_guard_user_password').parent().find(".erreur").show();
-          $('#sf_guard_user_password').parent().find(".erreur").html('Le mot de passe doit contenir au moins une lettre, une majuscule et un caractère spécial');
-     
+    function controleLongMdp() {
+        $('#sf_guard_user_password').qtip({
+            position: {
+                corner: {
+                    target: 'topRight',
+                    tooltip: 'bottomLeft'
+                }
+            },
+            content: 'Le mot de passe doit contenir au moins 6 caractères',
+            show: {
+                ready: true,
+                when: {event: false}
+            },
+            hide: {when: {event: 'click'}},
+            style: {
+                name: 'dark',
+                tip: true
+            }
+        });
     }
 
     function controleVerifMdp() {
-          $('#sf_guard_user_password_again').parent().find(".erreur").show();
-          $('#sf_guard_user_password_again').parent().find(".erreur").html('Les deux mots de passes ne correspondent pas');
-     
+        $('#sf_guard_user_password_again').qtip({
+            position: {
+                corner: {
+                    target: 'topRight',
+                    tooltip: 'bottomLeft'
+                }
+            },
+            content: 'Les deux mots de passes ne correspondent pas',
+            show: {
+                ready: true,
+                when: {event: false}
+            },
+            hide: {when: {event: 'click'}},
+            style: {
+                name: 'dark',
+                tip: true
+            }
+        });
     }
 
-
     function controleNomUserTip() {
-        
-           $('#sf_guard_user_username').parent().find(".erreur").show();
-          $('#sf_guard_user_username').parent().find(".erreur").html('Ce nom d\'utilisateur existe déjà !');
-    
+        $('#sf_guard_user_username').qtip({
+            position: {
+                corner: {
+                    target: 'topRight',
+                    tooltip: 'bottomLeft'
+                }
+            },
+            content: 'Ce nom d\'utilisateur existe déjà !',
+            show: {
+                ready: true,
+                when: {event: false}
+            },
+            hide: {when: {event: 'click'}},
+            style: {
+                name: 'dark',
+                tip: true
+            }
+        });
     }
 
     function controlNomUser(nom, id) {
@@ -213,11 +230,7 @@
 
     function enregistrerUtilisateur() {
         var erreur = false;
- $('#sf_guard_user_username').parent().find(".erreur").hide();
-  $('#sf_guard_user_password').parent().find(".erreur").hide();
-   $('#sf_guard_user_password_again').parent().find(".erreur").hide();
-    $('#sf_guard_user_groups_list').parent().find(".erreur").hide();
-    
+
         if (erreurUser) {
             setHasError('#sf_guard_user_username');
             erreur = true;
@@ -239,27 +252,11 @@
             erreur = true;
         }
 
- $('#sf_guard_user_password').parent().find(".erreur").hide();
-  var regexpMajuscule = /(?=.*[A-Z])/;
-   var regexpMinusule = /(?=.*[A-Z])/;
- var regexpSpecialChar = /(?=.[!@#\$%\^&])/;
-
-       if ($("#sf_guard_user_password").val().length < 10)
+        if ($("#sf_guard_user_password").val().length < 6)
             controleLongMdp();
-        else if (!regexpMajuscule.test($("#sf_guard_user_password").val()) || !regexpMinusule.test($("#sf_guard_user_password").val()) || !regexpSpecialChar.test($("#sf_guard_user_password").val()))
-            controleMdpValide();
         else if ($("#sf_guard_user_password").val() != $("#sf_guard_user_password_again").val())
             controleVerifMdp();
 
-
- if ($("#sf_guard_user_groups_list").val()==null){
-     erreur=true;
-       setHasError('#sf_guard_user_groups_list');
-      $('#sf_guard_user_groups_list').parent().find(".erreur").show();
-          $('#sf_guard_user_groups_list').parent().find(".erreur").html('Aucun groupe affecté');
-        }else{
-           setHasSuccess('#sf_guard_user_groups_list');   
-        }
         if (!erreur) {
             $('#formAjout').submit();
         }

@@ -4,5 +4,4 @@ all:
   
 signinSuccess:
   has_layout: false
-editPasswordSuccess:
-  has_layout: false
+  

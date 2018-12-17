@@ -11,11 +11,11 @@ Doctrine_Manager::getInstance()->bindComponent('AdmParametrage', 'doctrine');
  * @property string $nom_parametrage
  * @property string $actif
  * 
- * @method integer        getId_parametrage()  Returns the current record's "id_parametrage" value
- * @method string         getNom_parametrage() Returns the current record's "nom_parametrage" value
+ * @method integer        getIdParametrage()   Returns the current record's "id_parametrage" value
+ * @method string         getNomParametrage()  Returns the current record's "nom_parametrage" value
  * @method string         getActif()           Returns the current record's "actif" value
- * @method AdmParametrage setId_parametrage()  Sets the current record's "id_parametrage" value
- * @method AdmParametrage setNom_parametrage() Sets the current record's "nom_parametrage" value
+ * @method AdmParametrage setIdParametrage()   Sets the current record's "id_parametrage" value
+ * @method AdmParametrage setNomParametrage()  Sets the current record's "nom_parametrage" value
  * @method AdmParametrage setActif()           Sets the current record's "actif" value
  * 
  * @package    MobileStockV3

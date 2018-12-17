@@ -3,21 +3,18 @@
         <tr>
             <th><?php echo __('N° d\'arrivage'); ?></th>
             <th><?php echo __('Transporteur'); ?></th>
-            <th><?php echo __('N° tracking transporteur'); ?></th>
-            <th><?php echo __('N° commande / BL'); ?></th>
+            <th><?php echo __('Chauffeur'); ?></th>
+            <th><?php echo __('Immatriculation'); ?></th>
+            <th><?php echo __('Lettre voiture'); ?></th>
             <th><?php echo __('Fournisseur'); ?></th>
-              <th><?php echo __('Destinataire'); ?></th>
-              
             <th><?php echo __('Nb UM'); ?></th>
             <th><?php echo __('Statut'); ?></th>
-               <th><?php echo __('Urgent'); ?></th>
             <th><?php echo __('Date'); ?></th>
-              <th><?php echo __('Utilisateur'); ?></th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($arrivages as $arrivage): ?>
-            <tr id="<?php echo $arrivage->getIdArrivage() ?>" onmousedown="setIdClic(event, '<?php echo $arrivage->getIdArrivage() ?>');"  class="context-menu-one box menu-1" urgent="<?php echo $arrivage->getUrgent()?"1":"0" ?>">
+            <tr id="<?php echo $arrivage->getIdArrivage() ?>" onmousedown="setIdClic(event, '<?php echo $arrivage->getIdArrivage() ?>');"  class="context-menu-one box menu-1">
                 <?php
                 $numArrivage = '';
                 if ($arrivage->getWrkArrivageProduit()->getFirst()) {
@@ -27,16 +24,13 @@
                 ?>
                 <td class="click"><?php echo $numArrivage ?></td>
                 <td class="click"><?php echo ($arrivage->getRefTransporteur() ? $arrivage->getRefTransporteur()->getLibelle() : $arrivage->getIdTransporteur()) ?></td>
-                <td class="click"><?php echo ($arrivage->getTrackingFour() ? $arrivage->getTrackingFour() : '') ?></td>
-                <td class="click"><?php echo $arrivage->getCommandeAchat() ?></td>
+                <td class="click"><?php echo ($arrivage->getRefChauffeur() ? $arrivage->getRefChauffeur() : '') ?></td>
+                <td class="click"><?php echo $arrivage->getImmatriculation() ?></td>
+                <td class="click"><?php echo $arrivage->getLettreVoiture() ?></td>
                 <td class="click"><?php echo ($arrivage->getRefFournisseur() ? $arrivage->getRefFournisseur()->getLibelle() : '') ?></td>
-                 <td class="click"><?php echo ($arrivage->getRefContactPFF() ? ($arrivage->getRefContactPFF()->getNom()." ".$arrivage->getRefContactPFF()->getPrenom()) : '') ?></td>
-                
                 <td class="click"><?php echo $arrivage->getNbColis() ?></td>
                 <td class="click" title="<?php echo $arrivage->getCommentaire() ?>"><?php echo $arrivage->getStatut() ?></td>
-                 <td class="click" ><?php echo $arrivage->getUrgent()?"OUI":"NON" ?></td>
                 <td class="click"><?php echo date('d/m/Y H:i:s', strtotime($arrivage->getCreatedAt())) ?></td>
-                  <td class="click"><?php echo ($arrivage->getIdUser()&&isset($users[$arrivage->getIdUser()]) ? $users[$arrivage->getIdUser()] : "") ?></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
@@ -44,15 +38,13 @@
         <tr>
             <th><?php echo __('N° d\'arrivage'); ?></th>
             <th><?php echo __('Transporteur'); ?></th>
-            <th><?php echo __('N° tracking transporteur'); ?></th>
-            <th><?php echo __('N° commande / BL'); ?></th>
+            <th><?php echo __('Chauffeur'); ?></th>
+            <th><?php echo __('Immatriculation'); ?></th>
+            <th><?php echo __('Lettre voiture'); ?></th>
             <th><?php echo __('Fournisseur'); ?></th>
-              <th><?php echo __('Destinataire'); ?></th>
             <th><?php echo __('Nb UM'); ?></th>
             <th><?php echo __('Statut'); ?></th>
-              <th><?php echo __('Urgent'); ?></th>
             <th><?php echo __('Date'); ?></th>
-              <th><?php echo __('Utilisateur'); ?></th>
         </tr>
     </tfoot>
 </table>

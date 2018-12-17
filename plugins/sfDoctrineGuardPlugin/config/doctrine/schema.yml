@@ -68,12 +68,6 @@ sfGuardUser:
     salt: string(128)
     password: string(128)
     password_nomade: string(128)
-    login_failed: 
-      type: integer
-      default: 0
-    password_updated: 
-      type: boolean
-      default: false
     is_active:
       type: boolean
       default: 1

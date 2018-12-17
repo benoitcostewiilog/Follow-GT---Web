@@ -4,34 +4,6 @@ slot('page_title', sprintf("Historique Mouvements"));
 ?>
 <style>
     .nonDeposee{color:green;}
-    
-     #photosDiv .dz-image img {
-        width: 200px;
-        height: 100%;
-    }
-      #photosDiv .dz-image {
-        width: 100%;
-        height: 100%;
-    }
-    
-    #photosDiv.dropzone {
-        min-height: 140px;
-        border: none;
-        background: white;
-        padding: 0px 15px;
-
-    }
-    
-        #photosDiv.dropzone .dz-preview.dz-image-preview {
-        height: 250px;
-        margin-bottom: 45px;
-    }
-    
-   
-   #photosDiv.dropzone .dz-preview {
-        cursor: pointer;
-    }
-    
 </style>
 
 <div id="list-ajax-div">
@@ -166,9 +138,6 @@ slot('page_title', sprintf("Historique Mouvements"));
                                     <th><?php echo __('Date/Heure'); ?></th>
                                     <th><?php echo __('Utilisateur'); ?></th>
                                     <th><?php echo __('Arrivage'); ?></th>
-                                     <th><?php echo __('BL'); ?></th>
-                                      <th><?php echo __('Signature'); ?></th>
-                                        <th><?php echo __('Photos'); ?></th>
                                 </tr>
                             </thead>
                             <tbody>    </tbody>
@@ -183,9 +152,6 @@ slot('page_title', sprintf("Historique Mouvements"));
                                     <th><?php echo __('Date/Heure'); ?></th>
                                     <th><?php echo __('Utilisateur'); ?></th>
                                     <th><?php echo __('Arrivage'); ?></th>
-                                      <th><?php echo __('BL'); ?></th>
-                                       <th><?php echo __('Signature'); ?></th>
-                                        <th><?php echo __('Photos'); ?></th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -214,129 +180,8 @@ slot('page_title', sprintf("Historique Mouvements"));
         </div>
     </div>
 <?php } ?>
-
- <div class="modal inmodal fade" id="signatureMouvementModal" tabindex="-1" role="dialog"  aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"><?php echo __('Fermer'); ?></span></button>
-                    <h4 class="modal-title"><?php echo __('Signature'); ?></h4>
-                </div>
-                <div class="modal-body">
-                         <div style="margin-top: 10px" id="signatureDiv">
-                                   <div style="border:1px solid lightgrey;background-color:white;height: 400px;text-align: center;" id="imageSignEvent">   <img style="height: 100%;" id="imageSignature" src=""/></div>
-                                   
-                                        <ul class="list-group clear-list" style="margin-top: 16px;">
-                                            <li class="list-group-item fist-item">
-                                                <span class="pull-right" id="nomSignEvent"></span> Nom du signataire
-                                            </li>
-                                            <li class="list-group-item">
-                                                <span class="pull-right" id="dateHeureSignEvent"></span> Date et heure
-                                            </li>
-                                        </ul>
-
-                                   </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button id="cancelButton" type="button" class="btn btn-white" data-dismiss="modal"><?php echo __('Fermer'); ?></button>
-                </div>
-            </div>
-        </div>
-    </div>
- <div class="modal inmodal fade" id="photosMouvementModal" tabindex="-1" role="dialog"  aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"><?php echo __('Fermer'); ?></span></button>
-                    <h4 class="modal-title"><?php echo __('Photos'); ?></h4>
-                </div>
-                <div class="modal-body">
-                         <div style="margin-top: 10px" id="photosDiv" class="dropzone dz-started">
-                             <div class="dz-preview dz-success dz-complete dz-image-preview" id="imagePhotosEvent0" onclick="showDocumment(this)">
-                                            <div class="dz-image">
-                                                 <img id="imagePhotos0" src=""/>
-                                            </div>
-                                     
-                                        </div>
-                        <div class="dz-preview dz-success dz-complete dz-image-preview" id="imagePhotosEvent1" onclick="showDocumment(this)">
-                                            <div class="dz-image">
-                                                 <img id="imagePhotos1" src=""/>
-                                            </div>
-                                     
-                                        </div>
-                      
-                                       <div class="dz-preview dz-success dz-complete dz-image-preview" id="imagePhotosEvent2" onclick="showDocumment(this)">
-                                            <div class="dz-image">
-                                                 <img id="imagePhotos2" src=""/>
-                                            </div>
-                                     
-                                        </div>
-                             
-                                  <div class="dz-preview dz-success dz-complete dz-image-preview" id="imagePhotosEvent3" onclick="showDocumment(this)">
-                                            <div class="dz-image">
-                                                 <img id="imagePhotos3" src=""/>
-                                            </div>
-                                     
-                                        </div>
-                             
-                                  <div class="dz-preview dz-success dz-complete dz-image-preview" id="imagePhotosEvent4" onclick="showDocumment(this)">
-                                            <div class="dz-image">
-                                                 <img id="imagePhotos4" src=""/>
-                                            </div>
-                                     
-                                        </div>
-                                  <div class="dz-preview dz-success dz-complete dz-image-preview" id="imagePhotosEvent5" onclick="showDocumment(this)">
-                                            <div class="dz-image">
-                                                 <img id="imagePhotos5" src=""/>
-                                            </div>
-                                     
-                                        </div>
-                                  <div class="dz-preview dz-success dz-complete dz-image-preview" id="imagePhotosEvent6" onclick="showDocumment(this)">
-                                            <div class="dz-image">
-                                                 <img id="imagePhotos6" src=""/>
-                                            </div>
-                                     
-                                        </div>
-                                  <div class="dz-preview dz-success dz-complete dz-image-preview" id="imagePhotosEvent7" onclick="showDocumment(this)">
-                                            <div class="dz-image">
-                                                 <img id="imagePhotos7" src=""/>
-                                            </div>
-                                     
-                                        </div>
-                                  <div class="dz-preview dz-success dz-complete dz-image-preview" id="imagePhotosEvent8" onclick="showDocumment(this)">
-                                            <div class="dz-image">
-                                                 <img id="imagePhotos8" src=""/>
-                                            </div>
-                                     
-                                        </div>
-                                  <div class="dz-preview dz-success dz-complete dz-image-preview" id="imagePhotosEvent9" onclick="showDocumment(this)">
-                                            <div class="dz-image">
-                                                 <img id="imagePhotos9" src=""/>
-                                            </div>
-                                     
-                                        </div>
-                                  <div class="dz-preview dz-success dz-complete dz-image-preview" id="imagePhotosEvent10" onclick="showDocumment(this)">
-                                            <div class="dz-image">
-                                                 <img id="imagePhotos10" src=""/>
-                                            </div>
-                                     
-                                        </div>
-                                     
-
-                                  
-
-                </div>
-                <div class="modal-footer">
-                    <button id="cancelButton" type="button" class="btn btn-white" data-dismiss="modal"><?php echo __('Fermer'); ?></button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
 <div id="ajax-div"></div>
 <script>
-       var serverSignature = "<?php echo $serverSails;?>";
     var table = null;
     $(document).ready(function () {
 
@@ -405,10 +250,7 @@ slot('page_title', sprintf("Historique Mouvements"));
                 {"data": "groupe"},
                 {"data": "date"},
                 {"data": "utilisateur"},
-                {"data": "arrivage"},
-                  {"data": "bl"},
-                  {"data": "signature"},
-                    {"data": "photos"}
+                {"data": "arrivage"}
             ],
             "language": {
                 "sProcessing": "Traitement en cours...",
@@ -702,117 +544,4 @@ slot('page_title', sprintf("Historique Mouvements"));
         url = url + '?heureDebut=' + debut + '&heureFin=' + fin + '&emplacement=' + emplacement + '&reference=' + reference + '&type=' + action;
         location.assign(url);
     }
-    
-      function showSignature(elem){
-      $("#imageSignature").attr("src","");
-        var data = JSON.parse($(elem).attr("data"));
-        if(data && data.length>0){
-            $("#imageSignature").attr("src",serverSignature+data[0].fileURL);
-            $("#nomSignEvent").html(data[0].name?data[0].name:"N/C");
-            $("#dateHeureSignEvent").html(moment(data[0].date).format("DD/MM/YYYY HH:mm"));
-           
-        }
-      $('#signatureMouvementModal').modal('show');
-    }
-    
-        function showPhotos(elem){
-              $("#imagePhotosEvent0").hide();
-      $("#imagePhotosEvent1").hide();
-        $("#imagePhotosEvent2").hide();
-          $("#imagePhotosEvent3").hide();
-            $("#imagePhotosEvent4").hide();
-              $("#imagePhotosEvent5").hide();
-                $("#imagePhotosEvent6").hide();
-                  $("#imagePhotosEvent7").hide();
-                    $("#imagePhotosEvent8").hide();
-                      $("#imagePhotosEvent9").hide();
-                        $("#imagePhotosEvent10").hide();
-                        
-      $("#imagePhotos0").attr("src","");
-       $("#imagePhotos1").attr("src","");
-        $("#imagePhotos2").attr("src","");
-         $("#imagePhotos3").attr("src",""); 
-         $("#imagePhotos4").attr("src","");
-          $("#imagePhotos5").attr("src","");
-           $("#imagePhotos6").attr("src","");
-            $("#imagePhotos7").attr("src","");
-             $("#imagePhotos8").attr("src","");
-         $("#imagePhotos9").attr("src","");
-          $("#imagePhotos10").attr("src","");
-         
-        var data = JSON.parse($(elem).attr("data"));
-        
-        var i =0;
-        if(data && data.length>i){
-            $("#imagePhotos"+i).attr("src",serverSignature+data[i].fileURL);
-               $("#imagePhotosEvent"+i).show();
-            i++;
-        }
-         if(data && data.length>i){
-            $("#imagePhotos"+i).attr("src",serverSignature+data[i].fileURL);
-              $("#imagePhotosEvent"+i).show();
-            i++;
-        }
-         if(data && data.length>i){
-            $("#imagePhotos"+i).attr("src",serverSignature+data[i].fileURL);
-              $("#imagePhotosEvent"+i).show();
-            i++;
-        }
-         if(data && data.length>i){
-            $("#imagePhotos"+i).attr("src",serverSignature+data[i].fileURL);
-              $("#imagePhotosEvent"+i).show();
-            i++;
-        }
-         if(data && data.length>i){
-            $("#imagePhotos"+i).attr("src",serverSignature+data[i].fileURL);
-              $("#imagePhotosEvent"+i).show();
-            i++;
-        }
-         if(data && data.length>i){
-            $("#imagePhotos"+i).attr("src",serverSignature+data[i].fileURL);
-              $("#imagePhotosEvent"+i).show();
-            i++;
-        }
-         if(data && data.length>i){
-            $("#imagePhotos"+i).attr("src",serverSignature+data[i].fileURL);
-              $("#imagePhotosEvent"+i).show();
-            i++;
-        }
-         if(data && data.length>i){
-            $("#imagePhotos"+i).attr("src",serverSignature+data[i].fileURL);
-              $("#imagePhotosEvent"+i).show();
-            i++;
-        }
-         if(data && data.length>i){
-            $("#imagePhotos"+i).attr("src",serverSignature+data[i].fileURL);
-              $("#imagePhotosEvent"+i).show();
-            i++;
-        }
-         if(data && data.length>i){
-            $("#imagePhotos"+i).attr("src",serverSignature+data[i].fileURL);
-              $("#imagePhotosEvent"+i).show();
-            i++;
-        }
-         if(data && data.length>i){
-            $("#imagePhotos"+i).attr("src",serverSignature+data[i].fileURL);
-              $("#imagePhotosEvent"+i).show();
-            i++;
-        }
-         if(data && data.length>i){
-            $("#imagePhotos"+i).attr("src",serverSignature+data[i].fileURL);
-                $("#imagePhotosEvent"+i).show();
-            i++;
-        }
-         if(data && data.length>i){
-            $("#imagePhotos"+i).attr("src",serverSignature+data[i].fileURL);
-            $("#imagePhotosEvent"+i).show();
-            i++;
-        }
-      $('#photosMouvementModal').modal('show');
-    }
-    
-      function showDocumment  (elem) {
-         console.log( $(elem).find("img").attr(("src")));
-                window.open( $(elem).find("img").attr(("src")));
-            }
 </script>

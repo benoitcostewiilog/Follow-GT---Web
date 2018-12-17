@@ -18,14 +18,14 @@ Doctrine_Manager::getInstance()->bindComponent('AdmSupervisionParametrage', 'doc
  * @method string                    getNom()         Returns the current record's "nom" value
  * @method string                    getDescription() Returns the current record's "description" value
  * @method string                    getValeur()      Returns the current record's "valeur" value
- * @method timestamp                 getCreated_at()  Returns the current record's "created_at" value
- * @method timestamp                 getUpdated_at()  Returns the current record's "updated_at" value
+ * @method timestamp                 getCreatedAt()   Returns the current record's "created_at" value
+ * @method timestamp                 getUpdatedAt()   Returns the current record's "updated_at" value
  * @method AdmSupervisionParametrage setId()          Sets the current record's "id" value
  * @method AdmSupervisionParametrage setNom()         Sets the current record's "nom" value
  * @method AdmSupervisionParametrage setDescription() Sets the current record's "description" value
  * @method AdmSupervisionParametrage setValeur()      Sets the current record's "valeur" value
- * @method AdmSupervisionParametrage setCreated_at()  Sets the current record's "created_at" value
- * @method AdmSupervisionParametrage setUpdated_at()  Sets the current record's "updated_at" value
+ * @method AdmSupervisionParametrage setCreatedAt()   Sets the current record's "created_at" value
+ * @method AdmSupervisionParametrage setUpdatedAt()   Sets the current record's "updated_at" value
  * 
  * @package    MobileStockV3
  * @subpackage model

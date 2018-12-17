@@ -23,8 +23,6 @@ class mouvementsActions extends sfActions {
         $this->emplacement = $request->getParameter('emplacement', '');
         $this->type = $request->getParameter('type', '');
         $this->reference = $request->getParameter('reference', '');
-         $parametrageServer=AdmSupervisionParametrageTable::getInstance()->findOneByNom("url_server_sails");
-        $this->serverSails = $parametrageServer?$parametrageServer["valeur"]:"";
     }
 
     public function executeListAjax(sfWebRequest $request) {

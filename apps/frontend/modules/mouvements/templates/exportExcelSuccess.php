@@ -113,7 +113,6 @@
       		<th><?php echo __('Groupe'); ?></th>
             <th><?php echo __('Utilisateur'); ?></th>
             <th><?php echo __('Arrivage'); ?></th>
-              <th><?php echo __('BL'); ?></th>
         </tr>
     </thead>
 
@@ -129,7 +128,6 @@
             	<td><?php echo $mouvement->getGroupe() ?></td>
                 <td><?php echo (isset($users[$mouvement->getIdUtilisateur()]) ? $users[$mouvement->getIdUtilisateur()] : $mouvement->getIdUtilisateur()) ?></td>
                 <td><?php echo ($mouvement->getWrkArrivageProduit()) ? $mouvement->getWrkArrivageProduit()->getRefProduit() : 'Absent' ?></td>
-                <td style="mso-number-format:\@;" class="text"><?php echo ($mouvement->getWrkArrivageProduit() && $mouvement->getWrkArrivageProduit()->getWrkArrivage()) ? $mouvement->getWrkArrivageProduit()->getWrkArrivage()->getCommandeAchat() : 'Absent' ?></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

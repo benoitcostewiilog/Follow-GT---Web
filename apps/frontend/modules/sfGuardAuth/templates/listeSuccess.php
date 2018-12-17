@@ -41,7 +41,6 @@ slot('page_title', sprintf("Gestion des utilisateurs"));
                                     <th><?php echo __('Numéro d\'utilisateur'); ?></th>
                                     <th><?php echo __('Identifiant'); ?></th>
                                     <th><?php echo __('Actif'); ?></th>
-                                    <th><?php echo __('Bloqué'); ?></th>
                                     <th><?php echo __('Dernière connexion'); ?></th>
                                     <th><?php echo __('Groupe'); ?></th>
                                 </tr>
@@ -58,13 +57,7 @@ slot('page_title', sprintf("Gestion des utilisateurs"));
                                             <?php if ($utilisateur->getIsActive()) { ?>
                                                 <i class="fa fa-check text-navy"></i>
                                             <?php } else { ?>
-                                                <i class="fa fa-close text-danger"/></i>
-    <?php } ?></td>
-                                           <td>
-                                            <?php if ($utilisateur->getLoginFailed()>=sfGuardUserTable::LOGIN_FAILED_LIMIT) { ?>
-                                                <i class="fa fa-check text-danger"></i>
-                                            <?php } else { ?>
-                                                <i title="<?php echo $utilisateur->getLoginFailed()?> tentative(s) de connexion echouée(s)" class="fa fa-close text-navy"/></i>
+                                                <i class="fa fa-close text-navy"/></i>
     <?php } ?></td>
                                         <td><?php echo format_date($utilisateur->getLastLogin(), 'U') ?></td>
                                         <td><?php echo $utilisateur->getGroup() ?></td>
@@ -79,7 +72,6 @@ slot('page_title', sprintf("Gestion des utilisateurs"));
                                     <th><?php echo __('Numéro d\'utilisateur'); ?></th>
                                     <th><?php echo __('Identifiant'); ?></th>
                                     <th><?php echo __('Actif'); ?></th>
-                                      <th><?php echo __('Bloqué'); ?></th>
                                     <th><?php echo __('Dernière connexion'); ?></th>
                                     <th><?php echo __('Groupe'); ?></th>
                                 </tr>
@@ -121,7 +113,6 @@ slot('page_title', sprintf("Gestion des utilisateurs"));
 
         $('.dataTables').dataTable({
             responsive: true,
-             pageLength: 100,
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.6/i18n/French.json"
             }
@@ -170,12 +161,6 @@ slot('page_title', sprintf("Gestion des utilisateurs"));
                 if (key == "print") {
                     window.location.replace("<?php echo url_for('utilisateur-print') ?>");
                 }
-                
-                 if (key == "debloquer") {
-                    $.post('<?php echo url_for('utilisateur-debloquer') ?>', {'id': m}, function () {
-            document.location.href = "<?php echo url_for('@gestion-des-utilisateurs') ?>";
-        });
-                }
 
             },
             items: {
@@ -183,8 +168,6 @@ slot('page_title', sprintf("Gestion des utilisateurs"));
                 "edit": {name: "Modifier", icon: "edit"},
                 "delete": {name: "Supprimer", icon: "delete"},
                 "sep1": "---------------",
-                 "debloquer": {name: "Débloquer", icon: "edit"},
-                  "sep2": "---------------",
                 "export": {
                     "name": "Exporter", icon: "export",
                     "items": {

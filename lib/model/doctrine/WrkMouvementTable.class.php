@@ -64,16 +64,14 @@ class WrkMouvementTable extends Doctrine_Table {
     public function getWrkMouvementFiltrer($heureDebut = '', $heureFin = '', $type = '', $emplacement = '', $reference = '', $start = null, $length = null, $value = null, $orderCol = null, $orderDir = null) {
         //requete de filtre des mvts
         $req = new Doctrine_RawSql(Doctrine_Manager::getInstance()->connection());
-        $req->select('{m.*}, {e.*}, {p.*} , {a.*} ') 
+        $req->select('{m.*}, {e.*}, {p.*}') 
                 ->from('wrk_mouvement m')
                 ->leftJoin('ref_emplacement e ON m.code_emplacement=e.code_emplacement')
                 ->leftJoin('sf_guard_user u ON m.id_utilisateur=u.id')
                 ->leftJoin('wrk_arrivage_produit p ON m.ref_produit = p.br_sap')
-                ->leftJoin('wrk_arrivage a ON p.id_arrivage = a.id_arrivage')
                 ->addComponent('m', 'WrkMouvement m') 
                 ->addComponent('e', 'm.RefEmplacement e')
-                ->addComponent('p', 'm.WrkArrivageProduit p')
-                ->addComponent('a', 'p.WrkArrivage a');
+                ->addComponent('p', 'm.WrkArrivageProduit p');
         if ($heureDebut != '') {
             $req->andWhere('m.heure_prise >=?', $heureDebut);
         }
@@ -694,20 +692,6 @@ class WrkMouvementTable extends Doctrine_Table {
         
         return $res;
         
-    }
-    
-    
-      public function getDeposeEmplacementDelais($heureDebut = '', $emplacement = '',$limit=0){
-
-        $db = Doctrine_Manager::getInstance()->connection();
-
-        $result = $db->execute("SELECT DISTINCT m.ref_produit, m.heure_prise as heure_prise ,timestampdiff(SECOND,m.heure_prise,now()) AS `secondes` FROM wrk_mouvement m 
-                 WHERE m.code_emplacement = '$emplacement' AND m.type='depose' AND m.heure_prise >= (SELECT MAX(m2.heure_prise) FROM wrk_mouvement m2 WHERE m2.ref_produit=m.ref_produit) 
-                 AND m.heure_prise >= '$heureDebut'");
-
-        $res = $result->fetchAll();
-  $res= $this->generateArrayRetardAvecHoraire($res,$limit);
-        return $res;
     }
             public function getProduitEnRetardPremiereDAvecHoraireEtArrivage($dateDebut, $dateFin, $limit=0) {
         $db = Doctrine_Manager::getInstance()->connection();

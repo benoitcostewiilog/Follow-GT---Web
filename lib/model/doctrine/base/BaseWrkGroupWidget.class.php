@@ -15,18 +15,18 @@ Doctrine_Manager::getInstance()->bindComponent('WrkGroupWidget', 'doctrine');
  * @property sfGuardGroup $sfGuardGroup
  * @property RefWidget $RefWidget
  * 
- * @method integer        getGroup_id()     Returns the current record's "group_id" value
- * @method integer        getId_wIdget()    Returns the current record's "id_widget" value
+ * @method integer        getGroupId()      Returns the current record's "group_id" value
+ * @method integer        getIdWidget()     Returns the current record's "id_widget" value
  * @method integer        getOrdre()        Returns the current record's "ordre" value
- * @method timestamp      getCreated_at()   Returns the current record's "created_at" value
- * @method timestamp      getUpdated_at()   Returns the current record's "updated_at" value
+ * @method timestamp      getCreatedAt()    Returns the current record's "created_at" value
+ * @method timestamp      getUpdatedAt()    Returns the current record's "updated_at" value
  * @method sfGuardGroup   getSfGuardGroup() Returns the current record's "sfGuardGroup" value
  * @method RefWidget      getRefWidget()    Returns the current record's "RefWidget" value
- * @method WrkGroupWidget setGroup_id()     Sets the current record's "group_id" value
- * @method WrkGroupWidget setId_wIdget()    Sets the current record's "id_widget" value
+ * @method WrkGroupWidget setGroupId()      Sets the current record's "group_id" value
+ * @method WrkGroupWidget setIdWidget()     Sets the current record's "id_widget" value
  * @method WrkGroupWidget setOrdre()        Sets the current record's "ordre" value
- * @method WrkGroupWidget setCreated_at()   Sets the current record's "created_at" value
- * @method WrkGroupWidget setUpdated_at()   Sets the current record's "updated_at" value
+ * @method WrkGroupWidget setCreatedAt()    Sets the current record's "created_at" value
+ * @method WrkGroupWidget setUpdatedAt()    Sets the current record's "updated_at" value
  * @method WrkGroupWidget setSfGuardGroup() Sets the current record's "sfGuardGroup" value
  * @method WrkGroupWidget setRefWidget()    Sets the current record's "RefWidget" value
  * 
@@ -58,6 +58,7 @@ abstract class BaseWrkGroupWidget extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -67,6 +68,7 @@ abstract class BaseWrkGroupWidget extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,

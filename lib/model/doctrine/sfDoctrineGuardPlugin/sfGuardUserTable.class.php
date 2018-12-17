@@ -2,7 +2,6 @@
 
 class sfGuardUserTable extends PluginsfGuardUserTable {
 
-        const  LOGIN_FAILED_LIMIT =3;
     /**
      * Returns an instance of this class.
      *
@@ -11,8 +10,6 @@ class sfGuardUserTable extends PluginsfGuardUserTable {
     public static function getInstance() {
         return Doctrine_Core::getTable('sfGuardUser');
     }
-    
-
 
     /* retourne l'objet utilisateur en fonction de son id */
 

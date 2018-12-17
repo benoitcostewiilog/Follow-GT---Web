@@ -14,18 +14,18 @@ Doctrine_Manager::getInstance()->bindComponent('AdmSpool', 'doctrine');
  * @property string $imprimante
  * @property boolean $imprimee
  * 
- * @method int      getId_spool()   Returns the current record's "id_spool" value
- * @method string   getCode_etiq()  Returns the current record's "code_etiq" value
- * @method int      getNb_etiq()    Returns the current record's "nb_etiq" value
+ * @method int      getIdSpool()    Returns the current record's "id_spool" value
+ * @method string   getCodeEtiq()   Returns the current record's "code_etiq" value
+ * @method int      getNbEtiq()     Returns the current record's "nb_etiq" value
  * @method string   getParametres() Returns the current record's "parametres" value
- * @method string   getImprImante() Returns the current record's "imprimante" value
- * @method boolean  getImprImee()   Returns the current record's "imprimee" value
- * @method AdmSpool setId_spool()   Sets the current record's "id_spool" value
- * @method AdmSpool setCode_etiq()  Sets the current record's "code_etiq" value
- * @method AdmSpool setNb_etiq()    Sets the current record's "nb_etiq" value
+ * @method string   getImprimante() Returns the current record's "imprimante" value
+ * @method boolean  getImprimee()   Returns the current record's "imprimee" value
+ * @method AdmSpool setIdSpool()    Sets the current record's "id_spool" value
+ * @method AdmSpool setCodeEtiq()   Sets the current record's "code_etiq" value
+ * @method AdmSpool setNbEtiq()     Sets the current record's "nb_etiq" value
  * @method AdmSpool setParametres() Sets the current record's "parametres" value
- * @method AdmSpool setImprImante() Sets the current record's "imprimante" value
- * @method AdmSpool setImprImee()   Sets the current record's "imprimee" value
+ * @method AdmSpool setImprimante() Sets the current record's "imprimante" value
+ * @method AdmSpool setImprimee()   Sets the current record's "imprimee" value
  * 
  * @package    MobileStockV3
  * @subpackage model

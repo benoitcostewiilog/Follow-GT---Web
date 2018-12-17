@@ -15,14 +15,6 @@ Doctrine_Manager::getInstance()->bindComponent('WrkArrivage', 'doctrine');
  * @property integer $nb_colis
  * @property integer $nb_palette
  * @property string $immatriculation
- * @property string $tracking_four
- * @property string $commande_achat
- * @property boolean $urgent
- * @property timestamp $date_livraison_debut
- * @property timestamp $date_livraison_fin
- * @property integer $id_interlocuteur
- * @property integer $id_contact_PFF
- * @property integer $id_user
  * @property string $rep_signature
  * @property int $id_nature
  * @property string $br_sap
@@ -35,72 +27,47 @@ Doctrine_Manager::getInstance()->bindComponent('WrkArrivage', 'doctrine');
  * @property RefFournisseur $RefFournisseur
  * @property Doctrine_Collection $WrkArrivageProduit
  * @property RefNature $RefNature
- * @property RefInterlocuteur $RefInterlocuteur
- * @property RefInterlocuteur $RefContactPFF
- * @property Doctrine_Collection $WrkUrgence
  * 
- * @method integer             getId_arrIvage()          Returns the current record's "id_arrivage" value
- * @method integer             getId_fournIsseur()       Returns the current record's "id_fournisseur" value
- * @method integer             getId_transporteur()      Returns the current record's "id_transporteur" value
- * @method integer             getId_chauffeur()         Returns the current record's "id_chauffeur" value
- * @method string              getLettre_voiture()       Returns the current record's "lettre_voiture" value
- * @method integer             getNb_colis()             Returns the current record's "nb_colis" value
- * @method integer             getNb_palette()           Returns the current record's "nb_palette" value
- * @method string              getImmatrIculatIon()      Returns the current record's "immatriculation" value
- * @method string              getTracking_four()        Returns the current record's "tracking_four" value
- * @method string              getCommande_aChat()       Returns the current record's "commande_achat" value
- * @method boolean             getUrgent()               Returns the current record's "urgent" value
- * @method timestamp           getDate_livraison_Debut() Returns the current record's "date_livraison_debut" value
- * @method timestamp           getDate_livraison_fin()   Returns the current record's "date_livraison_fin" value
- * @method integer             getId_Interlocuteur()     Returns the current record's "id_interlocuteur" value
- * @method integer             getId_contact_PFF()       Returns the current record's "id_contact_PFF" value
- * @method integer             getId_user()              Returns the current record's "id_user" value
- * @method string              getRep_signatuRe()        Returns the current record's "rep_signature" value
- * @method int                 getId_nature()            Returns the current record's "id_nature" value
- * @method string              getBr_sap()               Returns the current record's "br_sap" value
- * @method string              getStatut()               Returns the current record's "statut" value
- * @method string              getCommentaire()          Returns the current record's "commentaire" value
- * @method timestamp           getCreated_at()           Returns the current record's "created_at" value
- * @method timestamp           getUpdated_at()           Returns the current record's "updated_at" value
- * @method RefTransporteur     getRefTransporteur()      Returns the current record's "RefTransporteur" value
- * @method RefChauffeur        getRefChauffeur()         Returns the current record's "RefChauffeur" value
- * @method RefFournisseur      getRefFournisseur()       Returns the current record's "RefFournisseur" value
- * @method Doctrine_Collection getWrkArrivageProduit()   Returns the current record's "WrkArrivageProduit" collection
- * @method RefNature           getRefNature()            Returns the current record's "RefNature" value
- * @method RefInterlocuteur    getRefInterlocuteur()     Returns the current record's "RefInterlocuteur" value
- * @method RefInterlocuteur    getRefContactPFF()        Returns the current record's "RefContactPFF" value
- * @method Doctrine_Collection getWrkUrgence()           Returns the current record's "WrkUrgence" collection
- * @method WrkArrivage         setId_arrIvage()          Sets the current record's "id_arrivage" value
- * @method WrkArrivage         setId_fournIsseur()       Sets the current record's "id_fournisseur" value
- * @method WrkArrivage         setId_transporteur()      Sets the current record's "id_transporteur" value
- * @method WrkArrivage         setId_chauffeur()         Sets the current record's "id_chauffeur" value
- * @method WrkArrivage         setLettre_voiture()       Sets the current record's "lettre_voiture" value
- * @method WrkArrivage         setNb_colis()             Sets the current record's "nb_colis" value
- * @method WrkArrivage         setNb_palette()           Sets the current record's "nb_palette" value
- * @method WrkArrivage         setImmatrIculatIon()      Sets the current record's "immatriculation" value
- * @method WrkArrivage         setTracking_four()        Sets the current record's "tracking_four" value
- * @method WrkArrivage         setCommande_aChat()       Sets the current record's "commande_achat" value
- * @method WrkArrivage         setUrgent()               Sets the current record's "urgent" value
- * @method WrkArrivage         setDate_livraison_Debut() Sets the current record's "date_livraison_debut" value
- * @method WrkArrivage         setDate_livraison_fin()   Sets the current record's "date_livraison_fin" value
- * @method WrkArrivage         setId_Interlocuteur()     Sets the current record's "id_interlocuteur" value
- * @method WrkArrivage         setId_contact_PFF()       Sets the current record's "id_contact_PFF" value
- * @method WrkArrivage         setId_user()              Sets the current record's "id_user" value
- * @method WrkArrivage         setRep_signatuRe()        Sets the current record's "rep_signature" value
- * @method WrkArrivage         setId_nature()            Sets the current record's "id_nature" value
- * @method WrkArrivage         setBr_sap()               Sets the current record's "br_sap" value
- * @method WrkArrivage         setStatut()               Sets the current record's "statut" value
- * @method WrkArrivage         setCommentaire()          Sets the current record's "commentaire" value
- * @method WrkArrivage         setCreated_at()           Sets the current record's "created_at" value
- * @method WrkArrivage         setUpdated_at()           Sets the current record's "updated_at" value
- * @method WrkArrivage         setRefTransporteur()      Sets the current record's "RefTransporteur" value
- * @method WrkArrivage         setRefChauffeur()         Sets the current record's "RefChauffeur" value
- * @method WrkArrivage         setRefFournisseur()       Sets the current record's "RefFournisseur" value
- * @method WrkArrivage         setWrkArrivageProduit()   Sets the current record's "WrkArrivageProduit" collection
- * @method WrkArrivage         setRefNature()            Sets the current record's "RefNature" value
- * @method WrkArrivage         setRefInterlocuteur()     Sets the current record's "RefInterlocuteur" value
- * @method WrkArrivage         setRefContactPFF()        Sets the current record's "RefContactPFF" value
- * @method WrkArrivage         setWrkUrgence()           Sets the current record's "WrkUrgence" collection
+ * @method integer             getIdArrivage()         Returns the current record's "id_arrivage" value
+ * @method integer             getIdFournisseur()      Returns the current record's "id_fournisseur" value
+ * @method integer             getIdTransporteur()     Returns the current record's "id_transporteur" value
+ * @method integer             getIdChauffeur()        Returns the current record's "id_chauffeur" value
+ * @method string              getLettreVoiture()      Returns the current record's "lettre_voiture" value
+ * @method integer             getNbColis()            Returns the current record's "nb_colis" value
+ * @method integer             getNbPalette()          Returns the current record's "nb_palette" value
+ * @method string              getImmatriculation()    Returns the current record's "immatriculation" value
+ * @method string              getRepSignature()       Returns the current record's "rep_signature" value
+ * @method int                 getIdNature()           Returns the current record's "id_nature" value
+ * @method string              getBrSap()              Returns the current record's "br_sap" value
+ * @method string              getStatut()             Returns the current record's "statut" value
+ * @method string              getCommentaire()        Returns the current record's "commentaire" value
+ * @method timestamp           getCreatedAt()          Returns the current record's "created_at" value
+ * @method timestamp           getUpdatedAt()          Returns the current record's "updated_at" value
+ * @method RefTransporteur     getRefTransporteur()    Returns the current record's "RefTransporteur" value
+ * @method RefChauffeur        getRefChauffeur()       Returns the current record's "RefChauffeur" value
+ * @method RefFournisseur      getRefFournisseur()     Returns the current record's "RefFournisseur" value
+ * @method Doctrine_Collection getWrkArrivageProduit() Returns the current record's "WrkArrivageProduit" collection
+ * @method RefNature           getRefNature()          Returns the current record's "RefNature" value
+ * @method WrkArrivage         setIdArrivage()         Sets the current record's "id_arrivage" value
+ * @method WrkArrivage         setIdFournisseur()      Sets the current record's "id_fournisseur" value
+ * @method WrkArrivage         setIdTransporteur()     Sets the current record's "id_transporteur" value
+ * @method WrkArrivage         setIdChauffeur()        Sets the current record's "id_chauffeur" value
+ * @method WrkArrivage         setLettreVoiture()      Sets the current record's "lettre_voiture" value
+ * @method WrkArrivage         setNbColis()            Sets the current record's "nb_colis" value
+ * @method WrkArrivage         setNbPalette()          Sets the current record's "nb_palette" value
+ * @method WrkArrivage         setImmatriculation()    Sets the current record's "immatriculation" value
+ * @method WrkArrivage         setRepSignature()       Sets the current record's "rep_signature" value
+ * @method WrkArrivage         setIdNature()           Sets the current record's "id_nature" value
+ * @method WrkArrivage         setBrSap()              Sets the current record's "br_sap" value
+ * @method WrkArrivage         setStatut()             Sets the current record's "statut" value
+ * @method WrkArrivage         setCommentaire()        Sets the current record's "commentaire" value
+ * @method WrkArrivage         setCreatedAt()          Sets the current record's "created_at" value
+ * @method WrkArrivage         setUpdatedAt()          Sets the current record's "updated_at" value
+ * @method WrkArrivage         setRefTransporteur()    Sets the current record's "RefTransporteur" value
+ * @method WrkArrivage         setRefChauffeur()       Sets the current record's "RefChauffeur" value
+ * @method WrkArrivage         setRefFournisseur()     Sets the current record's "RefFournisseur" value
+ * @method WrkArrivage         setWrkArrivageProduit() Sets the current record's "WrkArrivageProduit" collection
+ * @method WrkArrivage         setRefNature()          Sets the current record's "RefNature" value
  * 
  * @package    MobileStockV3
  * @subpackage model
@@ -125,6 +92,7 @@ abstract class BaseWrkArrivage extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 4,
@@ -134,6 +102,7 @@ abstract class BaseWrkArrivage extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 4,
@@ -182,79 +151,6 @@ abstract class BaseWrkArrivage extends sfDoctrineRecord
              'notnull' => false,
              'autoincrement' => false,
              'length' => 45,
-             ));
-        $this->hasColumn('tracking_four', 'string', null, array(
-             'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'default' => '',
-             'notnull' => true,
-             'autoincrement' => false,
-             'length' => '',
-             ));
-        $this->hasColumn('commande_achat', 'string', null, array(
-             'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'default' => '',
-             'notnull' => true,
-             'autoincrement' => false,
-             'length' => '',
-             ));
-        $this->hasColumn('urgent', 'boolean', null, array(
-             'type' => 'boolean',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => true,
-             'autoincrement' => false,
-             ));
-        $this->hasColumn('date_livraison_debut', 'timestamp', 25, array(
-             'type' => 'timestamp',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
-             'length' => 25,
-             ));
-        $this->hasColumn('date_livraison_fin', 'timestamp', 25, array(
-             'type' => 'timestamp',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
-             'length' => 25,
-             ));
-        $this->hasColumn('id_interlocuteur', 'integer', 11, array(
-             'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
-             'length' => 11,
-             ));
-        $this->hasColumn('id_contact_PFF', 'integer', 11, array(
-             'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
-             'length' => 11,
-             ));
-        $this->hasColumn('id_user', 'integer', 11, array(
-             'type' => 'integer',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
-             'length' => 11,
              ));
         $this->hasColumn('rep_signature', 'string', null, array(
              'type' => 'string',
@@ -306,6 +202,7 @@ abstract class BaseWrkArrivage extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -315,6 +212,7 @@ abstract class BaseWrkArrivage extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -343,17 +241,5 @@ abstract class BaseWrkArrivage extends sfDoctrineRecord
         $this->hasOne('RefNature', array(
              'local' => 'id_nature',
              'foreign' => 'id_nature'));
-
-        $this->hasOne('RefInterlocuteur', array(
-             'local' => 'id_interlocuteur',
-             'foreign' => 'id'));
-
-        $this->hasOne('RefInterlocuteur as RefContactPFF', array(
-             'local' => 'id_contact_PFF',
-             'foreign' => 'id'));
-
-        $this->hasMany('WrkUrgence', array(
-             'local' => 'id_arrivage',
-             'foreign' => 'id_arrivage'));
     }
 }

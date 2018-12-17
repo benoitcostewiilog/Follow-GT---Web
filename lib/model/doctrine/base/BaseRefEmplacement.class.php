@@ -12,24 +12,21 @@ Doctrine_Manager::getInstance()->bindComponent('RefEmplacement', 'doctrine');
  * @property timestamp $updated_at
  * @property timestamp $created_at
  * @property Doctrine_Collection $WrkMouvement
- * @property Doctrine_Collection $RefInterlocuteur
  * @property Doctrine_Collection $WrkAcheminement
  * @property Doctrine_Collection $WrkInventaire
  * 
- * @method string              getCode_emplaCement() Returns the current record's "code_emplacement" value
- * @method string              getLibeLLe()          Returns the current record's "libelle" value
- * @method timestamp           getUpdated_at()       Returns the current record's "updated_at" value
- * @method timestamp           getCreated_at()       Returns the current record's "created_at" value
+ * @method string              getCodeEmplacement()  Returns the current record's "code_emplacement" value
+ * @method string              getLibelle()          Returns the current record's "libelle" value
+ * @method timestamp           getUpdatedAt()        Returns the current record's "updated_at" value
+ * @method timestamp           getCreatedAt()        Returns the current record's "created_at" value
  * @method Doctrine_Collection getWrkMouvement()     Returns the current record's "WrkMouvement" collection
- * @method Doctrine_Collection getRefInterlocuteur() Returns the current record's "RefInterlocuteur" collection
  * @method Doctrine_Collection getWrkAcheminement()  Returns the current record's "WrkAcheminement" collection
  * @method Doctrine_Collection getWrkInventaire()    Returns the current record's "WrkInventaire" collection
- * @method RefEmplacement      setCode_emplaCement() Sets the current record's "code_emplacement" value
- * @method RefEmplacement      setLibeLLe()          Sets the current record's "libelle" value
- * @method RefEmplacement      setUpdated_at()       Sets the current record's "updated_at" value
- * @method RefEmplacement      setCreated_at()       Sets the current record's "created_at" value
+ * @method RefEmplacement      setCodeEmplacement()  Sets the current record's "code_emplacement" value
+ * @method RefEmplacement      setLibelle()          Sets the current record's "libelle" value
+ * @method RefEmplacement      setUpdatedAt()        Sets the current record's "updated_at" value
+ * @method RefEmplacement      setCreatedAt()        Sets the current record's "created_at" value
  * @method RefEmplacement      setWrkMouvement()     Sets the current record's "WrkMouvement" collection
- * @method RefEmplacement      setRefInterlocuteur() Sets the current record's "RefInterlocuteur" collection
  * @method RefEmplacement      setWrkAcheminement()  Sets the current record's "WrkAcheminement" collection
  * @method RefEmplacement      setWrkInventaire()    Sets the current record's "WrkInventaire" collection
  * 
@@ -65,6 +62,7 @@ abstract class BaseRefEmplacement extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -74,6 +72,7 @@ abstract class BaseRefEmplacement extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -86,10 +85,6 @@ abstract class BaseRefEmplacement extends sfDoctrineRecord
         $this->hasMany('WrkMouvement', array(
              'local' => 'code_emplacement',
              'foreign' => 'code_emplacement'));
-
-        $this->hasMany('RefInterlocuteur', array(
-             'local' => 'code_emplacement',
-             'foreign' => 'id_emplacement'));
 
         $this->hasMany('WrkAcheminement', array(
              'local' => 'code_emplacement',

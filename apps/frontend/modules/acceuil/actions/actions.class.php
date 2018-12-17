@@ -66,16 +66,6 @@ class acceuilActions extends sfActions {
         return $this->renderPartial('listRetardReception', array("produitEnRetard" => $produitEnRetard));
     }
     
-      public function executeEncoursAjax(sfWebRequest $request) {
-            $emplacement = $request->getParameter('emplacement');
-          $time = strtotime('now  -15 days');
-   
-        $heureDebut = date("Y-m-d", $time) . ' 00:00:00';
-    
-        $mouvements = WrkMouvementTable::getInstance()->getDeposeEmplacementDelais($heureDebut,$emplacement);
-        return $this->renderPartial('encours', array("mouvements" => $mouvements));
-    }
-    
 
     //User Mono-connexion : Contrôle de la clé d'authentification
     public function executeAjaxControleKey(sfWebRequest $request) {

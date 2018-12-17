@@ -10,12 +10,12 @@
  * @property sfGuardUser $User
  * @property sfGuardPermission $Permission
  * 
- * @method integer               getUser_id()       Returns the current record's "user_id" value
- * @method integer               getPermission_id() Returns the current record's "permission_id" value
+ * @method integer               getUserId()        Returns the current record's "user_id" value
+ * @method integer               getPermissionId()  Returns the current record's "permission_id" value
  * @method sfGuardUser           getUser()          Returns the current record's "User" value
  * @method sfGuardPermission     getPermission()    Returns the current record's "Permission" value
- * @method sfGuardUserPermission setUser_id()       Sets the current record's "user_id" value
- * @method sfGuardUserPermission setPermission_id() Sets the current record's "permission_id" value
+ * @method sfGuardUserPermission setUserId()        Sets the current record's "user_id" value
+ * @method sfGuardUserPermission setPermissionId()  Sets the current record's "permission_id" value
  * @method sfGuardUserPermission setUser()          Sets the current record's "User" value
  * @method sfGuardUserPermission setPermission()    Sets the current record's "Permission" value
  * 

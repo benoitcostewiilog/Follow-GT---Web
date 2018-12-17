@@ -48,7 +48,7 @@ EOF;
     
     
     /* Mis à jour statut acheminement */
-	echo "Hello";
+	
 	$req = $con->execute("SELECT * FROM wrk_acheminement WHERE statut <> 'déposé'");
 	$listeAcheminement =  $req->fetchAll(PDO::FETCH_ASSOC);
 	
