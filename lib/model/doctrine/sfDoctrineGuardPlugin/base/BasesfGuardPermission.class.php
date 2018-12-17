@@ -15,15 +15,15 @@
  * @method string              getName()                   Returns the current record's "name" value
  * @method string              getDescription()            Returns the current record's "description" value
  * @method Doctrine_Collection getGroups()                 Returns the current record's "Groups" collection
- * @method Doctrine_Collection getSfGuardGroupPermiSSion() Returns the current record's "sfGuardGroupPermission" collection
+ * @method Doctrine_Collection getSfGuardGroupPermission() Returns the current record's "sfGuardGroupPermission" collection
  * @method Doctrine_Collection getUsers()                  Returns the current record's "Users" collection
- * @method Doctrine_Collection getSfGuardUSerPermiSSion()  Returns the current record's "sfGuardUserPermission" collection
+ * @method Doctrine_Collection getSfGuardUserPermission()  Returns the current record's "sfGuardUserPermission" collection
  * @method sfGuardPermission   setName()                   Sets the current record's "name" value
  * @method sfGuardPermission   setDescription()            Sets the current record's "description" value
  * @method sfGuardPermission   setGroups()                 Sets the current record's "Groups" collection
- * @method sfGuardPermission   setSfGuardGroupPermiSSion() Sets the current record's "sfGuardGroupPermission" collection
+ * @method sfGuardPermission   setSfGuardGroupPermission() Sets the current record's "sfGuardGroupPermission" collection
  * @method sfGuardPermission   setUsers()                  Sets the current record's "Users" collection
- * @method sfGuardPermission   setSfGuardUSerPermiSSion()  Sets the current record's "sfGuardUserPermission" collection
+ * @method sfGuardPermission   setSfGuardUserPermission()  Sets the current record's "sfGuardUserPermission" collection
  * 
  * @package    MobileStockV3
  * @subpackage model

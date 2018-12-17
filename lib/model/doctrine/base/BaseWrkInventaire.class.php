@@ -16,21 +16,21 @@ Doctrine_Manager::getInstance()->bindComponent('WrkInventaire', 'doctrine');
  * @property timestamp $updated_at
  * @property RefEmplacement $RefEmplacement
  * 
- * @method integer        getId_InventaIre()    Returns the current record's "id_inventaire" value
- * @method integer        getId_utIlIsateur()   Returns the current record's "id_utilisateur" value
- * @method timestamp      getHeure_prise()      Returns the current record's "heure_prise" value
- * @method string         getRef_pRoduit()      Returns the current record's "ref_produit" value
- * @method string         getCode_emplaCement() Returns the current record's "code_emplacement" value
- * @method timestamp      getCreated_at()       Returns the current record's "created_at" value
- * @method timestamp      getUpdated_at()       Returns the current record's "updated_at" value
+ * @method integer        getIdInventaire()     Returns the current record's "id_inventaire" value
+ * @method integer        getIdUtilisateur()    Returns the current record's "id_utilisateur" value
+ * @method timestamp      getHeurePrise()       Returns the current record's "heure_prise" value
+ * @method string         getRefProduit()       Returns the current record's "ref_produit" value
+ * @method string         getCodeEmplacement()  Returns the current record's "code_emplacement" value
+ * @method timestamp      getCreatedAt()        Returns the current record's "created_at" value
+ * @method timestamp      getUpdatedAt()        Returns the current record's "updated_at" value
  * @method RefEmplacement getRefEmplacement()   Returns the current record's "RefEmplacement" value
- * @method WrkInventaire  setId_InventaIre()    Sets the current record's "id_inventaire" value
- * @method WrkInventaire  setId_utIlIsateur()   Sets the current record's "id_utilisateur" value
- * @method WrkInventaire  setHeure_prise()      Sets the current record's "heure_prise" value
- * @method WrkInventaire  setRef_pRoduit()      Sets the current record's "ref_produit" value
- * @method WrkInventaire  setCode_emplaCement() Sets the current record's "code_emplacement" value
- * @method WrkInventaire  setCreated_at()       Sets the current record's "created_at" value
- * @method WrkInventaire  setUpdated_at()       Sets the current record's "updated_at" value
+ * @method WrkInventaire  setIdInventaire()     Sets the current record's "id_inventaire" value
+ * @method WrkInventaire  setIdUtilisateur()    Sets the current record's "id_utilisateur" value
+ * @method WrkInventaire  setHeurePrise()       Sets the current record's "heure_prise" value
+ * @method WrkInventaire  setRefProduit()       Sets the current record's "ref_produit" value
+ * @method WrkInventaire  setCodeEmplacement()  Sets the current record's "code_emplacement" value
+ * @method WrkInventaire  setCreatedAt()        Sets the current record's "created_at" value
+ * @method WrkInventaire  setUpdatedAt()        Sets the current record's "updated_at" value
  * @method WrkInventaire  setRefEmplacement()   Sets the current record's "RefEmplacement" value
  * 
  * @package    MobileStockV3
@@ -92,6 +92,7 @@ abstract class BaseWrkInventaire extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -101,6 +102,7 @@ abstract class BaseWrkInventaire extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,

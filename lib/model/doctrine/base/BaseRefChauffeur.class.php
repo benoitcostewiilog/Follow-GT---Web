@@ -17,30 +17,27 @@ Doctrine_Manager::getInstance()->bindComponent('RefChauffeur', 'doctrine');
  * @property RefTransporteur $RefTransporteur
  * @property Doctrine_Collection $WrkExpedition
  * @property Doctrine_Collection $WrkArrivage
- * @property Doctrine_Collection $WrkUrgence
  * 
- * @method int                 getId_chauffeur()    Returns the current record's "id_chauffeur" value
+ * @method int                 getIdChauffeur()     Returns the current record's "id_chauffeur" value
  * @method string              getNom()             Returns the current record's "nom" value
  * @method string              getPrenom()          Returns the current record's "prenom" value
- * @method string              getNum_doc_id()      Returns the current record's "num_doc_id" value
- * @method integer             getId_transporteur() Returns the current record's "id_transporteur" value
- * @method timestamp           getUpdated_at()      Returns the current record's "updated_at" value
- * @method timestamp           getCreated_at()      Returns the current record's "created_at" value
+ * @method string              getNumDocId()        Returns the current record's "num_doc_id" value
+ * @method integer             getIdTransporteur()  Returns the current record's "id_transporteur" value
+ * @method timestamp           getUpdatedAt()       Returns the current record's "updated_at" value
+ * @method timestamp           getCreatedAt()       Returns the current record's "created_at" value
  * @method RefTransporteur     getRefTransporteur() Returns the current record's "RefTransporteur" value
  * @method Doctrine_Collection getWrkExpedition()   Returns the current record's "WrkExpedition" collection
  * @method Doctrine_Collection getWrkArrivage()     Returns the current record's "WrkArrivage" collection
- * @method Doctrine_Collection getWrkUrgence()      Returns the current record's "WrkUrgence" collection
- * @method RefChauffeur        setId_chauffeur()    Sets the current record's "id_chauffeur" value
+ * @method RefChauffeur        setIdChauffeur()     Sets the current record's "id_chauffeur" value
  * @method RefChauffeur        setNom()             Sets the current record's "nom" value
  * @method RefChauffeur        setPrenom()          Sets the current record's "prenom" value
- * @method RefChauffeur        setNum_doc_id()      Sets the current record's "num_doc_id" value
- * @method RefChauffeur        setId_transporteur() Sets the current record's "id_transporteur" value
- * @method RefChauffeur        setUpdated_at()      Sets the current record's "updated_at" value
- * @method RefChauffeur        setCreated_at()      Sets the current record's "created_at" value
+ * @method RefChauffeur        setNumDocId()        Sets the current record's "num_doc_id" value
+ * @method RefChauffeur        setIdTransporteur()  Sets the current record's "id_transporteur" value
+ * @method RefChauffeur        setUpdatedAt()       Sets the current record's "updated_at" value
+ * @method RefChauffeur        setCreatedAt()       Sets the current record's "created_at" value
  * @method RefChauffeur        setRefTransporteur() Sets the current record's "RefTransporteur" value
  * @method RefChauffeur        setWrkExpedition()   Sets the current record's "WrkExpedition" collection
  * @method RefChauffeur        setWrkArrivage()     Sets the current record's "WrkArrivage" collection
- * @method RefChauffeur        setWrkUrgence()      Sets the current record's "WrkUrgence" collection
  * 
  * @package    MobileStockV3
  * @subpackage model
@@ -100,6 +97,7 @@ abstract class BaseRefChauffeur extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -109,6 +107,7 @@ abstract class BaseRefChauffeur extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -127,10 +126,6 @@ abstract class BaseRefChauffeur extends sfDoctrineRecord
              'foreign' => 'id_chauffeur'));
 
         $this->hasMany('WrkArrivage', array(
-             'local' => 'id_chauffeur',
-             'foreign' => 'id_chauffeur'));
-
-        $this->hasMany('WrkUrgence', array(
              'local' => 'id_chauffeur',
              'foreign' => 'id_chauffeur'));
     }

@@ -87,7 +87,7 @@ slot('page_title', sprintf('Réception'));
                     <div class="ibox-title">
                         <h5><?php echo __('Liste des réceptions'); ?></h5>
                         <div class="ibox-tools">
-                            <?php if ($sf_user->hasCredential('reception-ecriture')) { ?>
+                            <?php if ($sf_user->hasCredential('reception-ecriture') || $sf_user->hasCredential('reception-export')) { ?>
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 <i class="fa fa-wrench"></i>
                             </a>
@@ -136,9 +136,8 @@ slot('page_title', sprintf('Réception'));
             responsive: true,
             colReorder: true,
             stateSave: true,
-             pageLength: 100,
             buttons: [
-                <?php if ($sf_user->hasCredential('reception-ecriture')) { ?>
+                <?php if ($sf_user->hasCredential('reception-ecriture') || $sf_user->hasCredential('reception-export')) { ?>
                 'copy',
                 {extend: 'print',
                     customize: function (win) {

@@ -12,14 +12,14 @@ Doctrine_Manager::getInstance()->bindComponent('RefEmplacementAcheminement', 'do
  * @property timestamp $updated_at
  * @property timestamp $created_at
  * 
- * @method string                     getCode_emplaCement() Returns the current record's "code_emplacement" value
- * @method string                     getLibeLLe()          Returns the current record's "libelle" value
- * @method timestamp                  getUpdated_at()       Returns the current record's "updated_at" value
- * @method timestamp                  getCreated_at()       Returns the current record's "created_at" value
- * @method RefEmplacementAcheminement setCode_emplaCement() Sets the current record's "code_emplacement" value
- * @method RefEmplacementAcheminement setLibeLLe()          Sets the current record's "libelle" value
- * @method RefEmplacementAcheminement setUpdated_at()       Sets the current record's "updated_at" value
- * @method RefEmplacementAcheminement setCreated_at()       Sets the current record's "created_at" value
+ * @method string                     getCodeEmplacement()  Returns the current record's "code_emplacement" value
+ * @method string                     getLibelle()          Returns the current record's "libelle" value
+ * @method timestamp                  getUpdatedAt()        Returns the current record's "updated_at" value
+ * @method timestamp                  getCreatedAt()        Returns the current record's "created_at" value
+ * @method RefEmplacementAcheminement setCodeEmplacement()  Sets the current record's "code_emplacement" value
+ * @method RefEmplacementAcheminement setLibelle()          Sets the current record's "libelle" value
+ * @method RefEmplacementAcheminement setUpdatedAt()        Sets the current record's "updated_at" value
+ * @method RefEmplacementAcheminement setCreatedAt()        Sets the current record's "created_at" value
  * 
  * @package    MobileStockV3
  * @subpackage model
@@ -53,6 +53,7 @@ abstract class BaseRefEmplacementAcheminement extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -62,6 +63,7 @@ abstract class BaseRefEmplacementAcheminement extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,

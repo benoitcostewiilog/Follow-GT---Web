@@ -144,17 +144,16 @@ $nbPages = ceil($nbElements / 20);
     <table style="width:100%;">
         <thead style="border-width:0px;" >
             <tr class="entete">
-              <th><?php echo __('N° d\'arrivage'); ?></th>
-            <th><?php echo __('Transporteur'); ?></th>
-            <th><?php echo __('N° tracking transporteur'); ?></th>
-            <th><?php echo __('N° commande / BL'); ?></th>
-            <th><?php echo __('Fournisseur'); ?></th>
-              <th><?php echo __('Destinataire'); ?></th>
-            <th><?php echo __('Nb UM'); ?></th>
-            <th><?php echo __('Statut'); ?></th>
-              <th><?php echo __('Urgent'); ?></th>
-            <th><?php echo __('Date'); ?></th>
-              <th><?php echo __('Utilisateur'); ?></th>
+                <th><?php echo __('N° d\'arrivage'); ?></th>
+                <th><?php echo __('Transporteur'); ?></th>
+                <th><?php echo __('Chauffeur'); ?></th>
+                <th><?php echo __('Immat.'); ?></th>
+                <th><?php echo __('LV'); ?></th>
+                <th><?php echo __('Fournisseur'); ?></th>
+                <th><?php echo __('Nb UM'); ?></th>
+                <th><?php echo __('Statut'); ?></th>
+                <th><?php echo __('Com.'); ?></th>
+                <th><?php echo __('Date'); ?></th>
             </tr>
         </thead>
         <tbody>
@@ -212,17 +211,16 @@ $nbPages = ceil($nbElements / 20);
 
             <table style="width:100%;">
                 <tr class="entete">
-                   <th><?php echo __('N° d\'arrivage'); ?></th>
-            <th><?php echo __('Transporteur'); ?></th>
-            <th><?php echo __('N° tracking transporteur'); ?></th>
-            <th><?php echo __('N° commande / BL'); ?></th>
-            <th><?php echo __('Fournisseur'); ?></th>
-              <th><?php echo __('Destinataire'); ?></th>
-            <th><?php echo __('Nb UM'); ?></th>
-            <th><?php echo __('Statut'); ?></th>
-              <th><?php echo __('Urgent'); ?></th>
-            <th><?php echo __('Date'); ?></th>
-              <th><?php echo __('Utilisateur'); ?></th>
+                    <th><?php echo __('N° d\'arrivage'); ?></th>
+                    <th><?php echo __('Transporteur'); ?></th>
+                    <th><?php echo __('Chauffeur'); ?></th>
+                    <th><?php echo __('Immat.'); ?></th>
+                    <th><?php echo __('LV'); ?></th>
+                    <th><?php echo __('Fournisseur'); ?></th>
+                    <th><?php echo __('Nb UM'); ?></th>
+                    <th><?php echo __('Statut'); ?></th>
+                    <th><?php echo __('Com.'); ?></th>
+                    <th><?php echo __('Date'); ?></th>
                 </tr>
 
                 <tr >
@@ -233,18 +231,16 @@ $nbPages = ceil($nbElements / 20);
                     }
                     $numArrivage = substr($refProduit, 1, 12);
                     ?>
-                     <td class="click"><?php echo $numArrivage ?></td>
-                <td class="click"><?php echo ($arrivage->getRefTransporteur() ? $arrivage->getRefTransporteur()->getLibelle() : $arrivage->getIdTransporteur()) ?></td>
-                <td class="click"><?php echo ($arrivage->getTrackingFour() ? $arrivage->getTrackingFour() : '') ?></td>
-                <td class="click"><?php echo $arrivage->getCommandeAchat() ?></td>
-                <td class="click"><?php echo ($arrivage->getRefFournisseur() ? $arrivage->getRefFournisseur()->getLibelle() : '') ?></td>
-                <td class="click"><?php echo ($arrivage->getRefContactPFF() ? ($arrivage->getRefContactPFF()->getNom()." ".$arrivage->getRefContactPFF()->getPrenom()) : '') ?></td>
-                
-                <td class="click"><?php echo $arrivage->getNbColis() ?></td>
-                <td class="click" title="<?php echo $arrivage->getCommentaire() ?>"><?php echo $arrivage->getStatut() ?></td>
-                 <td class="click" ><?php echo $arrivage->getUrgent()?"OUI":"NON" ?></td>
-                <td class="click"><?php echo date('d/m/Y H:i:s', strtotime($arrivage->getCreatedAt())) ?></td>
-                  <td class="click"><?php echo ($arrivage->getIdUser()&&isset($users[$arrivage->getIdUser()]) ? $users[$arrivage->getIdUser()] : "") ?></td>
+                    <td><?php echo $numArrivage ?></td>
+                    <td><?php echo ($arrivage->getRefTransporteur() ? $arrivage->getRefTransporteur()->getLibelle() : $arrivage->getIdTransporteur()) ?></td>
+                    <td><?php echo ($arrivage->getRefChauffeur() ? $arrivage->getRefChauffeur() : '') ?></td>
+                    <td><?php echo $arrivage->getImmatriculation() ?></td>
+                    <td><?php echo $arrivage->getLettreVoiture() ?></td>
+                    <td><?php echo ($arrivage->getRefFournisseur() ? $arrivage->getRefFournisseur()->getLibelle() : $arrivage->getIdFournisseur()) ?></td>
+                    <td><?php echo $arrivage->getNbColis() ?></td>
+                    <td><?php echo $arrivage->getStatut() ?></td>
+                    <td><?php echo $arrivage->getCommentaire() ?></td>
+                    <td><?php echo date('d/m/Y H:i:s', strtotime($arrivage->getCreatedAt())) ?></td>
                 </tr>
 
             <?php } else { ?>
@@ -256,18 +252,16 @@ $nbPages = ceil($nbElements / 20);
                     }
                     $numArrivage = substr($refProduit, 1, 12);
                     ?>
-                     <td class="click"><?php echo $numArrivage ?></td>
-                <td class="click"><?php echo ($arrivage->getRefTransporteur() ? $arrivage->getRefTransporteur()->getLibelle() : $arrivage->getIdTransporteur()) ?></td>
-                <td class="click"><?php echo ($arrivage->getTrackingFour() ? $arrivage->getTrackingFour() : '') ?></td>
-                <td class="click"><?php echo $arrivage->getCommandeAchat() ?></td>
-                <td class="click"><?php echo ($arrivage->getRefFournisseur() ? $arrivage->getRefFournisseur()->getLibelle() : '') ?></td>
-                 <td class="click"><?php echo ($arrivage->getRefContactPFF() ? ($arrivage->getRefContactPFF()->getNom()." ".$arrivage->getRefContactPFF()->getPrenom()) : '') ?></td>
-                
-                <td class="click"><?php echo $arrivage->getNbColis() ?></td>
-                <td class="click" title="<?php echo $arrivage->getCommentaire() ?>"><?php echo $arrivage->getStatut() ?></td>
-                 <td class="click" ><?php echo $arrivage->getUrgent()?"OUI":"NON" ?></td>
-                <td class="click"><?php echo date('d/m/Y H:i:s', strtotime($arrivage->getCreatedAt())) ?></td>
-                  <td class="click"><?php echo ($arrivage->getIdUser()&&isset($users[$arrivage->getIdUser()]) ? $users[$arrivage->getIdUser()] : "") ?></td>
+                    <td><?php echo $numArrivage ?></td>
+                    <td><?php echo ($arrivage->getRefTransporteur() ? $arrivage->getRefTransporteur()->getLibelle() : $arrivage->getIdTransporteur()) ?></td>
+                    <td><?php echo ($arrivage->getRefChauffeur() ? $arrivage->getRefChauffeur() : '') ?></td>
+                    <td><?php echo $arrivage->getImmatriculation() ?></td>
+                    <td><?php echo $arrivage->getLettreVoiture() ?></td>
+                    <td><?php echo ($arrivage->getRefFournisseur() ? $arrivage->getRefFournisseur()->getLibelle() : $arrivage->getIdFournisseur()) ?></td>
+                    <td><?php echo $arrivage->getNbColis() ?></td>
+                    <td><?php echo $arrivage->getStatut() ?></td>
+                    <td><?php echo $arrivage->getCommentaire() ?></td>
+                    <td><?php echo date('d/m/Y H:i:s', strtotime($arrivage->getCreatedAt())) ?></td>
                 </tr>
             <?php } ?>
 

@@ -24,7 +24,7 @@ slot('page_title', sprintf("Borne Arrivage"));
                 </div>
                 <div class="ibox-content">
                     <form method="POST" action="<?php echo url_for(array('sf_route' => 'arrivage-create')) ?>" id="formNew" class="form-horizontal">
-                        <?php include_partial('form', array( 'fournisseurs' => $fournisseurs,'interlocuteurs'=>$interlocuteurs, 'transporteurs' => $transporteurs,'chauffeurs'=>$chauffeurs, 'natures' => $natures)) ?>
+                        <?php include_partial('form', array( 'fournisseurs' => $fournisseurs, 'transporteurs' => $transporteurs,'chauffeurs'=>$chauffeurs, 'natures' => $natures)) ?>
                          <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <button class="btn btn-white" onclick="reset();" type="button"><?php echo __('Annuler'); ?></button>
@@ -137,111 +137,32 @@ slot('page_title', sprintf("Borne Arrivage"));
         </div>
     </div>
 </div>
-
-<div class="modal inmodal fade" id="urgence" tabindex="-1" role="dialog"  aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"><?php echo __('Fermer'); ?></span></button>
-                <h4 class="modal-title"><?php echo __('Urgence'); ?></h4>
-            </div>
-            <div class="modal-body">
-                <form method="POST" action="<?php echo url_for(array('sf_route' => 'arrivage-urgence-update')) ?>" id="formUrgence" class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">
-                            <?php echo __('Fourchette date de livraison') ?>
-                        </label>
-                        <div class="col-sm-9">
-                            <input type="text" id="date_livraison_debut" name="date_livraison_debut" class="form-control dateHeure"  value="<?php echo isset($arrivage) && $arrivage->getDateLivraisonDebut()?$arrivage->getDateLivraisonDebut():''; ?>" />
-                            <input type="text" id="date_livraison_fin" name="date_livraison_fin" class="form-control dateHeure" value="<?php echo isset($arrivage) && $arrivage->getDateLivraisonFin()?$arrivage->getDateLivraisonFin():''; ?>" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">
-                            <?php echo __('Contact PFF') ?>
-                        </label>
-                        <div class="col-sm-9">
-                            <select id="contact_pff" class="chosen-select" name="contact_pff">
-                                <option value="-1" <?php echo ( !isset($arrivage) ? 'selected' : '') ?>>N/C</option>
-                                  <?php foreach ($interlocuteurs as $interlocuteur) { ?>
-                                
-                    <option <?php echo ( isset($arrivage) && $interlocuteur->getId() == $arrivage->getIdInterlocuteur() ? 'selected' : '') ?> value="<?php echo $interlocuteur->getId(); ?>" idTransporteur="<?php echo $interlocuteur->getId(); ?>"><?php echo $interlocuteur ?></option>
-                <?php } ?>
-                            </select>
-                        </div>
-                    </div>
-                   
-                    <input type="hidden" id="hidArrivage" name="idArrivage"/>    
-                </form> 
-            </div>
-            <div class="modal-footer">
-                <button id="cancelButton" type="button" class="btn btn-white" data-dismiss="modal"><?php echo __('Annuler'); ?></button>
-                <button id="deleteButton" type="button" class="btn btn-primary" onclick="addUrgence()" ><?php echo __('Valider'); ?></button>
-            </div>
-        </div>
-    </div>
-</div>
 <script>
     $(document).ready(function () {
  
         $('#lytHrchy').html($('#tpltEdtHrchy').html());
         
-        var config = {disable_search_threshold: 10,no_results_text: 'Aucun résultat!',allow_single_deselect: true,display_disabled_options: false};
+        var config = {disable_search_threshold: 10,no_results_text: 'Aucun résultat!',allow_single_deselect: false,display_disabled_options: false};
         $('.chosen-select').chosen(config);
         $(".chosen-container").css("width", "100%");
         $('#statut').change(function () {if ($('#statut').val() === 'réserve') {$('#form-group-commentaire').show();} else {$('#form-group-commentaire').hide();}});
         $('.spineEdit').spinedit({minimum:0,maximum:100,step:1,value:0,numberOfDecimals:0});
         $('.i-checks').iCheck({checkboxClass: 'icheckbox_flat-blue'});
-        
-       /* $(".spineEdit").on("change",function(){
-                var nbColis=0;
-        if ($("#umStandard").val() !== "") {
-            var nb = parseInt($("#umStandard").val());
-            if (isNaN(nb)) {
-               
-            }else{
-             nbColis=nbColis+nb;   
-            }
-        }
-        if ($("#umCongelee").val() !== "") {
-            var nb = parseInt($("#umCongelee").val());
-            if (isNaN(nb)) {
-               
-            }else{
-             nbColis=nbColis+nb;  
-            }
-        }
-        if ($("#umUrgent").val() !== "") {
-            var nb = parseInt($("#umUrgent").val());
-            if (isNaN(nb)) {
-               
-            }else{
-            nbColis=nbColis+nb;  
-            }
-        }
-        if(nbColis<=1){
-            $('#printNumArrivage').iCheck('uncheck');
-        }else{
-            $('#printNumArrivage').iCheck('check');
-        }
-        });*/
 
         $('#formNew').ajaxForm({
             beforeSubmit: controleValeur,
             success: function (res) {
-                if (res >0 || res==-5) {
-                   if(res==-5){
-                          swal("Arrivage urgent enregistré!", "", "warning");
-                    }else{
-                             swal("Arrivage enregistré!", "", "success");
-                  
-                    }
-                  
-                
+                if (res === '1') {
+                    swal("Arrivage enregistré!", "", "success");
                     reset();
                 } else {
                 }
-            }});
+                submitProgress=false;
+            },
+          error:  function() {
+                 submitProgress=false;
+             }
+         });
 
         $('#transporteur').on('change', function (evt, params) {
             if (params.selected !== undefined) {
@@ -249,22 +170,6 @@ slot('page_title', sprintf("Borne Arrivage"));
             }
         });
 
-  $('.dateHeure').datetimepicker({
-            format: 'DD/MM/YYYY HH:mm:ss',
-            useCurrent: true,
-            locale: moment.locale('fr'),
-            icons: {
-                time: 'fa fa-clock-o',
-                date: 'fa fa-calendar',
-                up: 'fa fa-chevron-up',
-                down: 'fa fa-chevron-down',
-                previous: 'fa fa-chevron-left',
-                next: 'fa fa-chevron-right',
-                today: 'fa fa-crosshairs',
-                clear: 'fa fa-trash',
-                close: 'fa fa-remove'
-            }
-        });
         $("#numArrivageDate").on("dp.change", function (e) {
             removeAllSet("#numArrivageGenerated");
             removeAllSet("#numArrivageDate");
@@ -287,8 +192,6 @@ slot('page_title', sprintf("Borne Arrivage"));
         
          
         setInterval(a, 300000); 
-        
-        $("#umStandard").val(1)
     });
 
     function a(){
@@ -305,71 +208,45 @@ slot('page_title', sprintf("Borne Arrivage"));
         $('#chauffeur').find('option').removeAttr('selected');
         $('#chauffeur').find('option[idTransporteur="' + idSelect + '"]').removeAttr('disabled');
         $('#chauffeur').find('option[idTransporteur="' + idSelect + '"]').first().prop('selected', true);
-        $("#chauffeur-empty-option").removeAttr('disabled');
-          $("#chauffeur-empty-option").prop('selected', true);
         $('#chauffeur').trigger('chosen:updated');
         $('#hidTrspt').val(idSelect);
     }
+    
+    var submitProgress=false;
     function controleValeur() {
+        if(submitProgress){
+           return false; 
+        }
+        submitProgress=true;
         var erreur = false;
         removeAllSet("#fournisseur");
         removeAllSet("#chauffeur");
         removeAllSet("#transporteur");
         removeAllSet("#immatriculation");
-        removeAllSet("#umcolis");
-            
+
         if ($("#fournisseur").val() === "") {
             erreur = true;
             setHasError("#fournisseur");
         }
 
-       /* if ($("#chauffeur").val() === "" || $("#chauffeur").val() === null) {
+        if ($("#chauffeur").val() === "" || $("#chauffeur").val() === null) {
             erreur = true;
             setHasError("#chauffeur");
-        }*/
+        }
 
-       /* if ($("#immatriculation").val() === "") {
+        if ($("#immatriculation").val() === "") {
             erreur = true;
             setHasError("#immatriculation");
-        }*/
+        }
 
         if ($("#transporteur").val() === "") {
             erreur = true;
             setHasError("#transporteur");
         }
-        
-              var nbColis=0;
-        if ($("#umStandard").val() !== "") {
-            var nb = parseInt($("#umStandard").val());
-            if (isNaN(nb)) {
-               
-            }else{
-             nbColis=nbColis+nb;   
-            }
-        }
-        if ($("#umCongelee").val() !== "") {
-            var nb = parseInt($("#umCongelee").val());
-            if (isNaN(nb)) {
-               
-            }else{
-             nbColis=nbColis+nb;  
-            }
-        }
-        if ($("#umUrgent").val() !== "") {
-            var nb = parseInt($("#umUrgent").val());
-            if (isNaN(nb)) {
-               
-            }else{
-            nbColis=nbColis+nb;  
-            }
-        }
-        
-        
-        if(nbColis<=0){
-             erreur = true;
-            setHasError("#umcolis");
-        }
 
+        if(erreur){
+         submitProgress=false;   
+        }
         return !erreur;
     }
 
@@ -386,9 +263,6 @@ slot('page_title', sprintf("Borne Arrivage"));
             .not(':button, :submit, :reset, :hidden, :checkbox')
             .val('')
             .removeAttr('selected');
-    
-    $('#urgent').iCheck('uncheck');
-       $("#umStandard").val(1);
     }
     
     function showTrsptModal(){
@@ -402,8 +276,6 @@ slot('page_title', sprintf("Borne Arrivage"));
     function showDriverModal(){
         $('#addChauff').modal('show');
     }
-    
-
     
     function createTrspt(){
         
@@ -493,5 +365,5 @@ slot('page_title', sprintf("Borne Arrivage"));
             }); 
         } 
     }
- 
+     
 </script>

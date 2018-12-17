@@ -15,20 +15,20 @@ Doctrine_Manager::getInstance()->bindComponent('RefHoraire', 'doctrine');
  * @property timestamp $created_at
  * @property timestamp $updated_at
  * 
- * @method integer    getId_horaIre()  Returns the current record's "id_horaire" value
+ * @method integer    getIdHoraire()   Returns the current record's "id_horaire" value
  * @method integer    getJour()        Returns the current record's "jour" value
  * @method boolean    getFermer()      Returns the current record's "fermer" value
- * @method time       getHeure_debut() Returns the current record's "heure_debut" value
- * @method time       getHeure_fin()   Returns the current record's "heure_fin" value
- * @method timestamp  getCreated_at()  Returns the current record's "created_at" value
- * @method timestamp  getUpdated_at()  Returns the current record's "updated_at" value
- * @method RefHoraire setId_horaIre()  Sets the current record's "id_horaire" value
+ * @method time       getHeureDebut()  Returns the current record's "heure_debut" value
+ * @method time       getHeureFin()    Returns the current record's "heure_fin" value
+ * @method timestamp  getCreatedAt()   Returns the current record's "created_at" value
+ * @method timestamp  getUpdatedAt()   Returns the current record's "updated_at" value
+ * @method RefHoraire setIdHoraire()   Sets the current record's "id_horaire" value
  * @method RefHoraire setJour()        Sets the current record's "jour" value
  * @method RefHoraire setFermer()      Sets the current record's "fermer" value
- * @method RefHoraire setHeure_debut() Sets the current record's "heure_debut" value
- * @method RefHoraire setHeure_fin()   Sets the current record's "heure_fin" value
- * @method RefHoraire setCreated_at()  Sets the current record's "created_at" value
- * @method RefHoraire setUpdated_at()  Sets the current record's "updated_at" value
+ * @method RefHoraire setHeureDebut()  Sets the current record's "heure_debut" value
+ * @method RefHoraire setHeureFin()    Sets the current record's "heure_fin" value
+ * @method RefHoraire setCreatedAt()   Sets the current record's "created_at" value
+ * @method RefHoraire setUpdatedAt()   Sets the current record's "updated_at" value
  * 
  * @package    MobileStockV3
  * @subpackage model
@@ -86,6 +86,7 @@ abstract class BaseRefHoraire extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -95,6 +96,7 @@ abstract class BaseRefHoraire extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,

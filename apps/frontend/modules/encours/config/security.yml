@@ -1,5 +1,0 @@
-# Ce fichier gere les droits accord�s aux groupes concernant la gestion des utilisateurs
-
-all:
-  is_secure: on
-  credentials: [[ encours ]]

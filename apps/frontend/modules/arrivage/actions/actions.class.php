@@ -19,13 +19,12 @@ class arrivageActions extends sfActions {
         $this->initList($request);
         $this->fournisseurs = RefFournisseurTable::getInstance()->findAll();
         $this->transporteurs = RefTransporteurTable::getInstance()->findAll();
-            $this->interlocuteurs = RefInterlocuteurTable::getInstance()->findAll();
     }
 
     public function executeListAjax(sfWebRequest $request) {
         $this->initList($request);
 
-        return $this->renderPartial('list', array('arrivages' => $this->arrivages,'users' => $this->users));
+        return $this->renderPartial('list', array('arrivages' => $this->arrivages));
     }
 
     private function initList(sfWebRequest $request) {
@@ -35,9 +34,7 @@ class arrivageActions extends sfActions {
         $this->transporteur = $request->getParameter('transporteur', '');
         $this->statut = $request->getParameter('statut', '');
         $this->produit = $request->getParameter('produit', '');
-        $this->urgent = $request->getParameter('urgent', '');
-        
-        
+
         $heureDebut = '';
         if ($this->heureDebut != '') {
             $heureDebut = DateTime::createFromFormat('d/m/Y H:i:s', $this->heureDebut)->format('y-m-d H:i:s');
@@ -46,12 +43,8 @@ class arrivageActions extends sfActions {
         if ($this->heureFin != '') {
             $heureFin = DateTime::createFromFormat('d/m/Y H:i:s', $this->heureFin)->format('y-m-d H:i:s');
         }
-        $users = sfGuardUserTable::getInstance()->findAll();
-        $this->users = array();
-        foreach ($users as $user) {
-            $this->users[$user->getId()] = $user->getUsername();
-        }
-        $this->arrivages = WrkArrivageTable::getInstance()->getArrivages($heureDebut, $heureFin, $this->fournisseur, $this->transporteur, $this->statut, $this->produit, $this->urgent);
+
+        $this->arrivages = WrkArrivageTable::getInstance()->getArrivages($heureDebut, $heureFin, $this->fournisseur, $this->transporteur, $this->statut, $this->produit);
     }
 
     public function executeNew(sfWebRequest $request) {
@@ -59,14 +52,15 @@ class arrivageActions extends sfActions {
         $this->transporteurs = RefTransporteurTable::getInstance()->findAll();
         $this->chauffeurs = RefChauffeurTable::getInstance()->findAll();
         $this->natures = RefNatureTable::getInstance()->findAll();
-          $this->interlocuteurs = RefInterlocuteurTable::getInstance()->findAll();
     }
 
     public function executeCreate(sfWebRequest $request) {
         $this->forward404Unless($request->isMethod(sfRequest::POST));
-        $numArrivage = $this->build($request);
-       
-        return $this->renderText($numArrivage);
+        $statut = 0;
+        if ($this->build($request)) {
+            $statut = 1;
+        }
+        return $this->renderText($statut);
     }
 
     private function generateNumColis(WrkArrivage $arrivage, $standard, $congelee, $urgent, $print, $numArrivage = "") {
@@ -117,8 +111,6 @@ class arrivageActions extends sfActions {
                     $dateArrivage = date('Y-m-d H:i:s');
                 }
             }
-               $date = date('Y-m-d H:i:s');
-               $newColis = new Doctrine_Collection("WrkArrivageProduit");
             foreach ($colis as $value) {
                 $refProduit = $value[0] . $numArrivage . $increment;
                 $arrivageProd = new WrkArrivageProduit();
@@ -127,39 +119,13 @@ class arrivageActions extends sfActions {
                 $arrivageProd->setRefProduit($refProduit);
                 $arrivageProd->setCreatedAt($dateArrivage);
 
-                $emplacement=null;
-                if($arrivage->getIdContactPFF() ){
-                    if($emp=RefEmplacementTable::getInstance()->findEmplacementArrivage()){
-                          $emplacement=$emp;
-                          $empDestination = RefEmplacementTable::getInstance()->find($arrivage->getRefContactPFF()->getIdEmplacement());
-                    }
-                }
-                else{
-                    $emplacement = RefEmplacementTable::getInstance()->findEmplacementArrivageSansDestinataire();
-                    $empDestination = null;
-                }
-                
                 if ($print != null) {
-                    if($empDestination == null){
-                        $empl = "";
-                    }
-                    else{
-                        $empl = $empDestination->getCodeEmplacement();
-                    }
-
-                    $this->printCodeBarre($refProduit.';'.$empl);
+                    $this->printCodeBarre($refProduit);
                 }
                 $collectionArrivageProduit->add($arrivageProd);
-                $newColis->add($arrivageProd);
                 $increment++;
-                
-                
-                $this->createNewMouvement($refProduit, $date,$emplacement);
             }
-             $this->createNewReception($newColis);
         }
-        
-        
         return $collectionArrivageProduit;
     }
 
@@ -169,27 +135,7 @@ class arrivageActions extends sfActions {
         $this->fournisseurs = RefFournisseurTable::getInstance()->findAll();
         $this->transporteurs = RefTransporteurTable::getInstance()->findAll();
         $this->chauffeurs = RefChauffeurTable::getInstance()->findAll();
-        $this->natures = RefNatureTable::getInstance()->findAll();   $this->interlocuteurs = RefInterlocuteurTable::getInstance()->findAll();
-        $this->interlocuteurs = RefInterlocuteurTable::getInstance()->findAll();
-          $dateCreation = strtotime( $arrivage->getCreatedAt());
-        $date1 = strtotime("-1 day");
-        
-        $this->editUrgence=false;
-        
-      
-    }
-    
-    
-    public function executeEditUrgence(sfWebRequest $request) {
-        $this->forward404Unless($arrivage = WrkArrivageTable::getInstance()->find(array($request->getParameter('idArrivage'))), sprintf('Object wrk_arrivage does not exist (%s).', $request->getParameter('idArrivage')));
-        $this->arrivage = $arrivage;
-        $this->interlocuteurs = RefInterlocuteurTable::getInstance()->findAll();
-          $dateCreation = strtotime( $arrivage->getCreatedAt());
-        $date1 = strtotime("-1 day");
-        
-        $this->editUrgence=false;
-        
-        
+        $this->natures = RefNatureTable::getInstance()->findAll();
     }
 
     public function executeUpdate(sfWebRequest $request) {
@@ -228,18 +174,8 @@ class arrivageActions extends sfActions {
         $colis = $request->getParameter('colis', 0);
         $palette = $request->getParameter('palette', 0);
         $immatriculation = $request->getParameter('immatriculation');
-        
-        $urgence = $request->getParameter('urgent', null);
-        
-        $tracking_four = $request->getParameter('tracking_four');
-        $commande_achat = $request->getParameter('commande_achat');
-          
-        $date_livraison_debut = $request->getParameter('date_livraison_debut',null);
-        $date_livraison_fin = $request->getParameter('date_livraison_fin',null);
-        $contact_pff = $request->getParameter('contact_pff',null);
-            
-//       $idNature = $request->getParameter('nature');
-//       $brSap = $request->getParameter('brSap');
+//        $idNature = $request->getParameter('nature');
+//        $brSap = $request->getParameter('brSap');
         $statut = $request->getParameter('statut');
         $commentaire = $request->getParameter('commentaire');
 
@@ -258,7 +194,6 @@ class arrivageActions extends sfActions {
         if ($arrivage == null) {
             $arrivage = new WrkArrivage();
             $arrivage->setCreatedAt(date('Y-m-d H:i:s'));
-            $arrivage->setIdUser($this->getUser()->getGuardUser()->getId());
         }
 
         $numArrivage = '';
@@ -270,64 +205,21 @@ class arrivageActions extends sfActions {
 
         $arrivage->setIdFournisseur($idFournisseur);
         $arrivage->setIdTransporteur($idTransporteur);
-        if($chauffeur && $chauffeur!=""){
         $arrivage->setIdChauffeur($chauffeur);
-        }else{
-             $arrivage->setIdChauffeur(null);
-        }
         $arrivage->setLettreVoiture($lVoiture);
         $arrivage->setNbColis($colis);
         $arrivage->setNbPalette($palette);
         $arrivage->setImmatriculation($immatriculation);
-        
-         $dateCreation = strtotime( $arrivage->getCreatedAt());
-        $date1 = strtotime("-1 day");
-        
 
-      
-        $arrivage->setTrackingFour($tracking_four);
-        $arrivage->setCommandeAchat($commande_achat);
-       
         $arrivage->setStatut($statut);
         $arrivage->setCommentaire($commentaire);
-        
-         $interlocuteurInit = $arrivage->getIdInterlocuteur();
-          $idContactPFFInit = $arrivage->getIdContactPFF();
-         if($urgence=$this->checkUrgence($tracking_four,$commande_achat)){
-              
-            $arrivage->setUrgent(true);
-             $arrivage->setIdInterlocuteur($urgence->getIdInterlocuteur());
-              $arrivage->setDateLivraisonDebut($urgence->getDateLivraisonDebut());
-               $arrivage->setDateLivraisonFin($urgence->getDateLivraisonFin());
-               
-       
-             
-         }
-         
-          if($contact_pff && $contact_pff!="" && $contact_pff!=-1){
-        $arrivage->setIdContactPFF($contact_pff);
-        }else{
-             $arrivage->setIdContactPFF(null);
-        }
-       
+
         try {
             WrkArrivageTable::getInstance()->getConnection()->beginTransaction();
             $collectionArrivageProduit = $this->generateNumColis($arrivage, $standard, $congelee, $urgent, $print, $numArrivage);
             $arrivage->save();
             $collectionArrivageProduit->save();
             WrkArrivageTable::getInstance()->getConnection()->commit();
-            
-              //Envoi mail ici
-                if( $urgence && ($urgence->getIdInterlocuteur() && $interlocuteurInit!=$arrivage->getIdInterlocuteur())){
-            WrkArrivageTable::getInstance()->envoiMail($arrivage);
-                $urgence->setIdArrivage($arrivage->getIdArrivage());
-                $urgence->save();
-                }
-                //envoi mail non urgent
-               if( $idContactPFFInit!=$arrivage->getIdContactPFF() && $arrivage->getIdContactPFF()){
-            WrkArrivageTable::getInstance()->envoiMailContactPFF($arrivage);
-
-                }
 
             if ($printNumArrivage != null) {
                 $this->printNumArrivage($arrivage);
@@ -335,12 +227,7 @@ class arrivageActions extends sfActions {
         } catch (Exception $e) {
             return false;
         }
-        
-        if($urgence){
-            return -5;
-        }else{
-        return $arrivage->getIdArrivage();
-        }
+        return true;
     }
 
     public function executeExcel(sfWebRequest $request) {
@@ -424,83 +311,6 @@ class arrivageActions extends sfActions {
 
         return $this->renderText(json_encode($res));
     }
-    
-       public function checkUrgence($tracking_four,$commande_achat){
-           $date = date("Y-m-d H:i:s");
-           $date = DateTime::createFromFormat('Y-m-d H:i:s',$date);
-           $date->modify('-1 day');
-           $date= $date->format('Y-m-d H:i:s');
-           
-           if($tracking_four && $tracking_four!=="" && trim($tracking_four)!=""){
-           $urgence=WrkUrgenceTable::getInstance()->createQuery()
-                   ->select("*")
-                   ->where("tracking_four = ?",$tracking_four)
-                   ->andWhere("created_at <= ?",$date)->execute();
-           
-           $urgence = $urgence->getLast();
-           
-           if($urgence!=null){
-               return $urgence;
-           }
-           }
-              if($commande_achat && $commande_achat!==""&& trim($commande_achat)!=""){
-         
-             $urgence=WrkUrgenceTable::getInstance()->createQuery()
-                   ->select("*")
-                   ->where("commande_achat = ?",$commande_achat)
-                   ->andWhere("created_at <= ?",$date)->execute();
-           
-           return $urgence->getLast();
-              }
-              return null;
-       }
-    
-    public function executeArrivageUrgenceUpdate(sfWebRequest $request) {
-         $date_livraison_debut = $request->getParameter('date_livraison_debut',null);
-          $date_livraison_fin = $request->getParameter('date_livraison_fin',null);
-        $contact_pff = $request->getParameter('contact_pff');
-          
-               $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-        $this->forward404Unless($arrivage = WrkArrivageTable::getInstance()->find(array($request->getParameter('idArrivage'))), sprintf('Object wrk_arrivage does not exist (%s).', $request->getParameter('idArrivage')));
-
-        
-     
-        $dateCreation = strtotime( $arrivage->getCreatedAt());
-        $date1 = strtotime("-1 day");
-        
-        
-        if($dateCreation<$date1){
-            return $this->renderText(false);
-        }
-        
-         if($date_livraison_debut!=null && $date_livraison_debut!=""){
-                 $date_livraison_debut = DateTime::createFromFormat('d/m/Y H:i:s', $date_livraison_debut)->format('Y-m-d H:i:s');
-           $arrivage->setDateLivraisonDebut($date_livraison_debut);
-       
-           }
-            if($date_livraison_fin!=null && $date_livraison_fin!=""){
-                 $date_livraison_fin = DateTime::createFromFormat('d/m/Y H:i:s', $date_livraison_fin)->format('Y-m-d H:i:s');
-         $arrivage->setDateLivraisonFin($date_livraison_fin);
-       
-           }
-          
-  
-           
-              if($contact_pff!=null && $contact_pff!=""&& $contact_pff!="-1"){
-                  $interlocuteurInit = $arrivage->getIdInterlocuteur();
-                $arrivage->setIdInterlocuteur($contact_pff);
-            
-               //Envoi mail ici
-                if($interlocuteurInit!=$contact_pff){
-            WrkArrivageTable::getInstance()->envoiMail($arrivage);
-                }
-           }
-             
-             
-             $arrivage->save();
-          
-      return $this->renderText(true);
-    }
 
     private function printCodeBarre($refProduit) {
         if (!$refProduit || $refProduit === '') {
@@ -529,50 +339,9 @@ class arrivageActions extends sfActions {
             $spool->save();
         }
     }
-    
-        /* Historisation mouvement */
-    private function createNewMouvement($refProduit, $date,$emplacement=null) {
-        
-        if($emplacement==null){
-             $emplacement = RefEmplacementTable::findEmplacementArrivage();
-        }
-       
-        $mouvement = new WrkMouvement();
-        $mouvement->setIdUtilisateur($this->getUser()->getGuardUser()->getId());
-        $mouvement->setHeurePrise($date);
-        $mouvement->setCreatedAt($date);
-        $mouvement->setUpdatedAt($date);
-        $mouvement->setBrSap($refProduit);
-        $mouvement->setRefProduit($refProduit);
-        $mouvement->setRefEmplacement($emplacement);
-        $mouvement->setType('depose');
-        $mouvement->setQuantite(1);
-        $mouvement->setRetry(0);
-        $mouvement->setGroupe('');
-        $mouvement->setCommentaire('');
-        $mouvement->save();
-    }
-    
-      private function createNewReception($collectionArrivageProduit) {
-            foreach ($collectionArrivageProduit as $value) {
-                $arrivageProd = new WrkArrivageProduit();
-                $arrivageProd->setWrkArrivage($value->getWrkArrivage());
-                $arrivageProd->setIdNature(  $value->getIdNature());
-                $arrivageProd->setRefProduit( $value->getRefProduit());
-                $arrivageProd->setBrSap( $value->getRefProduit());
-        
-              //  $arrivageProd->setDepose('1');
-                $arrivageProd->setCreatedAt( $value->getCreatedAt());
-                $arrivageProd->setUpdatedAt( $value->getUpdatedAt());
-                $arrivageProd->setIdUtilisateur($this->getUser()->getGuardUser()->getId());
-                $arrivageProd->save();
-            }
-           
- 
-    }
 
     public function checkValue($idFournisseur, $idTransporteur, $chauffeur, $lVoiture, $colis, $palette, $immatriculation) {
-        if ($idFournisseur === '' || $idTransporteur === '') {
+        if ($idFournisseur === '' || $idTransporteur === '' || $chauffeur == '' || $immatriculation === '') {
             return false;
         }
 

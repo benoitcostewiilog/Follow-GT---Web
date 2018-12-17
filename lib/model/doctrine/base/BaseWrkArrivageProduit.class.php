@@ -19,25 +19,25 @@ Doctrine_Manager::getInstance()->bindComponent('WrkArrivageProduit', 'doctrine')
  * @property RefNature $RefNature
  * @property Doctrine_Collection $WrkMouvement
  * 
- * @method integer             getId_arrIvage_produIt() Returns the current record's "id_arrivage_produit" value
- * @method integer             getId_arrIvage()         Returns the current record's "id_arrivage" value
- * @method string              getRef_pRoduit()         Returns the current record's "ref_produit" value
- * @method string              getBr_sap()              Returns the current record's "br_sap" value
- * @method int                 getId_nature()           Returns the current record's "id_nature" value
- * @method integer             getId_utIlIsateur()      Returns the current record's "id_utilisateur" value
- * @method timestamp           getCreated_at()          Returns the current record's "created_at" value
- * @method timestamp           getUpdated_at()          Returns the current record's "updated_at" value
+ * @method integer             getIdArrivageProduit()   Returns the current record's "id_arrivage_produit" value
+ * @method integer             getIdArrivage()          Returns the current record's "id_arrivage" value
+ * @method string              getRefProduit()          Returns the current record's "ref_produit" value
+ * @method string              getBrSap()               Returns the current record's "br_sap" value
+ * @method int                 getIdNature()            Returns the current record's "id_nature" value
+ * @method integer             getIdUtilisateur()       Returns the current record's "id_utilisateur" value
+ * @method timestamp           getCreatedAt()           Returns the current record's "created_at" value
+ * @method timestamp           getUpdatedAt()           Returns the current record's "updated_at" value
  * @method WrkArrivage         getWrkArrivage()         Returns the current record's "WrkArrivage" value
  * @method RefNature           getRefNature()           Returns the current record's "RefNature" value
  * @method Doctrine_Collection getWrkMouvement()        Returns the current record's "WrkMouvement" collection
- * @method WrkArrivageProduit  setId_arrIvage_produIt() Sets the current record's "id_arrivage_produit" value
- * @method WrkArrivageProduit  setId_arrIvage()         Sets the current record's "id_arrivage" value
- * @method WrkArrivageProduit  setRef_pRoduit()         Sets the current record's "ref_produit" value
- * @method WrkArrivageProduit  setBr_sap()              Sets the current record's "br_sap" value
- * @method WrkArrivageProduit  setId_nature()           Sets the current record's "id_nature" value
- * @method WrkArrivageProduit  setId_utIlIsateur()      Sets the current record's "id_utilisateur" value
- * @method WrkArrivageProduit  setCreated_at()          Sets the current record's "created_at" value
- * @method WrkArrivageProduit  setUpdated_at()          Sets the current record's "updated_at" value
+ * @method WrkArrivageProduit  setIdArrivageProduit()   Sets the current record's "id_arrivage_produit" value
+ * @method WrkArrivageProduit  setIdArrivage()          Sets the current record's "id_arrivage" value
+ * @method WrkArrivageProduit  setRefProduit()          Sets the current record's "ref_produit" value
+ * @method WrkArrivageProduit  setBrSap()               Sets the current record's "br_sap" value
+ * @method WrkArrivageProduit  setIdNature()            Sets the current record's "id_nature" value
+ * @method WrkArrivageProduit  setIdUtilisateur()       Sets the current record's "id_utilisateur" value
+ * @method WrkArrivageProduit  setCreatedAt()           Sets the current record's "created_at" value
+ * @method WrkArrivageProduit  setUpdatedAt()           Sets the current record's "updated_at" value
  * @method WrkArrivageProduit  setWrkArrivage()         Sets the current record's "WrkArrivage" value
  * @method WrkArrivageProduit  setRefNature()           Sets the current record's "RefNature" value
  * @method WrkArrivageProduit  setWrkMouvement()        Sets the current record's "WrkMouvement" collection
@@ -101,6 +101,7 @@ abstract class BaseWrkArrivageProduit extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => false,
              'autoincrement' => false,
              'length' => 11,
@@ -110,6 +111,7 @@ abstract class BaseWrkArrivageProduit extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -119,6 +121,7 @@ abstract class BaseWrkArrivageProduit extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,

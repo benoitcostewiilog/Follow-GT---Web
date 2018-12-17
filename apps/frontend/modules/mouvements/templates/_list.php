@@ -4,7 +4,6 @@
             <th><?php echo __('Unité de tracking'); ?></th>
             <th><?php echo __('Action'); ?></th>
             <th><?php echo __('Emplacement'); ?></th>
-			 <th><?php echo __('Quantite'); ?></th>
             <th><?php echo __('Commentaire'); ?></th>
             <th><?php echo __('Groupe'); ?></th>
             <th><?php echo __('Date/Heure'); ?></th>
@@ -42,7 +41,6 @@
             <th><?php echo __('Unité de tracking'); ?></th>
             <th><?php echo __('Action'); ?></th>
             <th><?php echo __('Emplacement'); ?></th>
-			 <th><?php echo __('Quantite'); ?></th>
             <th><?php echo __('Commentaire'); ?></th>
             <th><?php echo __('Groupe'); ?></th>
             <th><?php echo __('Date/Heure'); ?></th>

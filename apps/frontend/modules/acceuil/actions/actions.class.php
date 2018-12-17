@@ -66,16 +66,6 @@ class acceuilActions extends sfActions {
         return $this->renderPartial('listRetardReception', array("produitEnRetard" => $produitEnRetard));
     }
     
-      public function executeEncoursAjax(sfWebRequest $request) {
-            $emplacement = $request->getParameter('emplacement');
-          $time = strtotime('now  -15 days');
-   
-        $heureDebut = date("Y-m-d", $time) . ' 00:00:00';
-    
-        $mouvements = WrkMouvementTable::getInstance()->getDeposeEmplacementDelais($heureDebut,$emplacement);
-        return $this->renderPartial('encours', array("mouvements" => $mouvements));
-    }
-    
 
     //User Mono-connexion : Contrôle de la clé d'authentification
     public function executeAjaxControleKey(sfWebRequest $request) {
@@ -255,13 +245,13 @@ class acceuilActions extends sfActions {
            
                     break;
                 case "Arrivages en retard":
-                    $this->listeArrivage = WrkMouvementTable::getInstance()->getArrivageRetard($dateLimit3, $dateFinStats);
+                    $this->listeArrivage = array(); //chargement ajax
                     break;
                 case "Réception en retard":
-                    $this->listeReception = WrkMouvementTable::getInstance()->getReceptionRetard($dateLimit3, $dateFinStats);
+                    $this->listeReception  = array(); //chargement ajax
                     break;
                 case "Dépose en retard":
-                    $this->listeDepose = WrkMouvementTable::getInstance()->getDeposeRetard($dateLimit3, $dateFinStats);
+                    $this->listeDepose  = array(); //chargement ajax
                     break;
                     
             }

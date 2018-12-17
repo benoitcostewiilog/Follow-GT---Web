@@ -4,7 +4,3 @@
 all:
   is_secure: on
   credentials: [[ gestion des utilisateurs, gestion des utilisateurs niveau 1, gestion des utilisateurs niveau 2]]
-editPassword:
-    is_secure: false 
-updatePassword:
-    is_secure: false 

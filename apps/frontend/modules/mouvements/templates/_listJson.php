@@ -5,11 +5,11 @@
 "data": [
 <?php
 $class = "";
-$i = 0;
+$i=0;
 foreach ($mouvements as $mouvement):
-    $action = $mouvement->getType();
+    $action = $mouvement['type'];
     if (!is_null($mvtEnCours)) {
-        if (in_array($mouvement->getIdMouvement(), $sf_data->getRaw('mvtEnCours'))) {
+        if (in_array($mouvement['id_mouvement'], $sf_data->getRaw('mvtEnCours'))) {
             $class = "context-menu-one box menu-1 nonDeposee";
             $action = 'prise non déposée';
         } else {
@@ -18,25 +18,20 @@ foreach ($mouvements as $mouvement):
     }
     ?>
     {
-    "DT_RowId": "<?php echo $mouvement->getIdMouvement() ?>",
+    "DT_RowId": "<?php echo $mouvement['id_mouvement'] ?>",
     "DT_RowClass": "<?php echo $class ?>",
-    "reference": "<?php echo $mouvement->getRefProduit() ?>",
+    "reference": "<?php echo $mouvement['ref_produit'] ?>",
     "action": "<?php echo $action ?>",
-    "emplacement": "<?php echo ($mouvement->getRefEmplacement() ? $mouvement->getRefEmplacement()->getLibelle() : $mouvement->getCodeEmplacement()) ?>",
-    "quantite": "<?php echo ($mouvement->getQuantite() != "") ? $mouvement->getQuantite() : '1' ?>",
-    "commentaire": "<?php echo ($mouvement->getCommentaire() != "") ? $mouvement->getCommentaire() : 'N/C' ?>",
-    "groupe": "<?php echo $mouvement->getGroupe() ?>",
-    "date": "<?php echo date('d/m/Y H:i:s', strtotime($mouvement->getHeurePrise())) ?>",
-    "arrivage": "<?php echo ($mouvement->getWrkArrivageProduit()) ? $mouvement->getWrkArrivageProduit()->getRefProduit() : 'Absent' ?>",
-     "bl": "<?php echo ($mouvement->getWrkArrivageProduit() && $mouvement->getWrkArrivageProduit()->getWrkArrivage()) ? $mouvement->getWrkArrivageProduit()->getWrkArrivage()->getCommandeAchat() : 'Absent' ?>",
-    "signature": "<?php echo ($mouvement->getSignature() && strlen($mouvement->getSignature())>10) ? "<a onclick='showSignature(this)' class='signature' data='" . $mouvement->getSignature() . "'><i class='fa fa-file-image-o'></i></a>" : 'N/C' ?>",
-    "photos": "<?php echo ($mouvement->getPhotos() && strlen($mouvement->getPhotos())>10) ? "<a onclick='showPhotos(this)' class='photos' data='" . $mouvement->getPhotos() . "'><i class='fa fa-file-image-o'></i></a>" : 'N/C' ?>",
-    "utilisateur": "<?php echo (isset($users[$mouvement->getIdUtilisateur()]) ? $users[$mouvement->getIdUtilisateur()] : $mouvement->getIdUtilisateur()) ?>"
-    }<?php echo $i == (count($mouvements) - 1) ? "" : "," ?>
+    "emplacement": "<?php echo ($mouvement['RefEmplacement']['libelle'] ? $mouvement['RefEmplacement']['libelle'] : $mouvement['code_emplacement']) ?>",
+    "commentaire": "<?php echo ($mouvement['commentaire'] != "") ? $mouvement['commentaire'] : 'N/C' ?>",
+    "groupe": "<?php echo $mouvement['groupe'] ?>",
+    "date": "<?php echo date('d/m/Y H:i:s', strtotime($mouvement['heure_prise'])) ?>",
+    "arrivage": "<?php echo ($mouvement['WrkArrivageProduit']) ? $mouvement['WrkArrivageProduit']['ref_produit'] : 'Absent' ?>",
+    "utilisateur": "<?php echo (isset($users[$mouvement['id_utilisateur']]) ? $users[$mouvement['id_utilisateur']] : $mouvement['id_utilisateur']) ?>"
+    }<?php echo $i==(count($mouvements)-1)?"":"," ?>
 
-    <?php
-    $i++;
-endforeach;
-?>
+<?php
+$i++;
+endforeach; ?>
 ]
 }

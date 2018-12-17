@@ -31,42 +31,7 @@ class BasesfGuardAuthActions extends sfActions {
 
         if ($request->isMethod('post')) {
             $this->form->bind($request->getParameter('signin'));
-
-            $bloquer = false;
-            $signin = $request->getParameter('signin');
-
-            $username = $signin["username"];
-            if ($username && $username != "" && $username != null) {
-                $userTmp = sfGuardUserTable::getInstance()->findOneBy("username", $username);
-                if ($userTmp != null) {
-                    $loginFailed = $userTmp->getLoginFailed() >= 0 ? $userTmp->getLoginFailed() : 0;
-                    $userTmp->setLoginFailed($loginFailed + 1);
-                    $userTmp->save();
-                    $left = (sfGuardUserTable::LOGIN_FAILED_LIMIT - $userTmp->getLoginFailed());
-                    if ($left <= 0) {
-                        $this->message = "Ce compte est bloqué";
-                        if ($left < 0) {
-                            $bloquer = true;
-                        }
-                    } else {
-                        $this->message = "Il reste " . $left . " tentative(s) de connexion avant le blocage du compte";
-                    }
-                }
-            }
-
-            if (!$bloquer && $this->form->isValid()) {
-
-
-                $signin = $request->getParameter('signin');
-                $username = $signin["username"];
-                if ($username && $username != "" && $username != null) {
-                    $userTmp = sfGuardUserTable::getInstance()->findOneBy("username", $username);
-                    if ($userTmp != null) {
-                        $userTmp->setLoginFailed(0);
-                        $userTmp->save();
-                    }
-                }
-
+            if ($this->form->isValid()) {
                 $values = $this->form->getValues();
                 $this->getUser()->signin($values['user'], array_key_exists('remember', $values) ? $values['remember'] : false);
 
@@ -84,15 +49,7 @@ class BasesfGuardAuthActions extends sfActions {
                 if ($application) {
                     self::generateMenus();
                     $modules = $this->getUser()->getGuardUser()->getRedirectionModule();
-
-                    $user = sfGuardUserTable::getInstance()->find($this->getUser()->getGuardUser()->getId());
-
-                    if ($user->getPasswordUpdated() == false) {
-                        return $this->redirect(sfContext::getInstance()->getConfiguration()->generateApplicationURL($application, "sf_guard_editPassword", array('sf_culture' => $this->getUser()->getCulture())));
-                    } else {
-
-                        return $this->redirect(sfContext::getInstance()->getConfiguration()->generateApplicationURL($application, $modules, array('sf_culture' => $this->getUser()->getCulture())));
-                    }
+                    return $this->redirect(sfContext::getInstance()->getConfiguration()->generateApplicationURL($application, $modules, array('sf_culture' => $this->getUser()->getCulture())));
                 } else {
                     return $this->redirect('@sf_guard_signout');
                 }
@@ -162,25 +119,22 @@ class BasesfGuardAuthActions extends sfActions {
     }
 
     private function getTabMenuFrontend() {
-        $tab_titre_menu = array('Accueil', 'Borne d\'accueil', 'Arrivages', 'Urgences', 'Réceptions', 'Expéditions', 'Acheminement', 'Mouvements', 'Non-Conformités', 'En-cours', 'Inventaires', 'Arrivages/BR', 'Statistiques', 'Référentiels', 'Paramétrages');
-        $tab_img_menu = array('fa fa-th-large', 'fa fa-laptop', 'fa fa-truck', 'fa fa-exclamation-circle', 'fa fa-mail-reply', 'fa fa-mail-forward', 'fa fa-bolt ', 'fa fa-retweet', 'fa fa-warning', 'fa fa-clock-o', 'fa fa-bell-o', 'fa fa-random', 'fa fa-bar-chart', 'fa fa-list', 'fa fa-wrench');
-        $tab_accueil = array('accueil' => 'Accueil');
-        $tab_borne = array('borne-arrivage' => 'Arrivages', 'borne-expedition' => 'Expéditions');
-        $tab_arrivage = array('arrivage' => 'Arrivages');
-        $tab_urgence = array('urgence' => 'Urgences');
-        $tab_reception = array('reception' => 'Réceptions');
-        $tab_expedition = array('expedition' => 'Expéditions');
-        $tab_acheminement = array('acheminement' => 'Acheminement');
-        $tab_mouvement = array('mouvements' => 'Historique');
-        $tab_nc = array('nonconforme' => 'Non-Conformités');
-        $tab_ec = array('encours' => 'En-cours');
-        $tab_inventaire = array('inventaires' => 'Inventaire');
+        $tab_titre_menu  = array('Accueil', 'Borne d\'accueil', 'Arrivages', 'Réceptions', 'Expéditions', 'Acheminement', 'Mouvements', 'Inventaires', 'Arrivages/BR', 'Statistiques', 'Référentiels', 'Paramétrages');
+        $tab_img_menu    = array('fa fa-th-large', 'fa fa-laptop', 'fa fa-truck', 'fa fa-mail-reply', 'fa fa-mail-forward', 'fa fa-bolt ', 'fa fa-retweet', 'fa fa-bell-o', 'fa fa-random', 'fa fa-bar-chart', 'fa fa-list', 'fa fa-wrench');
+        $tab_accueil     = array('accueil' => 'Accueil');
+        $tab_borne       = array('borne-arrivage' => 'Arrivages', 'borne-expedition' => 'Expéditions');
+        $tab_arrivage    = array('arrivage' => 'Arrivages');
+        $tab_reception   = array('reception' => 'Réceptions');
+        $tab_expedition  = array('expedition' => 'Expéditions');
+        $tab_acheminement= array('acheminement' => 'Acheminement');
+        $tab_mouvement   = array('mouvements' => 'Historique');
+        $tab_inventaire  = array('inventaires' => 'Inventaire');
         $tab_parametrage = array('gestion des groupes' => 'Groupes', 'gestion des utilisateurs' => 'Utilisateurs', 'parametrage' => 'Paramétrage général');
-        $tab_asso = array('association-br' => 'Arrivages/BR');
-        $tab_stat = array('statistiques-retard' => 'Globales', 'statistiques-globale' => 'Tracking en retard');
-        $tab_referentiels = array('referentiels-fournisseur' => 'Fournisseurs', 'referentiels-transporteur' => 'Transporteurs', 'referentiels-chauffeur' => 'Chauffeurs', 'referentiels-interlocuteur' => 'Interlocuteurs', 'referentiels-emplacement' => 'Emplacements', 'referentiels-nature' => 'Nature de colis');
+        $tab_asso        = array('association-br' => 'Arrivages/BR');
+        $tab_stat        = array('statistiques-retard' => 'Globales', 'statistiques-globale' => 'Tracking en retard');
+        $tab_referentiels= array('referentiels-fournisseur' => 'Fournisseurs', 'referentiels-transporteur' => 'Transporteurs', 'referentiels-chauffeur' => 'Chauffeurs', 'referentiels-emplacement' => 'Emplacements', 'referentiels-nature' => 'Nature de colis');
 
-        return array($tab_titre_menu, $tab_img_menu, array($tab_accueil, $tab_borne, $tab_arrivage, $tab_urgence, $tab_reception, $tab_expedition, $tab_acheminement, $tab_mouvement, $tab_nc, $tab_ec, $tab_inventaire, $tab_asso, $tab_stat, $tab_referentiels, $tab_parametrage));
+        return array($tab_titre_menu,$tab_img_menu,array($tab_accueil, $tab_borne, $tab_arrivage, $tab_reception, $tab_expedition, $tab_acheminement, $tab_mouvement, $tab_inventaire, $tab_asso, $tab_stat, $tab_referentiels, $tab_parametrage));
     }
 
     private function generateHtmlStringMenu($tab_titre_menu, $tab_img_menu, $tab_menus, $tab_ecran_menu, $application) {

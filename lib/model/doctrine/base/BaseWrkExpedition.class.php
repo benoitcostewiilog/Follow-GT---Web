@@ -28,41 +28,41 @@ Doctrine_Manager::getInstance()->bindComponent('WrkExpedition', 'doctrine');
  * @property Doctrine_Collection $WrkExpeditionProduit
  * @property RefNature $RefNature
  * 
- * @method integer             getId_expedItIon()        Returns the current record's "id_expedition" value
- * @method integer             getId_fournIsseur()       Returns the current record's "id_fournisseur" value
- * @method integer             getId_transporteur()      Returns the current record's "id_transporteur" value
- * @method integer             getId_chauffeur()         Returns the current record's "id_chauffeur" value
- * @method string              getLettre_voiture()       Returns the current record's "lettre_voiture" value
- * @method integer             getNb_colis()             Returns the current record's "nb_colis" value
- * @method integer             getNb_palette()           Returns the current record's "nb_palette" value
- * @method string              getImmatrIculatIon()      Returns the current record's "immatriculation" value
- * @method string              getRep_signatuRe()        Returns the current record's "rep_signature" value
- * @method int                 getId_nature()            Returns the current record's "id_nature" value
- * @method string              getBr_sap()               Returns the current record's "br_sap" value
+ * @method integer             getIdExpedition()         Returns the current record's "id_expedition" value
+ * @method integer             getIdFournisseur()        Returns the current record's "id_fournisseur" value
+ * @method integer             getIdTransporteur()       Returns the current record's "id_transporteur" value
+ * @method integer             getIdChauffeur()          Returns the current record's "id_chauffeur" value
+ * @method string              getLettreVoiture()        Returns the current record's "lettre_voiture" value
+ * @method integer             getNbColis()              Returns the current record's "nb_colis" value
+ * @method integer             getNbPalette()            Returns the current record's "nb_palette" value
+ * @method string              getImmatriculation()      Returns the current record's "immatriculation" value
+ * @method string              getRepSignature()         Returns the current record's "rep_signature" value
+ * @method int                 getIdNature()             Returns the current record's "id_nature" value
+ * @method string              getBrSap()                Returns the current record's "br_sap" value
  * @method string              getStatut()               Returns the current record's "statut" value
  * @method string              getCommentaire()          Returns the current record's "commentaire" value
- * @method timestamp           getCreated_at()           Returns the current record's "created_at" value
- * @method timestamp           getUpdated_at()           Returns the current record's "updated_at" value
+ * @method timestamp           getCreatedAt()            Returns the current record's "created_at" value
+ * @method timestamp           getUpdatedAt()            Returns the current record's "updated_at" value
  * @method RefTransporteur     getRefTransporteur()      Returns the current record's "RefTransporteur" value
  * @method RefChauffeur        getRefChauffeur()         Returns the current record's "RefChauffeur" value
  * @method RefFournisseur      getRefFournisseur()       Returns the current record's "RefFournisseur" value
  * @method Doctrine_Collection getWrkExpeditionProduit() Returns the current record's "WrkExpeditionProduit" collection
  * @method RefNature           getRefNature()            Returns the current record's "RefNature" value
- * @method WrkExpedition       setId_expedItIon()        Sets the current record's "id_expedition" value
- * @method WrkExpedition       setId_fournIsseur()       Sets the current record's "id_fournisseur" value
- * @method WrkExpedition       setId_transporteur()      Sets the current record's "id_transporteur" value
- * @method WrkExpedition       setId_chauffeur()         Sets the current record's "id_chauffeur" value
- * @method WrkExpedition       setLettre_voiture()       Sets the current record's "lettre_voiture" value
- * @method WrkExpedition       setNb_colis()             Sets the current record's "nb_colis" value
- * @method WrkExpedition       setNb_palette()           Sets the current record's "nb_palette" value
- * @method WrkExpedition       setImmatrIculatIon()      Sets the current record's "immatriculation" value
- * @method WrkExpedition       setRep_signatuRe()        Sets the current record's "rep_signature" value
- * @method WrkExpedition       setId_nature()            Sets the current record's "id_nature" value
- * @method WrkExpedition       setBr_sap()               Sets the current record's "br_sap" value
+ * @method WrkExpedition       setIdExpedition()         Sets the current record's "id_expedition" value
+ * @method WrkExpedition       setIdFournisseur()        Sets the current record's "id_fournisseur" value
+ * @method WrkExpedition       setIdTransporteur()       Sets the current record's "id_transporteur" value
+ * @method WrkExpedition       setIdChauffeur()          Sets the current record's "id_chauffeur" value
+ * @method WrkExpedition       setLettreVoiture()        Sets the current record's "lettre_voiture" value
+ * @method WrkExpedition       setNbColis()              Sets the current record's "nb_colis" value
+ * @method WrkExpedition       setNbPalette()            Sets the current record's "nb_palette" value
+ * @method WrkExpedition       setImmatriculation()      Sets the current record's "immatriculation" value
+ * @method WrkExpedition       setRepSignature()         Sets the current record's "rep_signature" value
+ * @method WrkExpedition       setIdNature()             Sets the current record's "id_nature" value
+ * @method WrkExpedition       setBrSap()                Sets the current record's "br_sap" value
  * @method WrkExpedition       setStatut()               Sets the current record's "statut" value
  * @method WrkExpedition       setCommentaire()          Sets the current record's "commentaire" value
- * @method WrkExpedition       setCreated_at()           Sets the current record's "created_at" value
- * @method WrkExpedition       setUpdated_at()           Sets the current record's "updated_at" value
+ * @method WrkExpedition       setCreatedAt()            Sets the current record's "created_at" value
+ * @method WrkExpedition       setUpdatedAt()            Sets the current record's "updated_at" value
  * @method WrkExpedition       setRefTransporteur()      Sets the current record's "RefTransporteur" value
  * @method WrkExpedition       setRefChauffeur()         Sets the current record's "RefChauffeur" value
  * @method WrkExpedition       setRefFournisseur()       Sets the current record's "RefFournisseur" value
@@ -101,6 +101,7 @@ abstract class BaseWrkExpedition extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 4,
@@ -200,6 +201,7 @@ abstract class BaseWrkExpedition extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -209,6 +211,7 @@ abstract class BaseWrkExpedition extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,

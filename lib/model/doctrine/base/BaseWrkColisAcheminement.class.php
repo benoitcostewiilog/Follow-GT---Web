@@ -17,23 +17,23 @@ Doctrine_Manager::getInstance()->bindComponent('WrkColisAcheminement', 'doctrine
  * @property timestamp $created_at
  * @property WrkAcheminement $WrkAcheminement
  * 
- * @method integer              getId_colIs()        Returns the current record's "id_colis" value
- * @method integer              getId_achemInement() Returns the current record's "id_acheminement" value
+ * @method integer              getIdColis()         Returns the current record's "id_colis" value
+ * @method integer              getIdAcheminement()  Returns the current record's "id_acheminement" value
  * @method string               getTracking()        Returns the current record's "tracking" value
- * @method integer              getNumero_colis()    Returns the current record's "numero_colis" value
+ * @method integer              getNumeroColis()     Returns the current record's "numero_colis" value
  * @method string               getDesignation()     Returns the current record's "designation" value
  * @method string               getStatut()          Returns the current record's "statut" value
- * @method timestamp            getUpdated_at()      Returns the current record's "updated_at" value
- * @method timestamp            getCreated_at()      Returns the current record's "created_at" value
+ * @method timestamp            getUpdatedAt()       Returns the current record's "updated_at" value
+ * @method timestamp            getCreatedAt()       Returns the current record's "created_at" value
  * @method WrkAcheminement      getWrkAcheminement() Returns the current record's "WrkAcheminement" value
- * @method WrkColisAcheminement setId_colIs()        Sets the current record's "id_colis" value
- * @method WrkColisAcheminement setId_achemInement() Sets the current record's "id_acheminement" value
+ * @method WrkColisAcheminement setIdColis()         Sets the current record's "id_colis" value
+ * @method WrkColisAcheminement setIdAcheminement()  Sets the current record's "id_acheminement" value
  * @method WrkColisAcheminement setTracking()        Sets the current record's "tracking" value
- * @method WrkColisAcheminement setNumero_colis()    Sets the current record's "numero_colis" value
+ * @method WrkColisAcheminement setNumeroColis()     Sets the current record's "numero_colis" value
  * @method WrkColisAcheminement setDesignation()     Sets the current record's "designation" value
  * @method WrkColisAcheminement setStatut()          Sets the current record's "statut" value
- * @method WrkColisAcheminement setUpdated_at()      Sets the current record's "updated_at" value
- * @method WrkColisAcheminement setCreated_at()      Sets the current record's "created_at" value
+ * @method WrkColisAcheminement setUpdatedAt()       Sets the current record's "updated_at" value
+ * @method WrkColisAcheminement setCreatedAt()       Sets the current record's "created_at" value
  * @method WrkColisAcheminement setWrkAcheminement() Sets the current record's "WrkAcheminement" value
  * 
  * @package    MobileStockV3
@@ -104,6 +104,7 @@ abstract class BaseWrkColisAcheminement extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -113,6 +114,7 @@ abstract class BaseWrkColisAcheminement extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,

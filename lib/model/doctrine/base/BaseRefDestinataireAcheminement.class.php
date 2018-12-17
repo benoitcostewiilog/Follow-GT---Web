@@ -13,15 +13,15 @@ Doctrine_Manager::getInstance()->bindComponent('RefDestinataireAcheminement', 'd
  * @property timestamp $updated_at
  * @property Doctrine_Collection $WrkAcheminement
  * 
- * @method integer                     getId_destInataIre_achemInement() Returns the current record's "id_destinataire_acheminement" value
+ * @method integer                     getIdDestinataireAcheminement()   Returns the current record's "id_destinataire_acheminement" value
  * @method string                      getDestinataire()                 Returns the current record's "destinataire" value
- * @method timestamp                   getCreated_at()                   Returns the current record's "created_at" value
- * @method timestamp                   getUpdated_at()                   Returns the current record's "updated_at" value
+ * @method timestamp                   getCreatedAt()                    Returns the current record's "created_at" value
+ * @method timestamp                   getUpdatedAt()                    Returns the current record's "updated_at" value
  * @method Doctrine_Collection         getWrkAcheminement()              Returns the current record's "WrkAcheminement" collection
- * @method RefDestinataireAcheminement setId_destInataIre_achemInement() Sets the current record's "id_destinataire_acheminement" value
+ * @method RefDestinataireAcheminement setIdDestinataireAcheminement()   Sets the current record's "id_destinataire_acheminement" value
  * @method RefDestinataireAcheminement setDestinataire()                 Sets the current record's "destinataire" value
- * @method RefDestinataireAcheminement setCreated_at()                   Sets the current record's "created_at" value
- * @method RefDestinataireAcheminement setUpdated_at()                   Sets the current record's "updated_at" value
+ * @method RefDestinataireAcheminement setCreatedAt()                    Sets the current record's "created_at" value
+ * @method RefDestinataireAcheminement setUpdatedAt()                    Sets the current record's "updated_at" value
  * @method RefDestinataireAcheminement setWrkAcheminement()              Sets the current record's "WrkAcheminement" collection
  * 
  * @package    MobileStockV3
@@ -56,6 +56,7 @@ abstract class BaseRefDestinataireAcheminement extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -65,6 +66,7 @@ abstract class BaseRefDestinataireAcheminement extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
