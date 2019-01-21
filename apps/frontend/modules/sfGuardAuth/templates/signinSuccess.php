@@ -8,7 +8,7 @@
 	<?php include_stylesheets() ?>
 
 <style>
-body{color:#1f1f1f!important;background:url(<?php echo image_path("bckgrnd_blur.jpg");?>)no-repeat center center fixed;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
+body{color:#1f1f1f!important;background:url(<?php echo image_path("GTXBackAccueil2red.png");?>)no-repeat center center fixed;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
 #aeromobile-logo-login{width:350px;}
 .form-control:focus{border-color:#F2971D!important;}
 .middle-box{width:350px!important;}
@@ -16,11 +16,11 @@ body{color:#1f1f1f!important;background:url(<?php echo image_path("bckgrnd_blur.
 
 </head>
 <body>
-    <div class="middle-box text-center loginscreen animated fadeInDown">
+    <div style='position:absolute; top: 65%;left:10%;' class="middle-box text-center loginscreen animated fadeInDown">
         <div>
-            <div>
+            <!-- <div>
                 <img id="aeromobile-logo-login" alt="image" src="<?php echo image_path("followgt.png"); ?>" />
-            </div>
+            </div> -->
             <h3>Pilotage des flux industriels</h3>
             <p>Connectez-vous</p>
             <form class="m-t" role="form" action="<?php echo url_for('@sf_guard_signin') ?>" method="post">
