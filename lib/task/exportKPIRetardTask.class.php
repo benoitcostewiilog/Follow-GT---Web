@@ -27,7 +27,7 @@ EOF;
 
   protected function execute($arguments = array(), $options = array())
   {
-      
+
     $debut = microtime(true);
       
     // initialize the database connection
@@ -36,12 +36,12 @@ EOF;
 
     //creer une 2ieme connection pr le lien vers la base pr les fonctions mysql
     //Variables BDD dédie
-	$host = "localhost";
-	$user = "usrgttest";
-	$password = "ZVKG8pmhvPyxDPtS";
-	$bdd = "gt_log_test";
-    $link = mysql_connect($host,$user,$password);
-	mysql_select_db($bdd);
+//	$host = "localhost";
+//	$user = "usrgttest";
+//	$password = "ZVKG8pmhvPyxDPtS";
+//	$bdd = "gt_log_test";
+//    $link = mysql_connect($host,$user,$password);
+//	mysql_select_db($bdd);
 
     
     $con = Doctrine_Manager::getInstance()->connection();
@@ -49,7 +49,7 @@ EOF;
     $dateDebut = $arguments['date_deb']." 00:00:00";
     $dateFin   = $arguments['date_fin']." 23:59:59";
     
-    
+
     // Vidage de la table tampon
     //$req = $con->execute("TRUNCATE TABLE exp_kpi_retard ");
 
@@ -78,7 +78,7 @@ EOF;
                                                        ek.date_attente1 = (SELECT wm.heure_prise
                                                                            FROM wrk_mouvement wm
                                                                            WHERE wm.ref_produit = ek.num_arrivage
-                                                                           AND wm.type = 'depose'
+                                                                           AND wm.type = 'prise'
                                                                            ORDER BY wm.created_at ASC
                                                                            LIMIT 1 ) 
                           WHERE ek.zone_attente1 IS NULL ");
