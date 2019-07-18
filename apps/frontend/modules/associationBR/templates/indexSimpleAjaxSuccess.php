@@ -236,7 +236,8 @@
                                             alert('Une erreur est survenue lors de la communication avec le serveur');
                                             window.location = '<?php echo url_for('association-br') ?>';
                                         } else {
-                                            validerAss();
+                                            // patch pour éviter déconnexions intempestives
+                                            setTimeout(validerAss, 1000);                                      ;
                                         }
                                     })
                                     .always(function () {
