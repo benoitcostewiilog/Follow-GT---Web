@@ -23,8 +23,6 @@ class mouvementsActions extends sfActions {
         $this->emplacement = $request->getParameter('emplacement', '');
         $this->type = $request->getParameter('type', '');
         $this->reference = $request->getParameter('reference', '');
-         $parametrageServer=AdmSupervisionParametrageTable::getInstance()->findOneByNom("url_server_sails");
-        $this->serverSails = $parametrageServer?$parametrageServer["valeur"]:"";
     }
 
     public function executeListAjax(sfWebRequest $request) {
@@ -124,7 +122,7 @@ class mouvementsActions extends sfActions {
         $this->date = date('d/m/Y');
         $this->print = false;
 
-        $this->getMouvements($request);
+        $this->getMouvements($request,true);
 
         $this->getResponse()->setContentType('application/vnd.ms-excel;charset=utf-8');
         $this->getResponse()->setHttpHeader('Content-Disposition:attachment', 'inline;filename="export_mouvement.xls"');
@@ -135,7 +133,7 @@ class mouvementsActions extends sfActions {
         $this->date = date('d/m/Y');
         $this->print = false;
 
-        $this->getMouvements($request);
+        $this->getMouvements($request,true);
 
             $this->getResponse()->setContentType('text/csv');
         $this->getResponse()->setHttpHeader('Content-Disposition:attachment', 'inline;filename="export_mouvement.csv"');
@@ -146,7 +144,7 @@ class mouvementsActions extends sfActions {
         $this->date = date('d/m/Y');
         $this->print = false;
 
-        $this->getMouvements($request);
+        $this->getMouvements($request,true);
 
         $this->getResponse()->setContentType('application/vnd.ms-word;charset=utf-8');
         $this->getResponse()->setHttpHeader('Content-Disposition:attachment', 'inline;filename="export_mouvement.doc"');
@@ -159,10 +157,10 @@ class mouvementsActions extends sfActions {
         sfConfig::set('sf_web_debug', false);
         $this->print = 'true';
 
-        $this->getMouvements($request);
+        $this->getMouvements($request,true);
     }
 
-    private function getMouvements(sfWebRequest $request) {
+    private function getMouvements(sfWebRequest $request,$export=false) {
         $this->heureDebut = $request->getParameter('heureDebut', date('d/m/Y') . ' 00:00:00');
         $this->heureFin = $request->getParameter('heureFin', date('d/m/Y') . ' 23:59:59');
         $this->emplacement = $request->getParameter('emplacement', '');
@@ -189,15 +187,18 @@ class mouvementsActions extends sfActions {
             $heureFin = DateTime::createFromFormat('d/m/Y H:i:s', $this->heureFin)->format('y-m-d H:i:s');
         }
 
-        list ($this->mouvements, $mvtprise) = WrkMouvementTable::getInstance()->getWrkMouvementFiltrer($heureDebut, $heureFin, $this->type, $this->emplacement, $this->reference, $this->start, $this->length, $this->value, $this->orderCol, $this->orderDir);
-        $this->mouvementsTotal = WrkMouvementTable::getInstance()->countWrkMouvementFiltrer($heureDebut, $heureFin, $this->type, $this->emplacement, $this->reference);
+        list ($this->mouvements, $mvtprise) = WrkMouvementTable::getInstance()->getWrkMouvementFiltrer($heureDebut, $heureFin, $this->type, $this->emplacement, $this->reference, $this->start, $this->length, $this->value, $this->orderCol, $this->orderDir,$export);
+       
+
+        if(!$export){
+             $this->mouvementsTotal = WrkMouvementTable::getInstance()->countWrkMouvementFiltrer($heureDebut, $heureFin, $this->type, $this->emplacement, $this->reference);
         $this->mouvementsFiltrer = WrkMouvementTable::getInstance()->countWrkMouvementFiltrer($heureDebut, $heureFin, $this->type, $this->emplacement, $this->reference, $this->value);
 
-
-        $this->mvtEnCours = array();
-        if ($mvtprise) {
-            foreach ($mvtprise as $mvt) {
-                $this->mvtEnCours[] = $mvt['id_mouvement'];
+            $this->mvtEnCours = array();
+            if ($mvtprise) {
+                foreach ($mvtprise as $mvt) {
+                    $this->mvtEnCours[] = $mvt['id_mouvement'];
+                }
             }
         }
 

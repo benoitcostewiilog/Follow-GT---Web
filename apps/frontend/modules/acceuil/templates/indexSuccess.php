@@ -96,7 +96,7 @@ slot('page_title', sprintf("Bienvenue " . $sf_user->getGuardUser()->getUsername(
             ?>
                         <div class="col-md-6">
                             <div class="ibox float-e-margins">
-                                <?php include_partial('deposeRetard', array('deposeEnRetard' => deposeEnRetard)); ?>
+                                <?php include_partial('deposeRetard', array('deposeEnRetard' => $deposeEnRetard)); ?>
                             </div>
                         </div>  
             <?php

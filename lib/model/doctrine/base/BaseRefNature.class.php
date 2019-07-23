@@ -17,20 +17,20 @@ Doctrine_Manager::getInstance()->bindComponent('RefNature', 'doctrine');
  * @property Doctrine_Collection $WrkArrivage
  * @property Doctrine_Collection $WrkArrivageProduit
  * 
- * @method int                 getId_nature()            Returns the current record's "id_nature" value
- * @method string              getLibeLLe()              Returns the current record's "libelle" value
+ * @method int                 getIdNature()             Returns the current record's "id_nature" value
+ * @method string              getLibelle()              Returns the current record's "libelle" value
  * @method time                getDelais()               Returns the current record's "delais" value
- * @method timestamp           getUpdated_at()           Returns the current record's "updated_at" value
- * @method timestamp           getCreated_at()           Returns the current record's "created_at" value
+ * @method timestamp           getUpdatedAt()            Returns the current record's "updated_at" value
+ * @method timestamp           getCreatedAt()            Returns the current record's "created_at" value
  * @method Doctrine_Collection getWrkExpedition()        Returns the current record's "WrkExpedition" collection
  * @method Doctrine_Collection getWrkExpeditionProduit() Returns the current record's "WrkExpeditionProduit" collection
  * @method Doctrine_Collection getWrkArrivage()          Returns the current record's "WrkArrivage" collection
  * @method Doctrine_Collection getWrkArrivageProduit()   Returns the current record's "WrkArrivageProduit" collection
- * @method RefNature           setId_nature()            Sets the current record's "id_nature" value
- * @method RefNature           setLibeLLe()              Sets the current record's "libelle" value
+ * @method RefNature           setIdNature()             Sets the current record's "id_nature" value
+ * @method RefNature           setLibelle()              Sets the current record's "libelle" value
  * @method RefNature           setDelais()               Sets the current record's "delais" value
- * @method RefNature           setUpdated_at()           Sets the current record's "updated_at" value
- * @method RefNature           setCreated_at()           Sets the current record's "created_at" value
+ * @method RefNature           setUpdatedAt()            Sets the current record's "updated_at" value
+ * @method RefNature           setCreatedAt()            Sets the current record's "created_at" value
  * @method RefNature           setWrkExpedition()        Sets the current record's "WrkExpedition" collection
  * @method RefNature           setWrkExpeditionProduit() Sets the current record's "WrkExpeditionProduit" collection
  * @method RefNature           setWrkArrivage()          Sets the current record's "WrkArrivage" collection
@@ -76,6 +76,7 @@ abstract class BaseRefNature extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -85,6 +86,7 @@ abstract class BaseRefNature extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,

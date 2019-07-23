@@ -22,7 +22,7 @@ class acheminementActions extends sfActions {
 
     public function executeNew(sfWebRequest $request) {
         $this->users = RefDestinataireAcheminementTable::getInstance()->findAll();
-        $this->emplacements = RefEmplacementAcheminementTable::getInstance()->findAll();
+        $this->emplacements = RefEmplacementTable::getInstance()->findAll();
     }
 
     public function executeCreate(sfWebRequest $request) {
@@ -39,7 +39,7 @@ class acheminementActions extends sfActions {
         $this->forward404Unless($acheminement = Doctrine_Core::getTable('WrkAcheminement')->find(array($request->getParameter('id'))), sprintf('Object ref_acheminement does not exist (%s).', $request->getParameter('id')));
         $this->acheminement = $acheminement;
         $this->users = RefDestinataireAcheminementTable::getInstance()->findAll();
-        $this->emplacements = RefEmplacementAcheminementTable::getInstance()->findAll();
+        $this->emplacements = RefEmplacementTable::getInstance()->findAll();
     }
 
     public function executeUpdate(sfWebRequest $request) {
@@ -183,6 +183,7 @@ class acheminementActions extends sfActions {
         $mpdf = new mPDF();
 		$mpdf->WriteHTML($html);
 		$file_namePdf = "Tracking" . $dateHeure . ".pdf";
+		ob_clean(); 
 		$mpdf->Output($file_namePdf,'D');
         
         //suppression des images CB 

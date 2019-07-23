@@ -55,10 +55,8 @@ class inventairesActions extends sfActions {
     }
 
     private function initList(sfWebRequest $request) {
-        $date = new DateTime();
-
-        $date->modify('-2 day');
-        $this->heureDebut = $request->getParameter('heureDebut', $date->format('d/m/Y') . ' 00:00:00');
+        
+        $this->heureDebut = $request->getParameter('heureDebut', date('d/m/Y') . ' 00:00:00');
         $this->heureFin = $request->getParameter('heureFin', date('d/m/Y') . ' 23:59:59');
         $this->emplacement = $request->getParameter('emplacement', '');
         

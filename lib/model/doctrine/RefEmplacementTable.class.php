@@ -27,39 +27,5 @@ class RefEmplacementTable extends Doctrine_Table {
 
         return $emplacement;
     }
-     public static function findEmplacementArrivage() {
-        $emplacement = self::getInstance()->find(RefEmplacement::CODE_EMPLACEMENT_ARRIVAGE);
-        if (!$emplacement) {
-            $emplacement = new RefEmplacement();
-            $emplacement->setCodeEmplacement(RefEmplacement::CODE_EMPLACEMENT_ARRIVAGE);
-            $emplacement->setLibelle(RefEmplacement::LIBELLE_EMPLACEMENT_ARRIVAGE);
-            $emplacement->save();
-        }
-
-        return $emplacement;
-    }
     
-       public static function findEmplacementNonConforme() {
-        $emplacement = self::getInstance()->find(RefEmplacement::CODE_EMPLACEMENT_NONCONFORME);
-        if (!$emplacement) {
-            $emplacement = new RefEmplacement();
-            $emplacement->setCodeEmplacement(RefEmplacement::CODE_EMPLACEMENT_NONCONFORME);
-            $emplacement->setLibelle(RefEmplacement::LIBELLE_EMPLACEMENT_NONCONFORME);
-            $emplacement->save();
-        }
-
-        return $emplacement;
-    }
-
-    public static function findEmplacementArrivageSansDestinataire() {
-        $emplacement = self::getInstance()->find(RefEmplacement::CODE_EMPLACEMENT_RECEPTION_NON_NOMINATIF);
-        if (!$emplacement) {
-            $emplacement = new RefEmplacement();
-            $emplacement->setCodeEmplacement(RefEmplacement::CODE_EMPLACEMENT_RECEPTION_NON_NOMINATIF);
-            $emplacement->setLibelle(RefEmplacement::LIBELLE_EMPLACEMENT_RECEPTION_NON_NOMINATIF);
-            $emplacement->save();
-        }
-
-        return $emplacement;
-    }
 }

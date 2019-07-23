@@ -29,44 +29,44 @@ Doctrine_Manager::getInstance()->bindComponent('WrkAcheminement', 'doctrine');
  * @property RefDestinataireAcheminement $RefDestinataireAcheminement
  * @property Doctrine_Collection $wrkAcheminementColis
  * 
- * @method integer                     getId_achemInement()             Returns the current record's "id_acheminement" value
- * @method string                      getNum_achemiNemeNt()            Returns the current record's "num_acheminement" value
- * @method integer                     getSuffix_coliS()                Returns the current record's "suffix_colis" value
- * @method integer                     getNb_colis()                    Returns the current record's "nb_colis" value
+ * @method integer                     getIdAcheminement()              Returns the current record's "id_acheminement" value
+ * @method string                      getNumAcheminement()             Returns the current record's "num_acheminement" value
+ * @method integer                     getSuffixColis()                 Returns the current record's "suffix_colis" value
+ * @method integer                     getNbColis()                     Returns the current record's "nb_colis" value
  * @method string                      getTracking()                    Returns the current record's "tracking" value
- * @method string                      getRef_pRoduit()                 Returns the current record's "ref_produit" value
- * @method string                      getCode_emplaCement_prise()      Returns the current record's "code_emplacement_prise" value
- * @method string                      getCode_emplaCement_depose()     Returns the current record's "code_emplacement_depose" value
+ * @method string                      getRefProduit()                  Returns the current record's "ref_produit" value
+ * @method string                      getCodeEmplacementPrise()        Returns the current record's "code_emplacement_prise" value
+ * @method string                      getCodeEmplacementDepose()       Returns the current record's "code_emplacement_depose" value
  * @method string                      getDelais()                      Returns the current record's "delais" value
- * @method integer                     getId_utIlIsateur()              Returns the current record's "id_utilisateur" value
- * @method string                      getDate_fait()                   Returns the current record's "date_fait" value
+ * @method integer                     getIdUtilisateur()               Returns the current record's "id_utilisateur" value
+ * @method string                      getDateFait()                    Returns the current record's "date_fait" value
  * @method string                      getStatut()                      Returns the current record's "statut" value
- * @method string                      getDemanDeur()                   Returns the current record's "demandeur" value
+ * @method string                      getDemandeur()                   Returns the current record's "demandeur" value
  * @method string                      getDestinataire()                Returns the current record's "destinataire" value
  * @method string                      getDesignation()                 Returns the current record's "designation" value
- * @method timestamp                   getCreated_at()                  Returns the current record's "created_at" value
- * @method timestamp                   getUpdated_at()                  Returns the current record's "updated_at" value
+ * @method timestamp                   getCreatedAt()                   Returns the current record's "created_at" value
+ * @method timestamp                   getUpdatedAt()                   Returns the current record's "updated_at" value
  * @method RefEmplacement              getRefEmplacementPrise()         Returns the current record's "RefEmplacementPrise" value
  * @method RefEmplacement              getRefEmplacementDepose()        Returns the current record's "RefEmplacementDepose" value
  * @method RefDestinataireAcheminement getRefDestinataireAcheminement() Returns the current record's "RefDestinataireAcheminement" value
  * @method Doctrine_Collection         getWrkAcheminementColis()        Returns the current record's "wrkAcheminementColis" collection
- * @method WrkAcheminement             setId_achemInement()             Sets the current record's "id_acheminement" value
- * @method WrkAcheminement             setNum_achemiNemeNt()            Sets the current record's "num_acheminement" value
- * @method WrkAcheminement             setSuffix_coliS()                Sets the current record's "suffix_colis" value
- * @method WrkAcheminement             setNb_colis()                    Sets the current record's "nb_colis" value
+ * @method WrkAcheminement             setIdAcheminement()              Sets the current record's "id_acheminement" value
+ * @method WrkAcheminement             setNumAcheminement()             Sets the current record's "num_acheminement" value
+ * @method WrkAcheminement             setSuffixColis()                 Sets the current record's "suffix_colis" value
+ * @method WrkAcheminement             setNbColis()                     Sets the current record's "nb_colis" value
  * @method WrkAcheminement             setTracking()                    Sets the current record's "tracking" value
- * @method WrkAcheminement             setRef_pRoduit()                 Sets the current record's "ref_produit" value
- * @method WrkAcheminement             setCode_emplaCement_prise()      Sets the current record's "code_emplacement_prise" value
- * @method WrkAcheminement             setCode_emplaCement_depose()     Sets the current record's "code_emplacement_depose" value
+ * @method WrkAcheminement             setRefProduit()                  Sets the current record's "ref_produit" value
+ * @method WrkAcheminement             setCodeEmplacementPrise()        Sets the current record's "code_emplacement_prise" value
+ * @method WrkAcheminement             setCodeEmplacementDepose()       Sets the current record's "code_emplacement_depose" value
  * @method WrkAcheminement             setDelais()                      Sets the current record's "delais" value
- * @method WrkAcheminement             setId_utIlIsateur()              Sets the current record's "id_utilisateur" value
- * @method WrkAcheminement             setDate_fait()                   Sets the current record's "date_fait" value
+ * @method WrkAcheminement             setIdUtilisateur()               Sets the current record's "id_utilisateur" value
+ * @method WrkAcheminement             setDateFait()                    Sets the current record's "date_fait" value
  * @method WrkAcheminement             setStatut()                      Sets the current record's "statut" value
- * @method WrkAcheminement             setDemanDeur()                   Sets the current record's "demandeur" value
+ * @method WrkAcheminement             setDemandeur()                   Sets the current record's "demandeur" value
  * @method WrkAcheminement             setDestinataire()                Sets the current record's "destinataire" value
  * @method WrkAcheminement             setDesignation()                 Sets the current record's "designation" value
- * @method WrkAcheminement             setCreated_at()                  Sets the current record's "created_at" value
- * @method WrkAcheminement             setUpdated_at()                  Sets the current record's "updated_at" value
+ * @method WrkAcheminement             setCreatedAt()                   Sets the current record's "created_at" value
+ * @method WrkAcheminement             setUpdatedAt()                   Sets the current record's "updated_at" value
  * @method WrkAcheminement             setRefEmplacementPrise()         Sets the current record's "RefEmplacementPrise" value
  * @method WrkAcheminement             setRefEmplacementDepose()        Sets the current record's "RefEmplacementDepose" value
  * @method WrkAcheminement             setRefDestinataireAcheminement() Sets the current record's "RefDestinataireAcheminement" value
@@ -224,6 +224,7 @@ abstract class BaseWrkAcheminement extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -233,6 +234,7 @@ abstract class BaseWrkAcheminement extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,

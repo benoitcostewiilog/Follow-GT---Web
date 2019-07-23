@@ -23,9 +23,6 @@ acceuil-arrivage-retard-ajax:
 acceuil-depose-retard-ajax:
   url:   /acceuil-depose-retard-ajax
   param: { module: acceuil, action: deposeRetardAjax }
-acceuil-encours-ajax:
-  url:   /acceuil-encours-ajax
-  param: { module: acceuil, action: encoursAjax }
 acceuil-reception-retard-ajax:
   url:   /acceuil-reception-retard-ajax
   param: { module: acceuil, action: receptionRetardAjax }
@@ -165,9 +162,6 @@ arrivage-new:
 arrivage-edit:
   url:   /:sf_culture/arrivage-edit/*
   param: { module: arrivage, action: edit }
-arrivage-edit-urgence:
-  url:   /:sf_culture/arrivage-edit-urgence/*
-  param: { module: arrivage, action: editUrgence }
 arrivage-create:
   url:   /:sf_culture/arrivage-create/*
   param: { module: arrivage, action: create }
@@ -198,60 +192,7 @@ arrivages-print-num:
 arrivages-check-num-arrivage:
   url:   /:sf_culture/arrivages-check-num-arrivage/*
   param: { module: arrivage, action: checkNumArrivage }
-arrivage-urgence-update:
-  url:   /:sf_culture/arrivage-urgence-update/*
-  param: { module: arrivage, action: arrivageUrgenceUpdate }
-   
-   #URLS module urgence
-urgence:
-  url:   /:sf_culture/urgence/*
-  param: { module: urgence, action: index }
-urgence-list-ajax:
-  url:   /:sf_culture/urgence-list-ajax/*
-  param: { module: urgence, action: listAjax }
-urgence-new:
-  url:   /:sf_culture/urgence-new/*
-  param: { module: urgence, action: new }
-urgence-edit:
-  url:   /:sf_culture/urgence-edit/*
-  param: { module: urgence, action: edit }
-urgence-edit-urgence:
-  url:   /:sf_culture/urgence-edit-urgence/*
-  param: { module: urgence, action: editUrgence }
-urgence-create:
-  url:   /:sf_culture/urgence-create/*
-  param: { module: urgence, action: create }
-urgence-update:
-  url:   /:sf_culture/urgence-update/*
-  param: { module: urgence, action: update }
-urgence-delete:
-  url:   /:sf_culture/urgence-delete/*
-  param: { module: urgence, action: delete }
-urgences-word:
-  url:   /:sf_culture/urgences-word/*
-  param: { module: urgence, action: word }
-urgences-excel:
-  url:   /:sf_culture/urgences-excel/*
-  param: { module: urgence, action: excel }
-urgences-print:
-  url:   /:sf_culture/urgences-print/*
-  param: { module: urgence, action: print }
-urgences-print-codebarre:
-  url:   /:sf_culture/urgences-print-codebarre/*
-  param: { module: urgence, action: printCodeBarre }
-urgences-print-codesbarres:
-  url:   /:sf_culture/urgences-print-codesbarres/*
-  param: { module: urgence, action: printCodesBarres }
-urgences-print-num:
-  url:   /:sf_culture/urgences-print-num/*
-  param: { module: urgence, action: printNumurgence }
-urgences-check-num-urgence:
-  url:   /:sf_culture/urgences-check-num-urgence/*
-  param: { module: urgence, action: checkNumurgence }
-urgence-urgence-update:
-  url:   /:sf_culture/urgence-urgence-update/*
-  param: { module: urgence, action: urgenceUrgenceUpdate }
-   
+  
 #URLS module Acheminement
 acheminement:
   url:   /:sf_culture/acheminement/*
@@ -320,26 +261,7 @@ inventaires-excel:
 inventaires-print:
   url:   /:sf_culture/inventaires-print/*
   param: { module: inventaires, action: print }
-#URLS module nonconfrme
-nonconforme:
-  url:   /:sf_culture/nonconforme/*
-  param: { module: nonconforme, action: index }
-nonconforme-word:
-  url:   /:sf_culture/nonconforme-word/*
-  param: { module: nonconforme, action: word }
-nonconforme-excel:
-  url:   /:sf_culture/nonconforme-excel/*
-  param: { module: nonconforme, action: excel }
-nonconforme-print:
-  url:   /:sf_culture/nonconforme-print/*
-  param: { module: nonconforme, action: print }
-nonconforme-update:
-  url:   /:sf_culture/nonconforme-update/*
-  param: { module: nonconforme, action: update }
-nonconforme-edit:
-  url:   /:sf_culture/nonconforme-edit/*
-  param: { module: nonconforme, action: edit }
-  
+
 #URLS module referentiel emplacement
 referentiels-emplacement:
   url:   /:sf_culture/referentiels-emplacement/*
@@ -388,28 +310,6 @@ referentiels-fournisseur-update:
 referentiels-fournisseur-delete:
   url:   /:sf_culture/referentiels-fournisseur-delete/*
   param: { module: fournisseurs, action: delete }
-#URLS module referentiel interlocuteurs
-referentiels-interlocuteur:
-  url:   /:sf_culture/referentiels-interlocuteur/*
-  param: { module: interlocuteurs, action: index }
-referentiels-interlocuteur-list-ajax:
-  url:   /:sf_culture/referentiels-interlocuteur-list-ajax/*
-  param: { module: interlocuteurs, action: listAjax }
-referentiels-interlocuteur-new:
-  url:   /:sf_culture/referentiels-interlocuteur-new/*
-  param: { module: interlocuteurs, action: new }
-referentiels-interlocuteur-edit:
-  url:   /:sf_culture/referentiels-interlocuteur-edit/*
-  param: { module: interlocuteurs, action: edit }
-referentiels-interlocuteur-create:
-  url:   /:sf_culture/referentiels-interlocuteur-create/*
-  param: { module: interlocuteurs, action: create }
-referentiels-interlocuteur-update:
-  url:   /:sf_culture/referentiels-interlocuteur-update/*
-  param: { module: interlocuteurs, action: update }
-referentiels-interlocuteur-delete:
-  url:   /:sf_culture/referentiels-interlocuteur-delete/*
-  param: { module: interlocuteurs, action: delete }
 
 #URLS module referentiel RefTransporteur
 referentiels-transporteur:
@@ -540,9 +440,7 @@ utilisateur-print:
 controleNomUser:
   url:   /:sf_culture/controleNomUser
   param: { module: sfGuardAuth, action: controleNomUser }
-utilisateur-debloquer:
-  url:   /:sf_culture/utilisateur-debloquer
-  param: { module: sfGuardAuth, action: debloquer }
+
 controleMailUser:
   url:   /:sf_culture/controleMailUser
   param: { module: sfGuardAuth, action: controleMailUser }
@@ -615,12 +513,7 @@ sf_guard_signout:
 sf_guard_password:
   url:   /:sf_culture/request_password
   param: { module: sfGuardAuth, action: password }
-sf_guard_editPassword:
-  url:   /:sf_culture/editPassword
-  param: { module: sfGuardAuth, action: editPassword }
-sf_guard_updatePassword:
-  url:   /:sf_culture/updatePassword
-  param: { module: sfGuardAuth, action: updatePassword }
+
 #URLS module Destinataire Acheminement
 destinataire-acheminement:
   url:   /:sf_culture/destinataire-acheminement/*
@@ -654,15 +547,6 @@ statistiques-get-stat:
 statistiques-retard-excel:
   url:   /:sf_culture/statistiques-retard-excel/*
   param: { module: statistiques, action: excel }
-  
-#URLS module Statistiques
-encours:
-  url:   /:sf_culture/encours/*
-  param: { module: encours, action: index }
-encours-export:
-  url:   /:sf_culture/encours-export/*
-  param: { module: encours, action: export }
-
 #URLS module de stat global
 statistiques-globale:
   url:   /:sf_culture/statistiques-globale/*

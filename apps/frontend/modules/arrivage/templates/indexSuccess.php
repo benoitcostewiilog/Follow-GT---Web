@@ -107,18 +107,6 @@ slot('page_title', sprintf("Historique des arrivages"));
                                             </div>
                                         </div>
                                     </div>
-                                      <div class="row">
-                                        <div class="form-group">
-                                            <label class="col-lg-4 control-label"><?php echo __('Urgent'); ?></label>
-                                            <div class="col-lg-8">
-                                                <select id="filtreUrgent" name="urgent" class="form-control chosen-select" data-placeholder="Choisir une valeur">
-                                                    <option value="">Aucun</option>
-                                                       <option <?php echo $urgent=="1"?"selected":"" ?> value="1">OUI</option>
-                                                     <option  <?php echo $urgent=="0"?"selected":"" ?> value="0">NON</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -148,7 +136,7 @@ slot('page_title', sprintf("Historique des arrivages"));
                         </div>
                     </div>
                     <div class="ibox-content">
-                        <?php include_partial('list', array('arrivages' => $arrivages,'users'=>$users)) ?>
+                        <?php include_partial('list', array('arrivages' => $arrivages)) ?>
                     </div>
                 </div>
             </div>
@@ -183,10 +171,10 @@ slot('page_title', sprintf("Historique des arrivages"));
         $.fn.dataTable.moment('DD/MM/YYYY HH:mm:ss');
 
         table = $('.dataTables').DataTable({
-            order: [[9, 'desc']],
+            order: [[8, 'desc']],
             responsive: true,
             aLengthMenu: [[25, 50, 100], [25, 50, 100]],
-            pageLength: 100,
+            iDisplayLength: 100,
             colReorder: true,
             stateSave: true,
             buttons: [
@@ -306,8 +294,6 @@ slot('page_title', sprintf("Historique des arrivages"));
                     if (key == "delete") {
                         showSuppArrivageModal();
                     }
-                    
-                 
 
                 },
                 items: {
@@ -317,9 +303,8 @@ slot('page_title', sprintf("Historique des arrivages"));
                             "new": {name: "<?php echo __('Ajouter'); ?>", icon: "add"},
                             "edit": {name: "<?php echo __('Modifier'); ?>", icon: "edit"},
                             "delete"
-                    : {name: "<?php echo __('Supprimer'); ?>", icon: "delete"},
+                    : {name: "<?php echo __('Supprimer'); ?>", icon: "delete"}
 <?php } ?>
- 
                 }
     });
     });
@@ -369,7 +354,7 @@ slot('page_title', sprintf("Historique des arrivages"));
             $('#list-ajax-div .rowTable .ibox-content').empty();
             $('#list-ajax-div .rowTable .ibox-content').append(data);
             table = $('#list-ajax-div .rowTable .ibox-content .dataTables').DataTable({
-                order: [[9, 'desc']],
+                order: [[7, 'desc']],
                 responsive: true,
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.6/i18n/French.json"
@@ -404,6 +389,4 @@ slot('page_title', sprintf("Historique des arrivages"));
     function showProduits(idArrivage) {
         $('#produits-' + idArrivage).modal('show');
     }
-    
-
 </script>

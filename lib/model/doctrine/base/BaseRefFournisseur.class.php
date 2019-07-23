@@ -13,22 +13,19 @@ Doctrine_Manager::getInstance()->bindComponent('RefFournisseur', 'doctrine');
  * @property timestamp $updated_at
  * @property Doctrine_Collection $WrkExpedition
  * @property Doctrine_Collection $WrkArrivage
- * @property Doctrine_Collection $WrkUrgence
  * 
- * @method integer             getId_fournIsseur() Returns the current record's "id_fournisseur" value
- * @method string              getLibeLLe()        Returns the current record's "libelle" value
- * @method timestamp           getCreated_at()     Returns the current record's "created_at" value
- * @method timestamp           getUpdated_at()     Returns the current record's "updated_at" value
+ * @method integer             getIdFournisseur()  Returns the current record's "id_fournisseur" value
+ * @method string              getLibelle()        Returns the current record's "libelle" value
+ * @method timestamp           getCreatedAt()      Returns the current record's "created_at" value
+ * @method timestamp           getUpdatedAt()      Returns the current record's "updated_at" value
  * @method Doctrine_Collection getWrkExpedition()  Returns the current record's "WrkExpedition" collection
  * @method Doctrine_Collection getWrkArrivage()    Returns the current record's "WrkArrivage" collection
- * @method Doctrine_Collection getWrkUrgence()     Returns the current record's "WrkUrgence" collection
- * @method RefFournisseur      setId_fournIsseur() Sets the current record's "id_fournisseur" value
- * @method RefFournisseur      setLibeLLe()        Sets the current record's "libelle" value
- * @method RefFournisseur      setCreated_at()     Sets the current record's "created_at" value
- * @method RefFournisseur      setUpdated_at()     Sets the current record's "updated_at" value
+ * @method RefFournisseur      setIdFournisseur()  Sets the current record's "id_fournisseur" value
+ * @method RefFournisseur      setLibelle()        Sets the current record's "libelle" value
+ * @method RefFournisseur      setCreatedAt()      Sets the current record's "created_at" value
+ * @method RefFournisseur      setUpdatedAt()      Sets the current record's "updated_at" value
  * @method RefFournisseur      setWrkExpedition()  Sets the current record's "WrkExpedition" collection
  * @method RefFournisseur      setWrkArrivage()    Sets the current record's "WrkArrivage" collection
- * @method RefFournisseur      setWrkUrgence()     Sets the current record's "WrkUrgence" collection
  * 
  * @package    MobileStockV3
  * @subpackage model
@@ -63,6 +60,7 @@ abstract class BaseRefFournisseur extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -72,6 +70,7 @@ abstract class BaseRefFournisseur extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -86,10 +85,6 @@ abstract class BaseRefFournisseur extends sfDoctrineRecord
              'foreign' => 'id_fournisseur'));
 
         $this->hasMany('WrkArrivage', array(
-             'local' => 'id_fournisseur',
-             'foreign' => 'id_fournisseur'));
-
-        $this->hasMany('WrkUrgence', array(
              'local' => 'id_fournisseur',
              'foreign' => 'id_fournisseur'));
     }

@@ -151,7 +151,6 @@ $nbPages = ceil($nbElements / 20);
 	     		<th><?php echo __('Unité de tracking'); ?></th>
 	     		<th><?php echo __('Action'); ?></th>
 	     		<th><?php echo __('Emplacement'); ?></th>
-				 <th><?php echo __('Quantite'); ?></th>
 	     		<th><?php echo __('Commentaire'); ?></th>
 	     		<th><?php echo __('Groupe'); ?></th>
 	           <th><?php echo __('Utilisateur'); ?></th>
@@ -216,33 +215,30 @@ $nbPages = ceil($nbElements / 20);
 		      		<th><?php echo __('Unité de tracking'); ?></th>
 		      		<th><?php echo __('Action'); ?></th>
 		      		<th><?php echo __('Emplacement'); ?></th>
-					 <th><?php echo __('Quantite'); ?></th>
 		      		<th><?php echo __('Commentaire'); ?></th>
 		      		<th><?php echo __('Groupe'); ?></th>
 		            <th><?php echo __('Utilisateur'); ?></th>
                 </tr>
 
                 <tr >
-                    <td><?php echo date('d/m/Y H:i:s', strtotime($mouvement->getHeurePrise())) ?></td>
-	            	<td><?php echo $mouvement->getRefProduit() ?></td>
-	            	<td><?php echo $mouvement->getType() ?></td>
-	            	<td><?php echo ($mouvement->getRefEmplacement() ? $mouvement->getRefEmplacement()->getLibelle() : $mouvement->getCodeEmplacement()) ?></td>
-					<td><?php echo ($mouvement->getQuantite() != "")? $mouvement->getQuantite() : 1 ?></td>
-	            	<td><?php echo ($mouvement->getCommentaire() != "")? $mouvement->getCommentaire() : 'N/C' ?></td>
-	            	<td><?php echo $mouvement->getGroupe() ?></td>
-	                <td><?php echo (isset($users[$mouvement->getIdUtilisateur()]) ? $users[$mouvement->getIdUtilisateur()] : $mouvement->getIdUtilisateur()) ?></td>
+                  <td><?php echo date('d/m/Y H:i:s', strtotime($mouvement['heure_prise'])) ?></td>
+            	<td style="mso-number-format:\@;" class="text"><?php echo $mouvement['ref_produit'] ?></td>
+            	    <td><?php echo $mouvement['type'] ?></td>
+            	<td><?php echo ($mouvement['RefEmplacement']['libelle'] ? $mouvement['RefEmplacement']['libelle'] : $mouvement['code_emplacement']) ?></td>
+            	<td><?php echo ($mouvement['commentaire'] != "") ? $mouvement['commentaire'] : 'N/C' ?></td>
+            	<td><?php echo $mouvement['groupe'] ?></td>
+                <td><?php echo (isset($users[$mouvement['id_utilisateur']]) ? $users[$mouvement['id_utilisateur']] : $mouvement['id_utilisateur']) ?></td>
                 </tr>
 
             <?php } else { ?>
-                <tr >
- 					<td><?php echo date('d/m/Y H:i:s', strtotime($mouvement->getHeurePrise())) ?></td>
-	            	<td><?php echo $mouvement->getRefProduit() ?></td>
-	            	<td><?php echo $mouvement->getType() ?></td>
-	            	<td><?php echo ($mouvement->getRefEmplacement() ? $mouvement->getRefEmplacement()->getLibelle() : $mouvement->getCodeEmplacement()) ?></td>
-					<td><?php echo ($mouvement->getQuantite() != "")? $mouvement->getQuantite() : 1 ?></td>
-	            	<td><?php echo ($mouvement->getCommentaire() != "")? $mouvement->getCommentaire() : 'N/C' ?></td>
-	            	<td><?php echo $mouvement->getGroupe() ?></td>
-	                <td><?php echo (isset($users[$mouvement->getIdUtilisateur()]) ? $users[$mouvement->getIdUtilisateur()] : $mouvement->getIdUtilisateur()) ?></td>
+               <tr >
+                  <td><?php echo date('d/m/Y H:i:s', strtotime($mouvement['heure_prise'])) ?></td>
+            	<td style="mso-number-format:\@;" class="text"><?php echo $mouvement['ref_produit'] ?></td>
+            	    <td><?php echo $mouvement['type'] ?></td>
+            	<td><?php echo ($mouvement['RefEmplacement']['libelle'] ? $mouvement['RefEmplacement']['libelle'] : $mouvement['code_emplacement']) ?></td>
+            	<td><?php echo ($mouvement['commentaire'] != "") ? $mouvement['commentaire'] : 'N/C' ?></td>
+            	<td><?php echo $mouvement['groupe'] ?></td>
+                <td><?php echo (isset($users[$mouvement['id_utilisateur']]) ? $users[$mouvement['id_utilisateur']] : $mouvement['id_utilisateur']) ?></td>
                 </tr>
             <?php } ?>
 

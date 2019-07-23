@@ -13,8 +13,6 @@
  * @property string $salt
  * @property string $password
  * @property string $password_nomade
- * @property integer $login_failed
- * @property boolean $password_updated
  * @property boolean $is_active
  * @property boolean $is_super_admin
  * @property timestamp $last_login
@@ -25,42 +23,38 @@
  * @property sfGuardRememberKey $RememberKeys
  * @property sfGuardForgotPassword $ForgotPassword
  * 
- * @method string                getFirst_name()            Returns the current record's "first_name" value
- * @method string                getLast_name()             Returns the current record's "last_name" value
- * @method string                getEmail_addrEss()         Returns the current record's "email_address" value
+ * @method string                getFirstName()             Returns the current record's "first_name" value
+ * @method string                getLastName()              Returns the current record's "last_name" value
+ * @method string                getEmailAddress()          Returns the current record's "email_address" value
  * @method string                getUsername()              Returns the current record's "username" value
  * @method string                getAlgorithm()             Returns the current record's "algorithm" value
  * @method string                getSalt()                  Returns the current record's "salt" value
  * @method string                getPassword()              Returns the current record's "password" value
- * @method string                getPassword_nomade()       Returns the current record's "password_nomade" value
- * @method integer               getLogin_faiLed()          Returns the current record's "login_failed" value
- * @method boolean               getPassword_uPdated()      Returns the current record's "password_updated" value
- * @method boolean               getIs_actIve()             Returns the current record's "is_active" value
- * @method boolean               getIs_super_admIn()        Returns the current record's "is_super_admin" value
- * @method timestamp             getLast_Login()            Returns the current record's "last_login" value
+ * @method string                getPasswordNomade()        Returns the current record's "password_nomade" value
+ * @method boolean               getIsActive()              Returns the current record's "is_active" value
+ * @method boolean               getIsSuperAdmin()          Returns the current record's "is_super_admin" value
+ * @method timestamp             getLastLogin()             Returns the current record's "last_login" value
  * @method Doctrine_Collection   getGroups()                Returns the current record's "Groups" collection
  * @method Doctrine_Collection   getPermissions()           Returns the current record's "Permissions" collection
- * @method Doctrine_Collection   getSfGuardUSerPermiSSion() Returns the current record's "sfGuardUserPermission" collection
- * @method Doctrine_Collection   getSfGuardUSerGroup()      Returns the current record's "sfGuardUserGroup" collection
+ * @method Doctrine_Collection   getSfGuardUserPermission() Returns the current record's "sfGuardUserPermission" collection
+ * @method Doctrine_Collection   getSfGuardUserGroup()      Returns the current record's "sfGuardUserGroup" collection
  * @method sfGuardRememberKey    getRememberKeys()          Returns the current record's "RememberKeys" value
  * @method sfGuardForgotPassword getForgotPassword()        Returns the current record's "ForgotPassword" value
- * @method sfGuardUser           setFirst_name()            Sets the current record's "first_name" value
- * @method sfGuardUser           setLast_name()             Sets the current record's "last_name" value
- * @method sfGuardUser           setEmail_addrEss()         Sets the current record's "email_address" value
+ * @method sfGuardUser           setFirstName()             Sets the current record's "first_name" value
+ * @method sfGuardUser           setLastName()              Sets the current record's "last_name" value
+ * @method sfGuardUser           setEmailAddress()          Sets the current record's "email_address" value
  * @method sfGuardUser           setUsername()              Sets the current record's "username" value
  * @method sfGuardUser           setAlgorithm()             Sets the current record's "algorithm" value
  * @method sfGuardUser           setSalt()                  Sets the current record's "salt" value
  * @method sfGuardUser           setPassword()              Sets the current record's "password" value
- * @method sfGuardUser           setPassword_nomade()       Sets the current record's "password_nomade" value
- * @method sfGuardUser           setLogin_faiLed()          Sets the current record's "login_failed" value
- * @method sfGuardUser           setPassword_uPdated()      Sets the current record's "password_updated" value
- * @method sfGuardUser           setIs_actIve()             Sets the current record's "is_active" value
- * @method sfGuardUser           setIs_super_admIn()        Sets the current record's "is_super_admin" value
- * @method sfGuardUser           setLast_Login()            Sets the current record's "last_login" value
+ * @method sfGuardUser           setPasswordNomade()        Sets the current record's "password_nomade" value
+ * @method sfGuardUser           setIsActive()              Sets the current record's "is_active" value
+ * @method sfGuardUser           setIsSuperAdmin()          Sets the current record's "is_super_admin" value
+ * @method sfGuardUser           setLastLogin()             Sets the current record's "last_login" value
  * @method sfGuardUser           setGroups()                Sets the current record's "Groups" collection
  * @method sfGuardUser           setPermissions()           Sets the current record's "Permissions" collection
- * @method sfGuardUser           setSfGuardUSerPermiSSion() Sets the current record's "sfGuardUserPermission" collection
- * @method sfGuardUser           setSfGuardUSerGroup()      Sets the current record's "sfGuardUserGroup" collection
+ * @method sfGuardUser           setSfGuardUserPermission() Sets the current record's "sfGuardUserPermission" collection
+ * @method sfGuardUser           setSfGuardUserGroup()      Sets the current record's "sfGuardUserGroup" collection
  * @method sfGuardUser           setRememberKeys()          Sets the current record's "RememberKeys" value
  * @method sfGuardUser           setForgotPassword()        Sets the current record's "ForgotPassword" value
  * 
@@ -109,14 +103,6 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
         $this->hasColumn('password_nomade', 'string', 128, array(
              'type' => 'string',
              'length' => 128,
-             ));
-        $this->hasColumn('login_failed', 'integer', null, array(
-             'type' => 'integer',
-             'default' => 0,
-             ));
-        $this->hasColumn('password_updated', 'boolean', null, array(
-             'type' => 'boolean',
-             'default' => false,
              ));
         $this->hasColumn('is_active', 'boolean', null, array(
              'type' => 'boolean',

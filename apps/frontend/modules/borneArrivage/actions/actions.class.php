@@ -16,7 +16,6 @@ class borneArrivageActions extends sfActions {
         $this->transporteurs = RefTransporteurTable::getInstance()->findAll();
         $this->chauffeurs = RefChauffeurTable::getInstance()->findAll();
         $this->natures = RefNatureTable::getInstance()->findAll();
-        $this->interlocuteurs = RefInterlocuteurTable::getInstance()->findAll();
     }
     
     /* maintien de la session */

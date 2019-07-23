@@ -28,7 +28,6 @@
         $.fn.dataTable.moment('DD/MM/YYYY');
         tableFeries = $('.dataTablesFeries').DataTable({
             order: [[1, 'asc']],
-             pageLength: 100,
             responsive: true,
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.6/i18n/French.json"

@@ -11,12 +11,12 @@ Doctrine_Manager::getInstance()->bindComponent('RefFerie', 'doctrine');
  * @property date $date
  * @property string $libelle
  * 
- * @method integer  getId_ferIe() Returns the current record's "id_ferie" value
+ * @method integer  getIdFerie()  Returns the current record's "id_ferie" value
  * @method date     getDate()     Returns the current record's "date" value
- * @method string   getLibeLLe()  Returns the current record's "libelle" value
- * @method RefFerie setId_ferIe() Sets the current record's "id_ferie" value
+ * @method string   getLibelle()  Returns the current record's "libelle" value
+ * @method RefFerie setIdFerie()  Sets the current record's "id_ferie" value
  * @method RefFerie setDate()     Sets the current record's "date" value
- * @method RefFerie setLibeLLe()  Sets the current record's "libelle" value
+ * @method RefFerie setLibelle()  Sets the current record's "libelle" value
  * 
  * @package    MobileStockV3
  * @subpackage model

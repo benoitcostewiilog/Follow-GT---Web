@@ -10,13 +10,13 @@
  * @property string $ip_address
  * @property sfGuardUser $User
  * 
- * @method integer            getUser_id()      Returns the current record's "user_id" value
- * @method string             getRemembeR_key() Returns the current record's "remember_key" value
- * @method string             getIp_address()   Returns the current record's "ip_address" value
+ * @method integer            getUserId()       Returns the current record's "user_id" value
+ * @method string             getRememberKey()  Returns the current record's "remember_key" value
+ * @method string             getIpAddress()    Returns the current record's "ip_address" value
  * @method sfGuardUser        getUser()         Returns the current record's "User" value
- * @method sfGuardRememberKey setUser_id()      Sets the current record's "user_id" value
- * @method sfGuardRememberKey setRemembeR_key() Sets the current record's "remember_key" value
- * @method sfGuardRememberKey setIp_address()   Sets the current record's "ip_address" value
+ * @method sfGuardRememberKey setUserId()       Sets the current record's "user_id" value
+ * @method sfGuardRememberKey setRememberKey()  Sets the current record's "remember_key" value
+ * @method sfGuardRememberKey setIpAddress()    Sets the current record's "ip_address" value
  * @method sfGuardRememberKey setUser()         Sets the current record's "User" value
  * 
  * @package    MobileStockV3

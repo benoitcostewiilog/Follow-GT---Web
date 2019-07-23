@@ -17,22 +17,22 @@ Doctrine_Manager::getInstance()->bindComponent('WrkExpeditionProduit', 'doctrine
  * @property WrkExpedition $WrkExpedition
  * @property RefNature $RefNature
  * 
- * @method integer              getId_expedItIon_produIt() Returns the current record's "id_expedition_produit" value
- * @method integer              getId_expedItIon()         Returns the current record's "id_expedition" value
- * @method string               getRef_pRoduit()           Returns the current record's "ref_produit" value
- * @method string               getBr_sap()                Returns the current record's "br_sap" value
- * @method int                  getId_nature()             Returns the current record's "id_nature" value
- * @method timestamp            getCreated_at()            Returns the current record's "created_at" value
- * @method timestamp            getUpdated_at()            Returns the current record's "updated_at" value
+ * @method integer              getIdExpeditionProduit()   Returns the current record's "id_expedition_produit" value
+ * @method integer              getIdExpedition()          Returns the current record's "id_expedition" value
+ * @method string               getRefProduit()            Returns the current record's "ref_produit" value
+ * @method string               getBrSap()                 Returns the current record's "br_sap" value
+ * @method int                  getIdNature()              Returns the current record's "id_nature" value
+ * @method timestamp            getCreatedAt()             Returns the current record's "created_at" value
+ * @method timestamp            getUpdatedAt()             Returns the current record's "updated_at" value
  * @method WrkExpedition        getWrkExpedition()         Returns the current record's "WrkExpedition" value
  * @method RefNature            getRefNature()             Returns the current record's "RefNature" value
- * @method WrkExpeditionProduit setId_expedItIon_produIt() Sets the current record's "id_expedition_produit" value
- * @method WrkExpeditionProduit setId_expedItIon()         Sets the current record's "id_expedition" value
- * @method WrkExpeditionProduit setRef_pRoduit()           Sets the current record's "ref_produit" value
- * @method WrkExpeditionProduit setBr_sap()                Sets the current record's "br_sap" value
- * @method WrkExpeditionProduit setId_nature()             Sets the current record's "id_nature" value
- * @method WrkExpeditionProduit setCreated_at()            Sets the current record's "created_at" value
- * @method WrkExpeditionProduit setUpdated_at()            Sets the current record's "updated_at" value
+ * @method WrkExpeditionProduit setIdExpeditionProduit()   Sets the current record's "id_expedition_produit" value
+ * @method WrkExpeditionProduit setIdExpedition()          Sets the current record's "id_expedition" value
+ * @method WrkExpeditionProduit setRefProduit()            Sets the current record's "ref_produit" value
+ * @method WrkExpeditionProduit setBrSap()                 Sets the current record's "br_sap" value
+ * @method WrkExpeditionProduit setIdNature()              Sets the current record's "id_nature" value
+ * @method WrkExpeditionProduit setCreatedAt()             Sets the current record's "created_at" value
+ * @method WrkExpeditionProduit setUpdatedAt()             Sets the current record's "updated_at" value
  * @method WrkExpeditionProduit setWrkExpedition()         Sets the current record's "WrkExpedition" value
  * @method WrkExpeditionProduit setRefNature()             Sets the current record's "RefNature" value
  * 
@@ -59,6 +59,7 @@ abstract class BaseWrkExpeditionProduit extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 11,
@@ -95,6 +96,7 @@ abstract class BaseWrkExpeditionProduit extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -104,6 +106,7 @@ abstract class BaseWrkExpeditionProduit extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,

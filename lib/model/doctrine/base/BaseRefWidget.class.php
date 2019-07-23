@@ -13,15 +13,15 @@ Doctrine_Manager::getInstance()->bindComponent('RefWidget', 'doctrine');
  * @property timestamp $updated_at
  * @property Doctrine_Collection $WrkGroupWidget
  * 
- * @method integer             getId_wIdget()      Returns the current record's "id_widget" value
+ * @method integer             getIdWidget()       Returns the current record's "id_widget" value
  * @method string              getName()           Returns the current record's "name" value
- * @method timestamp           getCreated_at()     Returns the current record's "created_at" value
- * @method timestamp           getUpdated_at()     Returns the current record's "updated_at" value
+ * @method timestamp           getCreatedAt()      Returns the current record's "created_at" value
+ * @method timestamp           getUpdatedAt()      Returns the current record's "updated_at" value
  * @method Doctrine_Collection getWrkGroupWidget() Returns the current record's "WrkGroupWidget" collection
- * @method RefWidget           setId_wIdget()      Sets the current record's "id_widget" value
+ * @method RefWidget           setIdWidget()       Sets the current record's "id_widget" value
  * @method RefWidget           setName()           Sets the current record's "name" value
- * @method RefWidget           setCreated_at()     Sets the current record's "created_at" value
- * @method RefWidget           setUpdated_at()     Sets the current record's "updated_at" value
+ * @method RefWidget           setCreatedAt()      Sets the current record's "created_at" value
+ * @method RefWidget           setUpdatedAt()      Sets the current record's "updated_at" value
  * @method RefWidget           setWrkGroupWidget() Sets the current record's "WrkGroupWidget" collection
  * 
  * @package    MobileStockV3
@@ -47,6 +47,7 @@ abstract class BaseRefWidget extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -56,6 +57,7 @@ abstract class BaseRefWidget extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,

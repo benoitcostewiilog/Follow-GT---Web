@@ -14,24 +14,21 @@ Doctrine_Manager::getInstance()->bindComponent('RefTransporteur', 'doctrine');
  * @property Doctrine_Collection $WrkExpedition
  * @property Doctrine_Collection $WrkArrivage
  * @property Doctrine_Collection $RefChauffeur
- * @property Doctrine_Collection $WrkUrgence
  * 
- * @method integer             getId_transporteur() Returns the current record's "id_transporteur" value
- * @method string              getLibeLLe()         Returns the current record's "libelle" value
- * @method timestamp           getCreated_at()      Returns the current record's "created_at" value
- * @method timestamp           getUpdated_at()      Returns the current record's "updated_at" value
+ * @method integer             getIdTransporteur()  Returns the current record's "id_transporteur" value
+ * @method string              getLibelle()         Returns the current record's "libelle" value
+ * @method timestamp           getCreatedAt()       Returns the current record's "created_at" value
+ * @method timestamp           getUpdatedAt()       Returns the current record's "updated_at" value
  * @method Doctrine_Collection getWrkExpedition()   Returns the current record's "WrkExpedition" collection
  * @method Doctrine_Collection getWrkArrivage()     Returns the current record's "WrkArrivage" collection
  * @method Doctrine_Collection getRefChauffeur()    Returns the current record's "RefChauffeur" collection
- * @method Doctrine_Collection getWrkUrgence()      Returns the current record's "WrkUrgence" collection
- * @method RefTransporteur     setId_transporteur() Sets the current record's "id_transporteur" value
- * @method RefTransporteur     setLibeLLe()         Sets the current record's "libelle" value
- * @method RefTransporteur     setCreated_at()      Sets the current record's "created_at" value
- * @method RefTransporteur     setUpdated_at()      Sets the current record's "updated_at" value
+ * @method RefTransporteur     setIdTransporteur()  Sets the current record's "id_transporteur" value
+ * @method RefTransporteur     setLibelle()         Sets the current record's "libelle" value
+ * @method RefTransporteur     setCreatedAt()       Sets the current record's "created_at" value
+ * @method RefTransporteur     setUpdatedAt()       Sets the current record's "updated_at" value
  * @method RefTransporteur     setWrkExpedition()   Sets the current record's "WrkExpedition" collection
  * @method RefTransporteur     setWrkArrivage()     Sets the current record's "WrkArrivage" collection
  * @method RefTransporteur     setRefChauffeur()    Sets the current record's "RefChauffeur" collection
- * @method RefTransporteur     setWrkUrgence()      Sets the current record's "WrkUrgence" collection
  * 
  * @package    MobileStockV3
  * @subpackage model
@@ -66,6 +63,7 @@ abstract class BaseRefTransporteur extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -75,6 +73,7 @@ abstract class BaseRefTransporteur extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
+             'default' => '',
              'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
@@ -93,10 +92,6 @@ abstract class BaseRefTransporteur extends sfDoctrineRecord
              'foreign' => 'id_transporteur'));
 
         $this->hasMany('RefChauffeur', array(
-             'local' => 'id_transporteur',
-             'foreign' => 'id_transporteur'));
-
-        $this->hasMany('WrkUrgence', array(
              'local' => 'id_transporteur',
              'foreign' => 'id_transporteur'));
     }

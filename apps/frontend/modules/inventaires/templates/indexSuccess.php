@@ -125,7 +125,6 @@ slot('page_title', sprintf("Inventaires"));
         var table = $('#tInv').DataTable({
         colReorder: true,
         stateSave: true,
-         pageLength: 100,
         dom: '<<"#buttons"><"col-md-6"f>t<"col-md-4"l><"col-md-4"i><"col-md-4"p>>',
         "language": {
           "sProcessing":     "Chargement...",

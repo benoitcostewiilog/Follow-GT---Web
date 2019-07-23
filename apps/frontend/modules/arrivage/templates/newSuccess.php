@@ -21,7 +21,7 @@
                 </div>
                 <div class="ibox-content">
                     <form method="POST" action="<?php echo url_for(array('sf_route' => 'arrivage-create')) ?>" id="formNew" class="form-horizontal">
-                        <?php include_partial('form', array( 'fournisseurs' => $fournisseurs, 'interlocuteurs' => $interlocuteurs, 'transporteurs' => $transporteurs,'chauffeurs'=>$chauffeurs, 'natures' => $natures)) ?>
+                        <?php include_partial('form', array( 'fournisseurs' => $fournisseurs, 'transporteurs' => $transporteurs,'chauffeurs'=>$chauffeurs, 'natures' => $natures)) ?>
                          <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <button class="btn btn-white" onclick="goBack();" type="button"><?php echo __('Annuler'); ?></button>
