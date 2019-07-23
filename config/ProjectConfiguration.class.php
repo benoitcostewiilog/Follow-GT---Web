@@ -1,6 +1,6 @@
 <?php
 
-require_once 'C://wamp64/apps/symfony/lib/autoload/sfCoreAutoload.class.php';
+require_once '/usr/share/php/symfony/lib/autoload/sfCoreAutoload.class.php';
 sfCoreAutoload::register();
 
 define('SF_ROOT_DIR', dirname(__FILE__).'/../');
