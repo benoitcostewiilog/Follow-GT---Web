@@ -4,7 +4,7 @@
         <?php echo include_http_metas() ?>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="icon" type="image/png" href="<?php echo image_path("favicon.png"); ?>"/>
+        <link rel="icon" type="image/png" href="<?php echo image_path("favicon.ico"); ?>"/>
 
         <?php if (has_slot("page_title")) { ?>
             <title>MobileStock | <?php include_slot("page_title") ?></title>
