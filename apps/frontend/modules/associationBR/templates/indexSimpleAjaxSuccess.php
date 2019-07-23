@@ -176,7 +176,18 @@
                     $('#produit').select();
                 });
 
+                setInterval(a, 300000);
             });
+
+            function a(){
+                var url = "<?php echo url_for('@association-br') ?>";
+                $.ajax({
+                    url: url,
+                    cache:false,
+                    success:function(html){}
+                });
+            }
+
             function validerAss() {
                 removeAllSet('#produit');
                 removeAllSet('#brsap');
@@ -236,8 +247,7 @@
                                             alert('Une erreur est survenue lors de la communication avec le serveur');
                                             window.location = '<?php echo url_for('association-br') ?>';
                                         } else {
-                                            // patch pour éviter déconnexions intempestives
-                                            setTimeout(validerAss, 1000);                                      ;
+                                            validerAss();
                                         }
                                     })
                                     .always(function () {
