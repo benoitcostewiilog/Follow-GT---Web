@@ -78,8 +78,8 @@ EOF;
                                                        ek.date_attente1 = (SELECT wm.heure_prise
                                                                            FROM wrk_mouvement wm
                                                                            WHERE wm.ref_produit = ek.num_arrivage
-                                                                           AND wm.type = 'prise'
-                                                                           ORDER BY wm.created_at ASC
+                                                                           AND wm.type = 'depose'
+                                                                           ORDER BY wm.created_at DESC
                                                                            LIMIT 1 ) 
                           WHERE ek.zone_attente1 IS NULL ");
     

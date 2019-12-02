@@ -76,7 +76,7 @@ slot('page_title', sprintf("Statistiques"));
                                     <th><?php echo __('N° d\'arrivage'); ?></th>
                                     <th><?php echo __('Date arrivage'); ?></th>
                                     <th><?php echo __('Zone Attente'); ?></th>
-                                    <th><?php echo __('Date dépose ZA'); ?></th>
+                                    <th><?php echo __('Date prise ZA'); ?></th>
                                     <th><?php echo __('Unités'); ?></th>
                                     <th><?php echo __('Réception'); ?></th>
                                     <th><?php echo __('zone Attente'); ?></th>
