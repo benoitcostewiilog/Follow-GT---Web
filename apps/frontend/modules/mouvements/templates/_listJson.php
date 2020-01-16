@@ -20,7 +20,7 @@ foreach ($mouvements as $mouvement):
     {
     "DT_RowId": "<?php echo $mouvement->getIdMouvement() ?>",
     "DT_RowClass": "<?php echo $class ?>",
-    "reference": "<?php echo $mouvement->getRefProduit() ?>",
+    "reference": "<?php echo str_replace('\t', '&#9', $mouvement->getRefProduit()) ?>",
     "action": "<?php echo $action ?>",
     "emplacement": "<?php echo ($mouvement->getRefEmplacement() ? $mouvement->getRefEmplacement()->getLibelle() : $mouvement->getCodeEmplacement()) ?>",
     "quantite": "<?php echo ($mouvement->getQuantite() != "") ? $mouvement->getQuantite() : '1' ?>",
